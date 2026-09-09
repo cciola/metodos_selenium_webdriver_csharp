@@ -305,13 +305,7 @@ js.ExecuteScript(
 
 Nesse caso, o JavaScript recebe o elemento encontrado pelo Selenium e utiliza `scrollIntoView()` para posicioná-lo na área visível do navegador.
 
-## ⚠️ Observação sobre Thread.Sleep()
-
-O exemplo original utiliza `Thread.Sleep()` para aguardar a movimentação da página.
-
-Embora seja adequado para demonstrar o funcionamento do recurso, em uma automação real é preferível utilizar **esperas explícitas** ou outras estratégias de sincronização quando houver uma condição específica a ser aguardada.
-
-Por exemplo, se o objetivo do scroll for tornar um elemento disponível para interação, pode ser mais adequado localizar o elemento e utilizar uma estratégia que aguarde sua condição de visibilidade ou interação.
+---
 
 ## 🎯 Quando utilizar
 
