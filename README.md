@@ -1,4 +1,4 @@
-# Selenium WebDriver com C#
+# Métodos - Selenium WebDriver com C#
 
 Este repositório reúne exemplos de funcionalidades comumente utilizadas em **Selenium WebDriver**, desenvolvidos na linguagem **C#**.
 
