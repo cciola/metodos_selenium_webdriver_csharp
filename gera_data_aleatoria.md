@@ -341,7 +341,7 @@ Isso é especialmente importante quando o sistema espera uma data no formato bra
 
 ---
 
-# 📌 Exemplo aplicado a um cadastro
+### 📌 Exemplo aplicado a um cadastro
 
 Supondo que o sistema possua um campo de data de nascimento:
 
