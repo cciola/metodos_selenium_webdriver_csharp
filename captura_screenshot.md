@@ -401,21 +401,7 @@ Imagem_4.png → Resultado final
 
 Esse recurso pode ser bastante útil para documentar a execução de cenários automatizados.
 
-## ⚠️ Observação sobre Thread.Sleep()
-
-O exemplo original utiliza:
-
-```csharp
-Thread.Sleep(500);
-```
-
-para aguardar a captura.
-
-Embora seja suficiente para demonstrar o funcionamento, `Thread.Sleep()` não é normalmente a melhor estratégia de sincronização em uma suíte de testes.
-
-Em automações reais, é preferível utilizar mecanismos de espera baseados em condições, como **explicit waits**, quando houver algum comportamento específico da aplicação que precise ser aguardado.
-
-Além disso, a captura do screenshot em si é uma operação síncrona: não é necessário utilizar `Thread.Sleep()` para que o Selenium "termine" de salvar a imagem.
+---
 
 ## 💡 Melhorias possíveis
 
