@@ -360,42 +360,6 @@ Nesse caso, o teste gera a data e imediatamente a utiliza no formulário.
 
 ---
 
-## ⚠️ Atenção ao código original
-
-O exemplo original utilizava:
-
-```csharp id="j7d3sx"
-int mes = rnd.Next(1, 12);
-```
-
-Como o segundo parâmetro de `Random.Next()` é exclusivo, esse código gera apenas os meses de **1 a 11**.
-
-Para incluir dezembro, o correto é:
-
-```csharp id="q5v9lm"
-int mes = rnd.Next(1, 13);
-```
-
-O mesmo cuidado é necessário para o dia.
-
-O código original utilizava:
-
-```csharp id="e6c1hp"
-int Dia = rnd.Next(1, dia);
-```
-
-Como o limite superior também é exclusivo, o último dia do mês nunca seria escolhido.
-
-Por isso, utilizamos:
-
-```csharp id="t9k2wf"
-int dia = rnd.Next(1, ultimoDia + 1);
-```
-
-Assim, todos os dias válidos do mês podem ser selecionados.
-
----
-
 ## 💡 Por que gerar datas aleatórias?
 
 A geração dinâmica de datas pode ser útil para testes que precisam:
