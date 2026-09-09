@@ -1,34 +1,133 @@
-# Selenium Webdriver com CSharp
+# Selenium WebDriver com C#
 
-Este repositório lista alguns códigos de funcionalidades comumente utilizadas no Selenium Webdriver na linguagem C#. 
+Este repositório reúne exemplos de funcionalidades comumente utilizadas em **Selenium WebDriver**, desenvolvidos na linguagem **C#**.
 
-Para quem não conhece, o Selenium WebDriver (também chamado de Selenium 2) usa extensões ou recursos nativos oferecidos pelo próprio navegador para controlá-lo diretamente, automatizando ações como submits de formulários, seleções em menus dropdown, digitação em campos texto, varredura de dados em elementos, HTML, entre outros. 
+Os exemplos têm como objetivo servir como material de consulta e estudo para quem está iniciando na utilização do Selenium WebDriver para automação de testes.
 
-O WebDriver é desenvolvido independentemente para cada navegador, e substitui o JavaScript que era embutido nas aplicações testadas. Essa integração mais forte com o navegador permite criar testes mais avançados e remove as restrições impostas pelo modelo de segurança do JavaScript. É suportado no Firefox (FirefoxDriver), IE (InternetExplorerDriver), Opera (OperaDriver) e Chrome (ChromeDriver).
+## 📚 Sobre o Selenium WebDriver
 
-Podemos ainda utilizar algumas referências de Javascript no Webdriver, utilizando a biblioteca de solicitação Executor, a qual contém objetos e enumerações que oferecem suporte ao processamento de mensagens, solicitações, respostas, comandos, erros e exceções. É o chamado JavascriptExecutor.
-<br><br>
-<b>Observação:</b> os exemplos foram todos elaborados e executados em uma máquina contendo os pré-requisitos abaixo:
-- Selenium Webdriver
-- Microsoft Visual Studio TFS
-- Navegador Internet Explorer ou Chrome ou Firefox
-<br><br>
-Como ainda estou iniciando nesta ferramenta, até o momento posso contribuir com estes códigos:
-<br>
+O **Selenium WebDriver** é uma ferramenta utilizada para automação de navegadores, permitindo controlar o browser diretamente por meio de recursos e APIs disponibilizados pelo próprio navegador.
 
-- <a href="https://github.com/CarolCiola/SeleniumWebdriver_CSharp/blob/master/captura_screenshot.md"><b>captura_screenshot</b></a>: descreve como implementar captura de printscreen de toda a tela (ou da janela que possui o foco) nos passos do código, salvando a imagem no diretório desejado, com nome personalizado e numeração automática, para gravar as imagens sem que haja sobreposição.
+Com o WebDriver, é possível automatizar diversas ações realizadas por um usuário, como:
 
-- <a href="https://github.com/CarolCiola/SeleniumWebdriver_CSharp/blob/master/gera_CPF_aleatorio.md"><b>gera_CPF_aleatorio</b></a>: descreve como implementar a geração randômica de CPF válido nos passos do código.
+* Preenchimento de formulários;
+* Digitação em campos de texto;
+* Seleção de opções em menus dropdown;
+* Interação com elementos da página;
+* Submissão de formulários;
+* Leitura e validação de informações presentes nos elementos HTML;
+* Execução de comandos diretamente no navegador.
 
-- <a href="https://github.com/CarolCiola/SeleniumWebdriver_CSharp/blob/master/gera_data_aleatoria.md"><b>gera_data_aleatoria</b></a>: descreve como implementar a geração randômica de data válida nos passos do código.
+O WebDriver possui implementações específicas para diferentes navegadores, permitindo que os testes sejam executados em ambientes como **Chrome, Firefox, Internet Explorer e Opera**.
 
-- <a href="https://github.com/CarolCiola/SeleniumWebdriver_CSharp/blob/master/JsE_mouseover.md"><b>JavascriptExecutor_mouseover</b></a>: descreve como solicitar o JavascriptExecutor para executar o comando mouseover.
+Essa integração direta com o navegador possibilita a criação de testes mais completos e reduz algumas das limitações existentes quando a automação é realizada exclusivamente por JavaScript dentro da aplicação.
 
-- <a href="https://github.com/CarolCiola/SeleniumWebdriver_CSharp/blob/master/JsE_scroll.md"><b>JavascriptExecutor_scroll</b></a>: descreve como solicitar o JavascriptExecutor para executar o comando scroll.
+## 🟨 JavascriptExecutor
 
-- <a href="https://github.com/CarolCiola/SeleniumWebdriver_CSharp/blob/master/JsE_popup.md"><b>JavascriptExecutor_popup</b></a>: descreve como solicitar o JavascriptExecutor para exibir um popup na tela.
+Além dos recursos disponibilizados pelo próprio Selenium WebDriver, também é possível executar comandos JavaScript diretamente no navegador utilizando o **JavascriptExecutor**.
 
-- <a href="https://github.com/CarolCiola/SeleniumWebdriver_CSharp/blob/master/JsE_destaque.md"><b>JavascriptExecutor_destaque</b></a>: descreve como solicitar o JavascriptExecutor para destacar um elemento na tela.
-<br></br>
-Qualquer dúvida me contate! carol.ciola@gmail.com
+O JavascriptExecutor permite, por exemplo:
 
+* Executar comandos JavaScript;
+* Realizar scroll na página;
+* Simular eventos como `mouseover`;
+* Exibir mensagens ou popups;
+* Destacar elementos durante a execução dos testes;
+* Executar scripts específicos para apoiar a automação.
+
+Nos exemplos deste repositório, o JavascriptExecutor é utilizado para demonstrar algumas dessas possibilidades.
+
+## ⚙️ Pré-requisitos
+
+Os exemplos foram originalmente elaborados e executados em um ambiente contendo:
+
+* **Selenium WebDriver**
+* **C#**
+* **Microsoft Visual Studio / TFS**
+* Um navegador compatível, como:
+
+  * Google Chrome
+  * Mozilla Firefox
+  * Internet Explorer
+
+> **Observação:** os exemplos foram desenvolvidos originalmente em um ambiente que utilizava Internet Explorer, Chrome e Firefox. Algumas versões e configurações podem exigir adaptações para ambientes atuais.
+
+## 📂 Exemplos disponíveis
+
+Até o momento, o repositório contém os seguintes exemplos:
+
+### 📸 Captura de screenshot
+
+**[captura_screenshot](captura_screenshot.md)**
+
+Exemplo de implementação de captura de screenshot durante a execução da automação.
+
+O exemplo demonstra como:
+
+* Capturar a tela;
+* Salvar a imagem em um diretório definido;
+* Utilizar um nome personalizado;
+* Gerar numeração automática;
+* Evitar que novas imagens sobrescrevam screenshots anteriores.
+
+---
+
+### 🆔 Geração de CPF aleatório
+
+**[gera_CPF_aleatorio](gera_CPF_aleatorio.md)**
+
+Exemplo de implementação para geração randômica de **CPF válido**, útil para cenários de teste que necessitam de dados dinâmicos.
+
+---
+
+### 📅 Geração de data aleatória
+
+**[gera_data_aleatoria](gera_data_aleatoria.md)**
+
+Exemplo de implementação para geração randômica de **datas válidas**, permitindo criar dados variados durante a execução dos testes.
+
+---
+
+### 🖱️ JavascriptExecutor — Mouseover
+
+**[JavascriptExecutor_mouseover](JsE_mouseover.md)**
+
+Exemplo de utilização do **JavascriptExecutor** para executar o comando `mouseover` sobre um elemento da página.
+
+---
+
+### 📜 JavascriptExecutor — Scroll
+
+**[JavascriptExecutor_scroll](JsE_scroll.md)**
+
+Exemplo de utilização do **JavascriptExecutor** para realizar o **scroll** da página durante a execução da automação.
+
+---
+
+### 💬 JavascriptExecutor — Popup
+
+**[JavascriptExecutor_popup](JsE_popup.md)**
+
+Exemplo de utilização do **JavascriptExecutor** para executar JavaScript e exibir um **popup** na página.
+
+---
+
+### ✨ JavascriptExecutor — Destaque de elemento
+
+**[JavascriptExecutor_destaque](JsE_destaque.md)**
+
+Exemplo de utilização do **JavascriptExecutor** para destacar visualmente um elemento da página durante a execução do teste.
+
+Esse recurso pode ser útil principalmente durante a execução em modo visual, facilitando a identificação do elemento que está sendo manipulado pela automação.
+
+## 🎯 Objetivo do repositório
+
+Este repositório foi criado inicialmente como um espaço de **estudo e compartilhamento de exemplos práticos** relacionados ao Selenium WebDriver com C#.
+
+Os exemplos representam funcionalidades que podem ser reutilizadas ou adaptadas em projetos de automação de testes.
+
+> O conteúdo deste repositório pode ser atualizado conforme novos exemplos e funcionalidades forem incorporados.
+
+## 👩‍💻 Sobre
+
+Repositório criado por **Carol Ciola**, como material de estudo e referência sobre automação de testes com Selenium WebDriver e C#.
