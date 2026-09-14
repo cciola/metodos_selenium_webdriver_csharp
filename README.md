@@ -97,7 +97,7 @@ Exemplo de implementação para geração randômica de **datas válidas**, perm
 
 ### JavascriptExecutor — Mouseover
 
-**[JavascriptExecutor_mouseover](JsE_mouseover.md)**
+**[jse_mouseover](jse_mouseover.md)**
 
 Exemplo de utilização do **JavascriptExecutor** para executar o comando `mouseover` sobre um elemento da página.
 
@@ -105,7 +105,7 @@ Exemplo de utilização do **JavascriptExecutor** para executar o comando `mouse
 
 ### JavascriptExecutor — Scroll
 
-**[JavascriptExecutor_scroll](JsE_scroll.md)**
+**[jse_scroll_barra_rolagem](jse_scroll_barra_rolagem.md)**
 
 Exemplo de utilização do **JavascriptExecutor** para realizar o **scroll** da página durante a execução da automação.
 
@@ -113,7 +113,7 @@ Exemplo de utilização do **JavascriptExecutor** para realizar o **scroll** da 
 
 ### JavascriptExecutor — Popup
 
-**[JavascriptExecutor_popup](JsE_popup.md)**
+**[jse_exibir_popup](jse_exibir_popup.md)**
 
 Exemplo de utilização do **JavascriptExecutor** para executar JavaScript e exibir um **popup** na página.
 
@@ -121,7 +121,7 @@ Exemplo de utilização do **JavascriptExecutor** para executar JavaScript e exi
 
 ### JavascriptExecutor — Destaque de elemento
 
-**[JavascriptExecutor_destaque](JsE_destaque.md)**
+**[jse_destaque_elemento](jse_destaque_elemento.md)**
 
 Exemplo de utilização do **JavascriptExecutor** para destacar visualmente um elemento da página durante a execução do teste.
 
