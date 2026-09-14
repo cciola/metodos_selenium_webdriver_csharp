@@ -14,7 +14,7 @@ O exemplo original foi desenvolvido utilizando **Visual Studio, NUnit e Selenium
 
 As dependências utilizadas na época incluíam:
 
-```text id="n3wq6k"
+```text
 NUnit
 NUnit 3 - NUnit Project Loader Extension
 NUnit 3 - NUnit V2 Framework Driver Extension
@@ -32,32 +32,28 @@ Selenium.Support
 
 Para executar o exemplo no Chrome, também era necessário:
 
-```text id="x8e4al"
+```text
 Selenium.WebDriver.ChromeDriver
 ```
 
 Para outros navegadores, poderiam ser utilizados os respectivos drivers:
 
-```text id="gq7h2s"
+```text
 Selenium.WebDriver.IEDriver
 Selenium.WebDriver.Firefox
 ```
 
-> **⚠️ Observação:** essas dependências refletem o ambiente original do exemplo. Em versões atuais do .NET, NUnit, Selenium e Visual Studio, a instalação e o gerenciamento dos pacotes podem ser diferentes.
+> **Observação:** essas dependências refletem o ambiente original do exemplo. Em versões atuais do .NET, NUnit, Selenium e Visual Studio, a instalação e o gerenciamento dos pacotes podem ser diferentes.
 
 ---
 
-# 📅 Criando o gerador de data
+## 📅 Criando o gerador de data
 
 Depois de criar um **Unit Test Project**, o método `GerarData()` pode ser declarado dentro da classe marcada com `[TestFixture]`.
 
-O método utiliza a classe `Random` para definir aleatoriamente:
+O método utiliza a classe `Random` para definir aleatoriamente **ano**, **mês** e **dia**.
 
-* ano;
-* mês;
-* dia.
-
-```csharp id="h1q5b9"
+```csharp
 public DateTime GerarData()
 {
     Random rnd = new Random();
@@ -75,13 +71,7 @@ public DateTime GerarData()
 }
 ```
 
-O método retorna um objeto `DateTime`.
-
-Por exemplo:
-
-```text id="v8r2kc"
-15/07/1998
-```
+O método retorna um objeto `DateTime`: `15/07/1998`.
 
 ---
 
@@ -89,37 +79,19 @@ Por exemplo:
 
 ### 1. Geração do ano
 
-O intervalo de anos é definido através de:
+O intervalo de anos é definido através de `int ano = rnd.Next(1950, 2016);`. Nesse caso, são gerados anos de **1950 até 2015**. Isso acontece porque o limite superior do `Random.Next()` é exclusivo.
 
-```csharp id="x8a5nc"
-int ano = rnd.Next(1950, 2016);
-```
-
-Nesse caso, são gerados anos de **1950 até 2015**.
-
-Isso acontece porque o limite superior do `Random.Next()` é exclusivo.
-
-Caso seja necessário incluir o ano de 2016:
-
-```csharp id="6d5h9q"
-int ano = rnd.Next(1950, 2017);
-```
+Caso seja necessário incluir o ano de 2016: `int ano = rnd.Next(1950, 2017);`.
 
 ---
 
 ### 2. Geração do mês
 
-O mês é gerado entre 1 e 12:
-
-```csharp id="1k5s3f"
-int mes = rnd.Next(1, 13);
-```
-
-O `13` é utilizado porque o limite superior do `Random.Next()` não é incluído.
+O mês é gerado entre 1 e 12: `int mes = rnd.Next(1, 13);`. O `13` é utilizado porque o limite superior do `Random.Next()` não é incluído.
 
 Assim, os valores possíveis são:
 
-```text id="l0zq8s"
+```text
 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12
 ```
 
@@ -129,7 +101,7 @@ Assim, os valores possíveis são:
 
 Para evitar a geração de datas inválidas, o método utiliza:
 
-```csharp id="8l4m5k"
+```csharp
 int ultimoDia =
     DateTime.DaysInMonth(ano, mes);
 ```
@@ -138,7 +110,7 @@ Esse método retorna a quantidade correta de dias para o mês informado.
 
 Por exemplo:
 
-```text id="h1e6t0"
+```text
 Fevereiro → 28 ou 29
 Abril     → 30
 Maio      → 31
@@ -150,46 +122,24 @@ Isso também considera automaticamente anos bissextos.
 
 ### 4. Geração do dia
 
-Depois de descobrir quantos dias existem naquele mês:
+Depois de descobrir quantos dias existem naquele mês: `int dia = rnd.Next(1, ultimoDia + 1);`. Dessa forma, o dia sempre estará dentro de um intervalo válido.
 
-```csharp id="2z6f9p"
-int dia =
-    rnd.Next(1, ultimoDia + 1);
-```
-
-Dessa forma, o dia sempre estará dentro de um intervalo válido.
-
-Por exemplo, para um mês com 31 dias:
-
-```text id="j9h0r2"
-1 até 31
-```
-
-Para um mês com 30 dias:
-
-```text id="p3w8xm"
-1 até 30
-```
+* Para um mês com 31 dias: **1 até 31**
+* Para um mês com 30 dias: **1 até 30**
 
 ---
 
 ### 5. Criação da data
 
-Finalmente, os valores são utilizados para criar um `DateTime`:
-
-```csharp id="w7k2ld"
-return new DateTime(ano, mes, dia);
-```
-
-O resultado é uma data válida.
+Finalmente, os valores são utilizados para criar um `DateTime`: `return new DateTime(ano, mes, dia);` (o resultado é uma data válida).
 
 ---
 
-# 🧪 Veja o método funcionando
+## 🧪 Veja o método funcionando
 
-No exemplo abaixo, a data gerada é exibida em um `alert` utilizando o `IJavaScriptExecutor`.
+No exemplo abaixo, a data gerada é exibida em um `alert` utilizando o `IJavaScriptExecutor`:
 
-```csharp id="r5x3qn"
+```csharp
 using System;
 using System.Threading;
 using NUnit.Framework;
@@ -270,7 +220,7 @@ namespace SeleniumTests
 
 O fluxo do teste é:
 
-```text id="c5h2nm"
+```text
 Início
   │
   ├── Abre o Chrome
@@ -289,23 +239,15 @@ Início
   └── Exibe a data em um alert
 ```
 
-O navegador exibirá uma mensagem semelhante a:
-
-```text id="r0c7yv"
-Data gerada: 15/07/1998
-```
-
-Na próxima execução, outra data poderá ser gerada.
+O navegador exibirá uma mensagem semelhante a `Data gerada: 15/07/1998`. Na próxima execução, outra data poderá ser gerada.
 
 ---
 
-# 🔄 Utilizando a data em um campo
+## 🔄 Utilizando a data em um campo
 
 Como `GerarData()` retorna um `DateTime`, quando a data precisar ser enviada para um campo do navegador, é necessário convertê-la para uma representação textual.
 
-Por exemplo:
-
-```csharp id="n2j5cv"
+```csharp
 string data = GerarData().ToString("dd/MM/yyyy");
 
 driver.FindElement(By.Id("MainContent_txtDataNascimento"))
@@ -314,7 +256,7 @@ driver.FindElement(By.Id("MainContent_txtDataNascimento"))
 
 Também é possível armazenar o valor em uma variável antes de utilizá-lo:
 
-```csharp id="v6p9kr"
+```csharp
 DateTime dataGerada = GerarData();
 
 driver.FindElement(By.Id("MainContent_txtDataNascimento"))
@@ -323,21 +265,7 @@ driver.FindElement(By.Id("MainContent_txtDataNascimento"))
 
 ### 💡 Por que utilizar `ToString("dd/MM/yyyy")`?
 
-O formato explícito evita depender da configuração regional do computador.
-
-Em vez de:
-
-```csharp id="m8x4qs"
-Convert.ToString(GerarData())
-```
-
-é preferível definir explicitamente o formato esperado pelo campo:
-
-```csharp id="b2n7wd"
-GerarData().ToString("dd/MM/yyyy")
-```
-
-Isso é especialmente importante quando o sistema espera uma data no formato brasileiro.
+O formato explícito evita depender da configuração regional do computador; em vez de `Convert.ToString(GerarData())`, é preferível definir explicitamente o formato esperado pelo campo `GerarData().ToString("dd/MM/yyyy")`. Isso é especialmente importante quando o sistema espera uma data no formato brasileiro.
 
 ---
 
@@ -345,7 +273,7 @@ Isso é especialmente importante quando o sistema espera uma data no formato bra
 
 Supondo que o sistema possua um campo de data de nascimento:
 
-```csharp id="u4k6pw"
+```csharp
 DateTime dataNascimento = GerarData();
 
 driver.FindElement(
@@ -374,7 +302,7 @@ A geração dinâmica de datas pode ser útil para testes que precisam:
 
 Por exemplo, em um cadastro:
 
-```text id="k4z8pd"
+```text
 Nome:             João da Silva
 CPF:              12345678909
 Data nascimento:  15/07/1998
@@ -384,17 +312,14 @@ A data pode ser gerada automaticamente pelo teste em vez de permanecer fixa.
 
 ---
 
-## 🎯 Quando utilizar?
+## ⚡ Quando utilizar?
 
 Um gerador de datas é especialmente útil quando o teste precisa trabalhar com **dados variáveis**.
 
 Dependendo da regra do sistema, o intervalo pode ser adaptado.
 
-Por exemplo, para gerar apenas datas recentes:
+Por exemplo, para gerar apenas datas recentes: `int ano = rnd.Next(2020, 2027);`.
 
-```csharp id="x5m9rb"
-int ano = rnd.Next(2020, 2027);
-```
 
 Ou, para gerar datas anteriores a uma determinada data, pode-se trabalhar diretamente com objetos `DateTime` e intervalos de datas.
 
@@ -406,9 +331,7 @@ O importante é que o gerador seja ajustado à **regra de negócio que o teste p
 
 Em um projeto maior, o método `GerarData()` pode ser movido para uma **classe externa de utilidades**, assim como o gerador de CPF.
 
-Por exemplo:
-
-```text id="z2r6vc"
+```text
 Utils
 ├── GeraCPF.cs
 └── GeraData.cs
@@ -416,7 +339,7 @@ Utils
 
 A classe de teste passa então a consumir o método:
 
-```csharp id="n8w3lk"
+```csharp
 GeraData gerador = new GeraData();
 
 DateTime data = gerador.GerarData();

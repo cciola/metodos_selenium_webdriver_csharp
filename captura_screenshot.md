@@ -12,6 +12,8 @@ A implementação permite:
 
 Esse recurso pode ser especialmente útil para **evidências de testes**, **depuração** e investigação de falhas durante a execução da automação.
 
+---
+
 ## 📋 Pré-requisitos
 
 Para executar o exemplo, é necessário criar um **Unit Test Project** e adicionar as bibliotecas necessárias para o NUnit e Selenium WebDriver.
@@ -50,6 +52,8 @@ Os drivers específicos de navegador são necessários de acordo com o navegador
 
 > **Observação:** as referências acima correspondem ao ambiente em que o exemplo foi originalmente desenvolvido. Em versões atuais do Selenium, NUnit e Visual Studio, a instalação e configuração dos pacotes pode ser diferente.
 
+---
+
 ## 📸 Como funciona a captura de screenshot
 
 O Selenium disponibiliza a interface `ITakesScreenshot`, que permite solicitar ao navegador uma captura da tela atual.
@@ -76,6 +80,8 @@ Cada variável possui uma finalidade:
 * `baseURL` — armazena a URL base da aplicação;
 * `screenshotsPasta` — armazena o diretório onde os screenshots serão salvos;
 * `contador` — controla a numeração dos arquivos gerados.
+
+---
 
 ## 🖼️ Criando o método de captura
 
@@ -109,11 +115,7 @@ Aqui, o `driver` é convertido para `ITakesScreenshot`, permitindo utilizar os r
 
 #### `GetScreenshot()`
 
-```csharp
-Screenshot foto = camera.GetScreenshot();
-```
-
-Essa instrução solicita ao WebDriver uma captura da tela atual e armazena o resultado na variável `foto`.
+A instrução `Screenshot foto = camera.GetScreenshot();` solicita ao WebDriver uma captura da tela atual e armazena o resultado na variável `foto`.
 
 #### `SaveAsFile()`
 
@@ -124,15 +126,9 @@ foto.SaveAsFile(
 );
 ```
 
-Esse método salva a captura no caminho informado.
+Esse método salva a captura no caminho informado. O segundo parâmetro `ScreenshotImageFormat.Png` define o formato da imagem. Neste exemplo, os arquivos serão salvos no formato **PNG**.
 
-O segundo parâmetro define o formato da imagem:
-
-```csharp
-ScreenshotImageFormat.Png
-```
-
-Neste exemplo, os arquivos serão salvos no formato **PNG**.
+---
 
 ## 📁 Definindo a pasta de evidências
 
@@ -149,40 +145,22 @@ public void SetupTest()
     baseURL = "https://www.google.com.br";
 
     screenshotsPasta =
-        @"C:\Users\cciola\Documents\Visual Studio 2013\Projects\TesteGit\Evidencias\";
+        @"C:\Users\cciola\Documents\Evidencias\";
 }
 ```
 
 Nesse exemplo:
 
 ```csharp
-driver = new ChromeDriver();
+driver = new ChromeDriver();           // inicializa o navegador Chrome
+driver.Manage().Window.Maximize();     // maximiza a janela do navegador
+baseURL = "https://www.google.com.br"; // define a URL base utilizada pelo teste
+screenshotsPasta = @"C:\Users\...";    // define o diretório onde os screenshots serão armazenados
 ```
-
-inicializa o navegador Chrome.
-
-```csharp
-driver.Manage().Window.Maximize();
-```
-
-maximiza a janela do navegador.
-
-```csharp
-baseURL = "https://www.google.com.br";
-```
-
-define a URL base utilizada pelo teste.
-
-E:
-
-```csharp
-screenshotsPasta =
-    @"C:\Users\cciola\Documents\Visual Studio 2013\Projects\TesteGit\Evidencias\";
-```
-
-define o diretório onde os screenshots serão armazenados.
 
 > **Importante:** a pasta informada deve existir antes da execução do teste. Em uma implementação mais robusta, o código pode verificar a existência do diretório e criá-lo automaticamente quando necessário.
+
+---
 
 ## 🔢 Gerando nomes numerados
 
@@ -200,13 +178,7 @@ public void capturaImagem()
 }
 ```
 
-O trecho:
-
-```csharp
-"Imagem_" + contador++ + ".png"
-```
-
-gera nomes sequenciais, por exemplo:
+O trecho `"Imagem_" + contador++ + ".png"` gera nomes sequenciais, por exemplo:
 
 ```text
 Imagem_1.png
@@ -215,19 +187,13 @@ Imagem_3.png
 Imagem_4.png
 ```
 
-O operador `++` incrementa o valor do contador após sua utilização.
+O operador `++` incrementa o valor do contador após sua utilização. Assim, cada nova chamada do método `capturaImagem()` gera um nome diferente.
 
-Assim, cada nova chamada do método `capturaImagem()` gera um nome diferente.
+---
 
 ## 🧪 Utilizando a captura durante o teste
 
-Depois que os métodos forem implementados, basta chamar:
-
-```csharp
-capturaImagem();
-```
-
-no ponto em que deseja obter a evidência.
+Depois que os métodos forem implementados, basta chamar `capturaImagem();` no ponto em que deseja obter a evidência.
 
 Por exemplo:
 
@@ -242,6 +208,8 @@ capturaImagem();
 ```
 
 Nesse caso, o screenshot será capturado após o carregamento da página.
+
+---
 
 ## 🔎 Código completo
 
@@ -343,6 +311,8 @@ namespace SeleniumTests
 }
 ```
 
+---
+
 ## 🎯 Resultado esperado
 
 Durante a execução, o teste:
@@ -367,11 +337,11 @@ C:\Selenium\Evidencias\
 
 Cada chamada ao método `capturaImagem()` gera uma nova imagem numerada.
 
+---
+
 ## 📌 Capturando evidências em diferentes etapas
 
-Uma das vantagens dessa abordagem é poder realizar screenshots em diferentes momentos do teste.
-
-Por exemplo:
+Uma das vantagens dessa abordagem é poder realizar screenshots em diferentes momentos do teste. Por exemplo:
 
 ```csharp
 // Evidência após abrir a página.
@@ -432,7 +402,9 @@ Evidencias/
     └── Pesquisa_02.png
 ```
 
-## 🎯 Quando utilizar screenshots
+---
+
+## ⚡ Quando utilizar screenshots
 
 A captura de screenshots pode ser útil para:
 
@@ -445,6 +417,8 @@ A captura de screenshots pode ser útil para:
 * Registro do resultado de etapas específicas do teste.
 
 Em uma suíte de testes automatizados, uma estratégia bastante comum é capturar screenshots **automaticamente quando um teste falha**, evitando gerar evidências desnecessárias para todos os passos de todos os cenários.
+
+---
 
 ## 🎯 Objetivo do repositório
 

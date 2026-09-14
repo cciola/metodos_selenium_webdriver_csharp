@@ -10,13 +10,15 @@ Neste exemplo, a página é:
 2. Rolada para baixo;
 3. Rolada novamente para cima.
 
+---
+
 ## 📋 Pré-requisitos
 
 Para executar o exemplo, é necessário criar um **Unit Test Project** e adicionar as bibliotecas necessárias para o NUnit e Selenium WebDriver.
 
 As referências utilizadas originalmente neste exemplo incluem:
 
-```text id="x8j2m4"
+```text
 NUnit
 
 NUnit 3 - NUnit Project Loader Extension
@@ -48,13 +50,15 @@ Os drivers específicos de navegador são necessários de acordo com o navegador
 
 > **Observação:** as referências acima correspondem ao ambiente em que o exemplo foi originalmente desenvolvido. Em versões atuais do Selenium, NUnit e Visual Studio, a instalação e configuração dos pacotes pode ser diferente.
 
+---
+
 ## 💡 O que é o JavascriptExecutor?
 
 O Selenium WebDriver disponibiliza a interface `IJavaScriptExecutor`, que permite executar comandos JavaScript diretamente no navegador controlado pelo WebDriver.
 
 Primeiro, declare o objeto na classe de teste:
 
-```csharp id="n4f7w2"
+```csharp
 [TestFixture]
 public class NomeDoProjeto
 {
@@ -64,51 +68,29 @@ public class NomeDoProjeto
 }
 ```
 
-Antes de utilizar o JavascriptExecutor, faça a conversão do `driver`:
+Antes de utilizar o JavascriptExecutor, faça a conversão do `driver`: `js = (IJavaScriptExecutor)driver;`. A partir desse momento, o objeto `js` poderá ser utilizado para executar comandos JavaScript no navegador.
 
-```csharp id="p3v9k1"
-js = (IJavaScriptExecutor)driver;
-```
-
-A partir desse momento, o objeto `js` poderá ser utilizado para executar comandos JavaScript no navegador.
+---
 
 ## 📜 Utilizando window.scrollBy()
 
-Para movimentar a página, podemos utilizar o método JavaScript:
-
-```javascript id="m8q2x6"
-window.scrollBy(x, y)
-```
-
-Os parâmetros representam o deslocamento em pixels:
+Para movimentar a página, podemos utilizar o método JavaScript `window.scrollBy(x, y)`. Os parâmetros representam o deslocamento em pixels:
 
 * `x` — deslocamento horizontal;
 * `y` — deslocamento vertical.
 
-Por exemplo:
-
-```javascript id="w5r1t8"
-window.scrollBy(0, 300)
-```
-
-significa:
+Por exemplo, `window.scrollBy(0, 300)` significa:
 
 * Não movimentar horizontalmente (`0`);
 * Descer **300 pixels** verticalmente (`300`).
 
-Para subir 300 pixels:
-
-```javascript id="k7d4p2"
-window.scrollBy(0, -300)
-```
-
-O valor negativo faz com que a página seja movimentada para cima.
+---
 
 ## ⬇️ Rolando a página para baixo
 
 No Selenium, podemos executar o JavaScript da seguinte forma:
 
-```csharp id="z2f6h9"
+```csharp
 js.ExecuteScript(
     "window.scrollBy(0, 300);"
 );
@@ -116,17 +98,21 @@ js.ExecuteScript(
 
 Nesse caso, a página será deslocada **300 pixels para baixo**.
 
+---
+
 ## ⬆️ Rolando a página para cima
 
 Para retornar 300 pixels:
 
-```csharp id="q9c3v7"
+```csharp
 js.ExecuteScript(
     "window.scrollBy(0, -300);"
 );
 ```
 
 Como o valor vertical é negativo, a página será deslocada **300 pixels para cima**.
+
+---
 
 ## 🧪 Exemplo de utilização
 
@@ -142,7 +128,7 @@ O fluxo básico do teste é:
 
 O código principal fica desta forma:
 
-```csharp id="s6y1p4"
+```csharp
 js = (IJavaScriptExecutor)driver;
 
 driver.Navigate().GoToUrl(baseURL);
@@ -162,11 +148,13 @@ js.ExecuteScript(
 Thread.Sleep(2000);
 ```
 
+---
+
 ## 🔎 Código completo
 
-Copie o código abaixo, informe a URL da aplicação que deseja utilizar e execute o teste.
+Copie o código abaixo, informe a URL da aplicação que deseja utilizar e execute o teste:
 
-```csharp id="d8m5q3"
+```csharp
 using System;
 using System.Threading;
 using NUnit.Framework;
@@ -234,29 +222,27 @@ namespace SeleniumTests
 }
 ```
 
+---
+
 ## 🎯 Resultado esperado
 
 Durante a execução, o navegador acessará a página configurada em `baseURL`.
 
 Em seguida:
 
-```text id="v4n8x2"
+```text
 Página inicial
-     │
      │
      ▼
   Scroll ↓
   300 pixels
      │
-     │
      ▼
 Página deslocada
-     │
      │
      ▲
   Scroll ↑
   300 pixels
-     │
      │
      ▼
 Retorno à posição anterior
@@ -264,13 +250,15 @@ Retorno à posição anterior
 
 Assim, será possível visualizar a página sendo movimentada para baixo e, posteriormente, retornando para cima.
 
+---
+
 ## 🧭 Outras formas de utilizar o scroll
 
 O JavascriptExecutor também pode ser utilizado para realizar outros tipos de movimentação.
 
 ### Rolar até o final da página
 
-```csharp id="b3q7m1"
+```csharp
 js.ExecuteScript(
     "window.scrollTo(0, document.body.scrollHeight);"
 );
@@ -280,7 +268,7 @@ Esse comando posiciona a página no final do documento.
 
 ### Rolar até o início da página
 
-```csharp id="h6p2w9"
+```csharp
 js.ExecuteScript(
     "window.scrollTo(0, 0);"
 );
@@ -292,7 +280,7 @@ Esse comando retorna a página para o início.
 
 Uma alternativa bastante útil em automação é fazer o scroll até determinado elemento:
 
-```csharp id="r5k8c4"
+```csharp
 IWebElement elemento = driver.FindElement(
     By.Id("id-do-elemento")
 );
@@ -307,7 +295,7 @@ Nesse caso, o JavaScript recebe o elemento encontrado pelo Selenium e utiliza `s
 
 ---
 
-## 🎯 Quando utilizar
+## ⚡ Quando utilizar
 
 O JavascriptExecutor pode ser útil para:
 
@@ -319,6 +307,8 @@ O JavascriptExecutor pode ser útil para:
 * Investigar problemas relacionados à posição dos elementos durante a execução dos testes.
 
 Sempre que possível, porém, é interessante avaliar se o próprio Selenium já oferece uma forma adequada de realizar a interação necessária.
+
+---
 
 ## 🎯 Objetivo do repositório
 

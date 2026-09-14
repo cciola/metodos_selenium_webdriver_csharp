@@ -4,6 +4,8 @@ Este repositório reúne exemplos de funcionalidades comumente utilizadas em **S
 
 Os exemplos têm como objetivo servir como material de consulta e estudo para quem está iniciando na utilização do Selenium WebDriver para automação de testes.
 
+---
+
 ## 📚 Sobre o Selenium WebDriver
 
 O **Selenium WebDriver** é uma ferramenta utilizada para automação de navegadores, permitindo controlar o browser diretamente por meio de recursos e APIs disponibilizados pelo próprio navegador.
@@ -22,6 +24,8 @@ O WebDriver possui implementações específicas para diferentes navegadores, pe
 
 Essa integração direta com o navegador possibilita a criação de testes mais completos e reduz algumas das limitações existentes quando a automação é realizada exclusivamente por JavaScript dentro da aplicação.
 
+---
+
 ## 🟨 JavascriptExecutor
 
 Além dos recursos disponibilizados pelo próprio Selenium WebDriver, também é possível executar comandos JavaScript diretamente no navegador utilizando o **JavascriptExecutor**.
@@ -37,20 +41,23 @@ O JavascriptExecutor permite, por exemplo:
 
 Nos exemplos deste repositório, o JavascriptExecutor é utilizado para demonstrar algumas dessas possibilidades.
 
+---
+
 ## ⚙️ Pré-requisitos
 
 Os exemplos foram originalmente elaborados e executados em um ambiente contendo:
 
-* **Selenium WebDriver**
-* **C#**
-* **Microsoft Visual Studio / TFS**
-* Um navegador compatível, como:
-
-  * Google Chrome
-  * Mozilla Firefox
-  * Internet Explorer
+- **Selenium WebDriver**
+- **C#**
+- **Microsoft Visual Studio / TFS**
+- Um navegador compatível, como:
+  - Google Chrome
+  - Mozilla Firefox
+  - Internet Explorer
 
 > **Observação:** os exemplos foram desenvolvidos originalmente em um ambiente que utilizava Internet Explorer, Chrome e Firefox. Algumas versões e configurações podem exigir adaptações para ambientes atuais.
+
+---
 
 ## 📂 Exemplos disponíveis
 
@@ -72,15 +79,15 @@ O exemplo demonstra como:
 
 ---
 
-### 🆔 Geração de CPF aleatório
+### Geração de CPF aleatório
 
-**[gera_CPF_aleatorio](gera_CPF_aleatorio.md)**
+**[gera_cpf_aleatorio](gera_cpf_aleatorio.md)**
 
 Exemplo de implementação para geração randômica de **CPF válido**, útil para cenários de teste que necessitam de dados dinâmicos.
 
 ---
 
-### 📅 Geração de data aleatória
+### Geração de data aleatória
 
 **[gera_data_aleatoria](gera_data_aleatoria.md)**
 
@@ -88,7 +95,7 @@ Exemplo de implementação para geração randômica de **datas válidas**, perm
 
 ---
 
-### 🖱️ JavascriptExecutor — Mouseover
+### JavascriptExecutor — Mouseover
 
 **[JavascriptExecutor_mouseover](JsE_mouseover.md)**
 
@@ -96,7 +103,7 @@ Exemplo de utilização do **JavascriptExecutor** para executar o comando `mouse
 
 ---
 
-### 📜 JavascriptExecutor — Scroll
+### JavascriptExecutor — Scroll
 
 **[JavascriptExecutor_scroll](JsE_scroll.md)**
 
@@ -104,7 +111,7 @@ Exemplo de utilização do **JavascriptExecutor** para realizar o **scroll** da 
 
 ---
 
-### 💬 JavascriptExecutor — Popup
+### JavascriptExecutor — Popup
 
 **[JavascriptExecutor_popup](JsE_popup.md)**
 
@@ -112,13 +119,15 @@ Exemplo de utilização do **JavascriptExecutor** para executar JavaScript e exi
 
 ---
 
-### ✨ JavascriptExecutor — Destaque de elemento
+### JavascriptExecutor — Destaque de elemento
 
 **[JavascriptExecutor_destaque](JsE_destaque.md)**
 
 Exemplo de utilização do **JavascriptExecutor** para destacar visualmente um elemento da página durante a execução do teste.
 
 Esse recurso pode ser útil principalmente durante a execução em modo visual, facilitando a identificação do elemento que está sendo manipulado pela automação.
+
+---
 
 ## 🎯 Objetivo do repositório
 
@@ -127,6 +136,8 @@ Este repositório foi criado inicialmente como um espaço de **estudo e comparti
 Os exemplos representam funcionalidades que podem ser reutilizadas ou adaptadas em projetos de automação de testes.
 
 > O conteúdo deste repositório pode ser atualizado conforme novos exemplos e funcionalidades forem incorporados.
+
+---
 
 ## 👩‍💻 Sobre
 

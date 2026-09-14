@@ -8,31 +8,13 @@ Essa abordagem ajuda a organizar o projeto, facilita a manutenção e permite re
 
 ## 📋 Criando uma classe externa
 
-No **Solution Explorer**, clique com o botão direito do mouse sobre o nome do projeto e selecione:
-
-**Add → Class... → Class**
-
-Informe o nome da classe e confirme a criação.
-
-Por exemplo:
-
-```text
-GeraCPF.cs
-```
+No **Solution Explorer**, clique com o botão direito do mouse sobre o nome do projeto e selecione **Add → Class... → Class**, informe o nome da classe e confirme a criação, exemplo `GeraCPF.cs`.
 
 ### Namespace
 
-No arquivo da classe, o `namespace` deve corresponder ao namespace utilizado pelo projeto:
+No arquivo da classe, o `namespace` deve corresponder ao namespace utilizado pelo projeto: `namespace NomeDoProjeto`.
 
-```csharp
-namespace NomeDoProjeto
-```
-
-A classe deve ser declarada como `public` para que possa ser acessada por outros arquivos:
-
-```csharp
-public class GeraCPF
-```
+A classe deve ser declarada como `public` para que possa ser acessada por outros arquivos: `public class GeraCPF`.
 
 ---
 
@@ -54,29 +36,17 @@ GeraCPF
 └── GeraCPF.cs
 ```
 
-> **💡 Observação:** a criação da pasta é apenas uma forma de organização. O que permite utilizar a classe em outro arquivo é principalmente o `namespace`, a visibilidade `public` e a referência correta à classe.
+> ** Observação:** a criação da pasta é apenas uma forma de organização. O que permite utilizar a classe em outro arquivo é principalmente o `namespace`, a visibilidade `public` e a referência correta à classe.
 
 ---
 
 ## 🔗 Importando a classe no teste
 
-No arquivo que utilizará a classe externa, inclua o `namespace` correspondente:
+No arquivo que utilizará a classe externa, inclua o `namespace` correspondente: `using NomeDoProjeto;`.
 
-```csharp
-using NomeDoProjeto;
-```
+Depois, instancie a classe: `GeraCPF gerador = new GeraCPF();`.
 
-Depois, instancie a classe:
-
-```csharp
-GeraCPF gerador = new GeraCPF();
-```
-
-A partir da instância criada, o método da classe pode ser chamado normalmente:
-
-```csharp
-gerador.GerarCpf();
-```
+A partir da instância criada, o método da classe pode ser chamado normalmente: `gerador.GerarCpf();`.
 
 ### Exemplo da estrutura
 
@@ -96,9 +66,7 @@ NomeDoProjeto
 
 # 🧪 Veja o método funcionando
 
-Neste exemplo, será criada uma classe externa chamada `GeraCPF`.
-
-Ela possui o método `GerarCpf()`, responsável por gerar um CPF válido de forma aleatória.
+Neste exemplo, será criada uma classe externa chamada `GeraCPF`. Ela possui o método `GerarCpf()`, responsável por gerar um CPF válido de forma aleatória.
 
 ## Classe `GeraCPF`
 
@@ -167,33 +135,17 @@ namespace AW_cadastroPaciente
 
 O ponto principal desse exemplo é que a lógica para geração do CPF fica isolada na classe `GeraCPF`.
 
-Assim, o teste não precisa conhecer os detalhes de como o CPF é calculado. Ele apenas chama:
-
-```csharp
-gerador.GerarCpf();
-```
+Assim, o teste não precisa conhecer os detalhes de como o CPF é calculado. Ele apenas chama `gerador.GerarCpf();`.
 
 ---
 
-# ▶️ Utilizando a classe no teste
+## ▶️ Utilizando a classe no teste
 
-No script de teste, importe o namespace da classe:
+No script de teste, importe o namespace da classe: `using AW_cadastroPaciente;`.
 
-```csharp
-using AW_cadastroPaciente;
-```
+Depois, crie uma instância: `GeraCPF gerador = new GeraCPF();`.
 
-Depois, crie uma instância:
-
-```csharp
-GeraCPF gerador = new GeraCPF();
-```
-
-O método pode então ser utilizado no teste:
-
-```csharp
-gerador.GerarCpf();
-```
+O método pode então ser utilizado no teste: `gerador.GerarCpf();`.
 
 ### Exemplo completo
 
@@ -256,8 +208,6 @@ namespace SeleniumTests
 }
 ```
 
-> **⚠️ Atenção:** os IDs `sb_ifc0` e `lst-ib` utilizados nos exemplos originais são identificadores históricos do Google e podem não existir mais. Caso o elemento não seja encontrado, inspecione a página e atualize o seletor.
-
 ---
 
 ## 🔄 O que acontece durante a execução?
@@ -315,7 +265,7 @@ Os testes podem reutilizar essas funcionalidades sempre que necessário.
 
 ---
 
-## 🎯 Quando utilizar?
+## ⚡ Quando utilizar?
 
 A criação de classes externas é especialmente útil quando o projeto começa a acumular:
 

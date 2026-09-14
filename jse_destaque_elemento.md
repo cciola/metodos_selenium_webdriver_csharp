@@ -4,6 +4,8 @@ Este exemplo demonstra como utilizar o **JavascriptExecutor** do Selenium WebDri
 
 O destaque pode ser útil principalmente durante a execução dos testes em modo visual, facilitando a identificação do elemento que está sendo manipulado pela automação.
 
+---
+
 ## 📋 Pré-requisitos
 
 Para executar o exemplo, é necessário criar um **Unit Test Project** e adicionar as bibliotecas necessárias para o NUnit e Selenium WebDriver.
@@ -41,6 +43,8 @@ Os drivers específicos de navegador são necessários de acordo com o navegador
 * `Selenium.WebDriver.Firefox` — Mozilla Firefox
 
 > **Observação:** as referências acima correspondem ao ambiente em que o exemplo foi originalmente desenvolvido. Em versões atuais do Selenium, NUnit e Visual Studio, a instalação e configuração dos pacotes pode ser diferente.
+
+---
 
 ## 💡 Como funciona
 
@@ -90,15 +94,13 @@ Nesse método:
 * `border: 4px solid yellow` adiciona uma borda amarela ao elemento;
 * `Thread.Sleep(500)` mantém o destaque visível por alguns instantes.
 
+---
+
 ## ▶️ Inicializando o JavascriptExecutor
 
-Antes de utilizar o JavascriptExecutor no teste, faça a conversão do `driver`:
+Antes de utilizar o JavascriptExecutor no teste, faça a conversão do `driver`: `js = (IJavaScriptExecutor)driver;`. Essa conversão permite que o WebDriver seja utilizado para executar comandos JavaScript.
 
-```csharp
-js = (IJavaScriptExecutor)driver;
-```
-
-Essa conversão permite que o WebDriver seja utilizado para executar comandos JavaScript.
+---
 
 ## 🧪 Utilizando o método no teste
 
@@ -114,6 +116,8 @@ destaque(
 
 Nesse caso, o Selenium localiza o elemento pelo seu `id` e o método `destaque()` aplica o estilo definido.
 
+---
+
 ## 🔎 Exemplo
 
 O exemplo abaixo:
@@ -126,6 +130,8 @@ O exemplo abaixo:
 6. Digita o texto `teste de software`;
 7. Pressiona `Enter`;
 8. Realiza a pesquisa.
+
+---
 
 ### Código completo
 
@@ -218,6 +224,8 @@ namespace SeleniumTests
 
 > **Atenção:** o exemplo acima foi desenvolvido originalmente utilizando os elementos e IDs disponíveis no Google na época em que o código foi criado. Como a estrutura HTML de sites pode mudar, os IDs `sb_ifc0` e `lst-ib` podem não estar disponíveis atualmente. Nesse caso, substitua-os pelo identificador correspondente ao elemento existente na página.
 
+---
+
 ## 📝 Resultado esperado
 
 Durante a execução, o campo de pesquisa localizado pelo Selenium recebe o seguinte estilo:
@@ -228,6 +236,8 @@ border: 4px solid yellow;
 ```
 
 Visualmente, o elemento fica destacado na página, permitindo acompanhar com mais facilidade qual elemento está sendo manipulado pelo teste.
+
+---
 
 ## ⚡ Quando utilizar
 

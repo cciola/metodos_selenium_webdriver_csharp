@@ -4,6 +4,8 @@ Este exemplo demonstra como utilizar o **JavascriptExecutor** do Selenium WebDri
 
 A técnica pode ser utilizada em situações nas quais um menu ou outro elemento da interface apresenta informações adicionais, como **submenus, opções ou menus dropdown**, quando o cursor do mouse é posicionado sobre ele.
 
+---
+
 ## 📋 Pré-requisitos
 
 Para executar o exemplo, é necessário criar um **Unit Test Project** e adicionar as bibliotecas necessárias para o NUnit e Selenium WebDriver.
@@ -42,6 +44,8 @@ Os drivers específicos de navegador são necessários de acordo com o navegador
 
 > **Observação:** as referências acima correspondem ao ambiente em que o exemplo foi originalmente desenvolvido. Em versões atuais do Selenium, NUnit e Visual Studio, a instalação e configuração dos pacotes pode ser diferente.
 
+---
+
 ## 💡 O que é mouseover (hover)?
 
 O **mouseover**, também conhecido como **hover**, ocorre quando o cursor do mouse é posicionado sobre determinado elemento da página.
@@ -51,14 +55,16 @@ Um exemplo comum é um menu de navegação que exibe opções adicionais quando 
 ```text
 MENU PRINCIPAL
        ↓
-┌─────────────────────┐
-│ Opção 1             │
-│ Opção 2             │
-│ Opção 3             │
-└─────────────────────┘
+┌─────────────────┐
+│ Opção 1         │
+│ Opção 2         │
+│ Opção 3         │
+└─────────────────┘
 ```
 
 Durante uma automação, podemos precisar reproduzir esse comportamento para verificar se o submenu ou outra informação é exibida corretamente.
+
+---
 
 ## 🟨 Utilizando JavascriptExecutor
 
@@ -76,13 +82,9 @@ public class NomeDoProjeto
 }
 ```
 
-Antes de executar o JavaScript, faça a conversão do `driver`:
+Antes de executar o JavaScript, faça a conversão do `driver`: `js = (IJavaScriptExecutor)driver;`. Essa conversão permite utilizar o objeto `js` para executar scripts no navegador.
 
-```csharp
-js = (IJavaScriptExecutor)driver;
-```
-
-Essa conversão permite utilizar o objeto `js` para executar scripts no navegador.
+---
 
 ## 🖱️ Executando o mouseover
 
@@ -111,11 +113,9 @@ Nesse código:
 * `arguments[0]` representa o elemento enviado ao JavaScript;
 * `onmouseover()` executa o evento de mouseover do elemento.
 
-Após executar o evento, o teste pode aguardar alguns instantes para permitir a visualização do resultado:
+Após executar o evento, o teste pode aguardar alguns instantes para permitir a visualização do resultado: `Thread.Sleep(3000);`.
 
-```csharp
-Thread.Sleep(3000);
-```
+---
 
 ## 🧪 Exemplo de utilização
 
@@ -151,9 +151,11 @@ Thread.Sleep(3000);
 
 Substitua `NomeDoMenu` pelo texto correspondente ao menu da aplicação que deseja manipular.
 
+---
+
 ## 🔎 Código completo
 
-Copie o código abaixo, ajuste a URL e o nome do menu de acordo com a aplicação que será utilizada e execute o teste.
+Copie o código abaixo, ajuste a URL e o nome do menu de acordo com a aplicação que será utilizada e execute o teste:
 
 ```csharp
 using System;
@@ -219,6 +221,8 @@ namespace SeleniumTests
 }
 ```
 
+---
+
 ## 🎯 Resultado esperado
 
 Ao executar o teste, o navegador:
@@ -237,7 +241,6 @@ Antes do mouseover:
 │ MENU PRINCIPAL      │
 └─────────────────────┘
 
-
 Depois do mouseover:
 
 ┌─────────────────────┐
@@ -249,15 +252,9 @@ Depois do mouseover:
 └─────────────────────┘
 ```
 
-## ⚠️ Observação importante
+---
 
-Este exemplo utiliza diretamente o evento JavaScript:
-
-```javascript
-arguments[0].onmouseover()
-```
-
-Isso **não é exatamente a mesma coisa que mover fisicamente o cursor do mouse até o elemento**. O código dispara o evento `onmouseover` associado ao elemento.
+**Observação importante:** Este exemplo utiliza diretamente o evento JavaScript `arguments[0].onmouseover()`. Isso **não é exatamente a mesma coisa que mover fisicamente o cursor do mouse até o elemento**. O código dispara o evento `onmouseover` associado ao elemento.
 
 Em aplicações modernas, o comportamento de menus pode ser implementado por outros mecanismos, como listeners JavaScript, CSS `:hover` ou frameworks de frontend. Nesses casos, a abordagem mais adequada pode ser utilizar os recursos de interação do próprio Selenium, como `Actions`, por exemplo:
 
@@ -269,7 +266,9 @@ actions.MoveToElement(menu).Perform();
 
 Portanto, o JavascriptExecutor é uma alternativa útil quando é necessário executar diretamente um comportamento JavaScript específico.
 
-## 🎯 Quando utilizar
+---
+
+## ⚡ Quando utilizar
 
 Essa técnica pode ser útil para:
 
@@ -280,6 +279,8 @@ Essa técnica pode ser útil para:
 * Automatizar aplicações legadas que dependem de eventos JavaScript.
 
 Para aplicações modernas, recomenda-se avaliar primeiro se a interação pode ser realizada diretamente pelas APIs de interação do Selenium, utilizando `Actions` e outros recursos nativos do WebDriver.
+
+---
 
 ## 🎯 Objetivo do repositório
 
@@ -297,6 +298,6 @@ Sugestões, melhorias e novos exemplos são bem-vindos! Caso você tenha alguma 
 
 ---
 
-## 📌 Observação
+### 📌 Observação
 
 Este repositório foi criado inicialmente como material de estudo e referência pessoal durante o aprendizado do Selenium WebDriver com C#. Os exemplos aqui apresentados representam funcionalidades que foram exploradas e utilizadas em automações, podendo ser adaptados conforme a necessidade de cada projeto.

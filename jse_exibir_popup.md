@@ -7,13 +7,15 @@ O exemplo apresenta duas possibilidades:
 * Exibir um popup contendo um **texto fixo**;
 * Exibir um popup contendo um **texto concatenado com o valor de uma variável**.
 
+---
+
 ## 📋 Pré-requisitos
 
 Para executar o exemplo, é necessário criar um **Unit Test Project** e adicionar as bibliotecas necessárias para o NUnit e Selenium WebDriver.
 
 As referências utilizadas originalmente neste exemplo incluem:
 
-```text id="f8q0qv"
+```text
 NUnit
 
 NUnit 3 - NUnit Project Loader Extension
@@ -45,13 +47,15 @@ Os drivers específicos de navegador são necessários de acordo com o navegador
 
 > **Observação:** as referências acima correspondem ao ambiente em que o exemplo foi originalmente desenvolvido. Em versões atuais do Selenium, NUnit e Visual Studio, a instalação e configuração dos pacotes pode ser diferente.
 
+---
+
 ## 💡 O que é o JavascriptExecutor?
 
 O Selenium WebDriver disponibiliza a interface `IJavaScriptExecutor`, que permite executar comandos JavaScript diretamente no navegador controlado pelo WebDriver.
 
 Primeiro, declare o objeto na classe de teste:
 
-```csharp id="4s9d4b"
+```csharp
 [TestFixture]
 public class NomeDoProjeto
 {
@@ -61,19 +65,15 @@ public class NomeDoProjeto
 }
 ```
 
-Antes de utilizar o JavascriptExecutor, faça a conversão do `driver`:
+Antes de utilizar o JavascriptExecutor, faça a conversão do `driver`: `js = (IJavaScriptExecutor)driver;`. A partir desse momento, o objeto `js` poderá ser utilizado para executar JavaScript na página.
 
-```csharp id="r1j4wz"
-js = (IJavaScriptExecutor)driver;
-```
+---
 
-A partir desse momento, o objeto `js` poderá ser utilizado para executar JavaScript na página.
-
-## 💬 Exibindo um popup com texto fixo
+### 💬 Exibindo um popup com texto fixo
 
 Para exibir um popup utilizando JavaScript, podemos utilizar a função `alert()`:
 
-```csharp id="8lq0k5"
+```csharp
 js.ExecuteScript(
     "alert('Script de teste finalizado com sucesso!');"
 );
@@ -81,59 +81,46 @@ js.ExecuteScript(
 
 O navegador exibirá uma caixa de diálogo semelhante a:
 
-```text id="f0r9qk"
+```text
 ┌──────────────────────────────────────┐
 │                                      │
 │  Script de teste finalizado com      │
 │  sucesso!                            │
 │                                      │
-│                         [ OK ]       │
+│                              [ OK ]  │
 └──────────────────────────────────────┘
 ```
 
-Esse comando executa o JavaScript:
+Esse comando executa o JavaScript: `alert('Script de teste finalizado com sucesso!');`.
 
-```javascript id="b5l8j2"
-alert('Script de teste finalizado com sucesso!');
-```
 
-## 🔤 Exibindo um popup com uma variável
+### 🔤 Exibindo um popup com uma variável
 
-Também é possível utilizar uma variável C# para montar o texto que será exibido no popup.
-
-Por exemplo:
-
-```csharp id="q4x8sn"
-public string variavel = "Carol";
-```
+Também é possível utilizar uma variável C# para montar o texto que será exibido no popup, exemplo: `public string variavel = "Carol";`.
 
 O valor da variável pode ser concatenado ao JavaScript:
 
-```csharp id="9y5v0e"
+```csharp
 js.ExecuteScript(
     "alert('Valor da variavel: " + variavel + "');"
 );
 ```
 
-Nesse caso, o popup exibirá:
-
-```text id="2q9w1k"
-Valor da variavel: Carol
-```
+Nesse caso, o popup exibirá: `Valor da variavel: Carol`.
 
 ### Exemplo utilizando um dado gerado pelo teste
 
 O mesmo conceito pode ser utilizado para exibir informações geradas durante a execução do teste.
 
-Por exemplo:
-
-```csharp id="8g7n3p"
+```csharp
 js.ExecuteScript(
     "alert('CPF gerado: " + GerarCpf() + "');"
 );
 ```
 
 Nesse caso, o resultado da função `GerarCpf()` será concatenado à mensagem exibida no popup.
+
+---
 
 ## 🧪 Exemplo 1 — Texto fixo
 
@@ -145,7 +132,7 @@ O código abaixo:
 4. Mantém o popup aberto por alguns segundos;
 5. Encerra o navegador.
 
-```csharp id="c2k8xv"
+```csharp
 using System;
 using System.Threading;
 using NUnit.Framework;
@@ -197,11 +184,13 @@ namespace SeleniumTests
 }
 ```
 
+---
+
 ## 🧪 Exemplo 2 — Texto + variável
 
 Neste exemplo, uma variável C# é utilizada para complementar o texto do popup.
 
-```csharp id="w6s1pr"
+```csharp
 using System;
 using System.Threading;
 using NUnit.Framework;
@@ -259,25 +248,11 @@ namespace SeleniumTests
 
 Nos dois exemplos, o navegador é iniciado e um popup JavaScript é exibido.
 
-### Texto fixo
+* **Texto fixo**: `Script de teste finalizado com sucesso!`
 
-```text id="j5x7kq"
-Script de teste finalizado com sucesso!
-```
+* **Texto + variável**: considerando `public string variavel = "Carol";`, o resultado será `Valor da variavel: Carol`.
 
-### Texto + variável
-
-Considerando:
-
-```csharp id="u2p8nc"
-public string variavel = "Carol";
-```
-
-O resultado será:
-
-```text id="b7q4mz"
-Valor da variavel: Carol
-```
+---
 
 ## ⚠️ Interagindo com o popup
 
@@ -287,7 +262,7 @@ Quando um alert está aberto, o navegador fica aguardando uma ação do usuário
 
 Por exemplo, para aceitar o popup:
 
-```csharp id="r8m3qt"
+```csharp
 IAlert alert = driver.SwitchTo().Alert();
 
 alert.Accept();
@@ -295,7 +270,7 @@ alert.Accept();
 
 Para obter o texto exibido:
 
-```csharp id="p1v6ks"
+```csharp
 IAlert alert = driver.SwitchTo().Alert();
 
 string mensagem = alert.Text;
@@ -303,7 +278,9 @@ string mensagem = alert.Text;
 
 Isso permite transformar o popup em parte de uma validação automatizada, em vez de apenas utilizá-lo para visualização.
 
-## 🎯 Quando utilizar
+---
+
+## ⚡ Quando utilizar
 
 O JavascriptExecutor pode ser útil para:
 
@@ -315,6 +292,8 @@ O JavascriptExecutor pode ser útil para:
 * Apoiar investigações de comportamento da aplicação.
 
 Para testes automatizados, entretanto, um `alert()` normalmente deve ser utilizado com uma finalidade específica, como **validação ou depuração**, e não apenas como mecanismo de espera.
+
+---
 
 ## 🎯 Objetivo do repositório
 

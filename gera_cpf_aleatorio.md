@@ -47,7 +47,7 @@ Selenium.WebDriver.Firefox
 
 ---
 
-# 🧮 Criando o gerador de CPF
+## 🧮 Criando o gerador de CPF
 
 Depois de criar um **Unit Test Project**, o método `GerarCpf()` pode ser declarado dentro da classe marcada com `[TestFixture]`.
 
@@ -328,11 +328,9 @@ A cada nova execução, a sequência inicial é gerada aleatoriamente e, consequ
 
 ---
 
-# 🔄 Utilizando o CPF em outros testes
+## 🔄 Utilizando o CPF em outros testes
 
-A principal vantagem de possuir um método como `GerarCpf()` é poder utilizá-lo diretamente nos dados do teste.
-
-Por exemplo:
+A principal vantagem de possuir um método como `GerarCpf()` é poder utilizá-lo diretamente nos dados do teste. Por exemplo:
 
 ```csharp
 string cpf = GerarCpf();
@@ -385,25 +383,15 @@ Isso reduz a dependência de dados fixos e pode facilitar a execução de cenár
 
 ---
 
-## ⚠️ Observações
+**Observações:**
 
-### CPF válido não significa CPF existente
+- **CPF válido não significa CPF existente.** O algoritmo verifica apenas a **estrutura matemática dos dígitos verificadores do CPF**. Portanto, um CPF gerado pelo método pode ser matematicamente válido, mas não necessariamente corresponde a uma pessoa ou cadastro real. Para testes de sistemas que consultam bases externas ou validam existência do CPF, devem ser utilizados dados apropriados ao ambiente de teste.
 
-O algoritmo verifica apenas a **estrutura matemática dos dígitos verificadores do CPF**.
-
-Portanto, um CPF gerado pelo método pode ser matematicamente válido, mas não necessariamente corresponde a uma pessoa ou cadastro real.
-
-Para testes de sistemas que consultam bases externas ou validam existência do CPF, devem ser utilizados dados apropriados ao ambiente de teste.
-
-### `Thread.Sleep()`
-
-O exemplo utiliza `Thread.Sleep()` para facilitar a visualização durante a demonstração.
-
-Em automações reais, o ideal é utilizar mecanismos de espera do Selenium, como **explicit waits**, quando for necessário aguardar uma condição específica da aplicação.
+- O exemplo utiliza `Thread.Sleep()` para facilitar a visualização durante a demonstração. Em automações reais, o ideal é utilizar mecanismos de espera do Selenium, como **explicit waits**, quando for necessário aguardar uma condição específica da aplicação.
 
 ---
 
-## 🎯 Quando utilizar?
+## ⚡ Quando utilizar?
 
 Um gerador de CPF é especialmente útil em testes que precisam:
 
