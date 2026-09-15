@@ -14,7 +14,7 @@ Esse recurso pode ser especialmente útil para **evidências de testes**, **depu
 
 ---
 
-## ⚡ Quando utilizar screenshots
+## Quando utilizar screenshots
 
 A captura de screenshots pode ser útil para:
 
@@ -30,47 +30,7 @@ Em uma suíte de testes automatizados, uma estratégia bastante comum é captura
 
 ---
 
-## 📋 Pré-requisitos
-
-Para executar o exemplo, é necessário criar um **Unit Test Project** e adicionar as bibliotecas necessárias para o NUnit e Selenium WebDriver.
-
-As referências utilizadas originalmente neste exemplo incluem:
-
-```text
-NUnit
-
-NUnit 3 - NUnit Project Loader Extension
-NUnit 3 - NUnit V2 Framework Driver Extension
-NUnit 3 - NUnit V2 Result Writer Extension
-NUnit 3 - Team City Event Listener Extension
-NUnit 3 - Visual Studio Project Loader Extension
-
-NUnit Console Runner Version 3 (No Extensions)
-NUnit Console Runner Version 3 With Extensions
-NUnit Console Version 3
-
-NUnit Test Adapter for VS2012, VS2013 and VS2015
-
-Selenium WebDriver
-Selenium WebDriver Support Classes
-Selenium.Support
-
-Selenium.WebDriver.ChromeDriver
-Selenium.WebDriver.IEDriver
-Selenium.WebDriver.Firefox
-```
-
-Os drivers específicos de navegador são necessários de acordo com o navegador utilizado:
-
-* `Selenium.WebDriver.ChromeDriver` — Google Chrome
-* `Selenium.WebDriver.IEDriver` — Internet Explorer
-* `Selenium.WebDriver.Firefox` — Mozilla Firefox
-
-> **Observação:** as referências acima correspondem ao ambiente em que o exemplo foi originalmente desenvolvido. Em versões atuais do Selenium, NUnit e Visual Studio, a instalação e configuração dos pacotes pode ser diferente.
-
----
-
-## 📸 Como funciona a captura de screenshot
+## Como funciona a captura de screenshot
 
 O Selenium disponibiliza a interface `ITakesScreenshot`, que permite solicitar ao navegador uma captura da tela atual.
 
@@ -96,7 +56,7 @@ public class NomeDoProjeto
 
 ---
 
-## 🖼️ Criando o método de captura
+## Criando o método de captura
 
 ```csharp
 public void Screenshot(
@@ -122,7 +82,7 @@ O método `SaveAsFile` salva a captura no caminho informado. O segundo parâmetr
 
 ---
 
-## 📁 Definindo a pasta de evidências
+## Definindo a pasta de evidências
 
 O diretório onde os screenshots serão armazenados pode ser configurado no método `[SetUp]`:
 
@@ -144,11 +104,11 @@ public void SetupTest()
 }
 ```
 
-> **Importante:** a pasta informada deve existir **antes** da execução do teste. Em uma implementação mais robusta, o código pode verificar a existência do diretório e criá-lo automaticamente quando necessário.
+> **💡 Importante:** a pasta informada deve existir **antes** da execução do teste. Em uma implementação mais robusta, o código pode verificar a existência do diretório e criá-lo automaticamente quando necessário.
 
 ---
 
-## 🔢 Gerando nomes numerados
+## Gerando nomes numerados
 
 Para gerar automaticamente o nome dos arquivos, podemos criar um método específico:
 
@@ -170,13 +130,14 @@ O trecho `"Imagem_" + contador++ + ".png"` gera nomes sequenciais, por exemplo:
 Imagem_1.png
 Imagem_2.png
 Imagem_3.png
+Imagem_4.png
 ```
 
 O operador `++` incrementa o valor do contador após sua utilização. Assim, cada nova chamada do método `capturaImagem()` gera um nome diferente.
 
 ---
 
-## 🧪 Utilizando a captura durante o teste
+## Utilizando a captura durante o teste
 
 Depois que os métodos forem implementados, basta chamar `capturaImagem();` no ponto em que deseja obter a evidência, por exemplo:
 
@@ -194,13 +155,9 @@ Nesse caso, o screenshot será capturado após o carregamento da página.
 
 ---
 
-## 🔎 Código completo
+## Veja o método funcionando
 
-> [captura_screenshot.cs](./scripts/captura_screenshot.cs)
-
----
-
-## 🎯 Resultado esperado
+**[captura_screenshot.cs](./scripts/captura_screenshot.cs)**
 
 Durante a execução, o teste:
 
@@ -211,21 +168,22 @@ Durante a execução, o teste:
 5. Captura um screenshot;
 6. Salva a imagem na pasta configurada.
 
-Por exemplo:
+Exemplo:
 
 ```text
 C:\Selenium\Evidencias\
 │
 ├── Imagem_1.png
 ├── Imagem_2.png
-└── Imagem_3.png
+├── Imagem_3.png
+└── Imagem_4.png
 ```
 
 Cada chamada ao método `capturaImagem()` gera uma nova imagem numerada.
 
 ---
 
-## 📌 Capturando evidências em diferentes etapas
+## Capturando evidências em diferentes etapas
 
 Uma das vantagens dessa abordagem é poder realizar screenshots em diferentes momentos do teste. Por exemplo:
 
@@ -259,7 +217,7 @@ Esse recurso pode ser bastante útil para documentar a execução de cenários a
 
 ---
 
-## 💡 Melhorias possíveis
+## Melhorias possíveis
 
 A implementação pode ser evoluída para:
 
@@ -298,13 +256,9 @@ Como o estudo da ferramenta é incremental, novos exemplos podem ser adicionados
 
 A ideia é manter os códigos como uma **referência rápida** para funcionalidades que podem ser reutilizadas em diferentes scripts de automação.
 
----
-
 ## 🤝 Contribuições
 
 Sugestões, melhorias e novos exemplos são bem-vindos! Caso você tenha alguma dúvida, sugestão ou queira contribuir com o projeto, fique à vontade para entrar em contato.
-
----
 
 ## 📌 Observação
 

@@ -6,7 +6,7 @@ Essa abordagem ajuda a organizar o projeto, facilita a manutenção e permite re
 
 ---
 
-## ⚡ Quando utilizar?
+## Quando utilizar?
 
 A criação de classes externas é especialmente útil quando o projeto começa a acumular:
 
@@ -20,7 +20,7 @@ Em um projeto de automação maior, essa organização pode evoluir para uma est
 
 ---
 
-## 📋 Criando uma classe externa
+## Criando uma classe externa
 
 No **Solution Explorer**, clique com o botão direito do mouse sobre o nome do projeto e selecione **Add → Class... → Class**, informe o nome da classe e confirme a criação, exemplo `GeraCPF.cs`.
 
@@ -30,7 +30,7 @@ A classe deve ser declarada como `public` para que possa ser acessada por outros
 
 ---
 
-## 📁 Organizando a classe em uma pasta própria
+## Organizando a classe em uma pasta própria
 
 No **Solution Explorer**:
 
@@ -46,11 +46,11 @@ GeraCPF
 └── GeraCPF.cs
 ```
 
-> ** Observação:** a criação da pasta é apenas uma forma de organização. O que permite utilizar a classe em outro arquivo é principalmente o `namespace`, a visibilidade `public` e a referência correta à classe.
+> ** 💡 Observação:** a criação da pasta é apenas uma forma de organização. O que permite utilizar a classe em outro arquivo é principalmente o `namespace`, a visibilidade `public` e a referência correta à classe.
 
 ---
 
-## 🔗 Importando a classe no teste
+## Importando a classe no teste
 
 No arquivo que utilizará a classe externa, inclua o `namespace` correspondente: `using NomeDoProjeto;`.
 
@@ -72,11 +72,11 @@ NomeDoProjeto
 
 ---
 
-# 🧪 Veja o método funcionando
+## Classe externa
+
+**[GeraCPF.cs](./scripts/GeraCPF.cs)**
 
 Neste exemplo, será criada uma classe externa chamada `GeraCPF`. Ela possui o método `GerarCpf()`, responsável por gerar um CPF válido de forma aleatória.
-
-> [GeraCPF.cs](./scripts/GeraCPF.cs)
 
 O ponto principal desse exemplo é que a lógica para geração do CPF fica isolada na classe `GeraCPF`.
 
@@ -84,7 +84,9 @@ Assim, o teste não precisa conhecer os detalhes de como o CPF é calculado. Ele
 
 ---
 
-## ▶️ Utilizando a classe no teste
+## Veja o método funcionando
+
+**[classe_externa.cs](./scripts/classe_externa.cs)**
 
 No script de teste, importe o namespace da classe: `using AW_cadastroPaciente;`.
 
@@ -92,31 +94,13 @@ Depois, crie uma instância: `GeraCPF gerador = new GeraCPF();`.
 
 O método pode então ser utilizado no teste: `gerador.GerarCpf();`.
 
-### Exemplo completo
+Durante a execução, o teste:
 
-> [classe_externa.cs](./scripts/classe_externa.cs)
-
----
-
-## 🔄 O que acontece durante a execução?
-
-O fluxo do teste é:
-
-```text
-Teste
-  │
-  ├── Cria uma instância de GeraCPF
-  │
-  ├── Acessa a página definida em baseURL
-  │
-  ├── Localiza o campo
-  │
-  ├── Chama gerador.GerarCpf()
-  │       │
-  │       └── Classe externa gera o CPF
-  │
-  └── Digita o CPF no campo
-```
+1. Cria uma instância de GeraCPF;
+2. Acessa a página definida em baseURL;
+3. Localiza o campo;
+4. Chama gerador.GerarCpf();
+5. Digita o CPF no campo.
 
 Dessa forma, a responsabilidade fica separada:
 
@@ -126,7 +110,7 @@ Dessa forma, a responsabilidade fica separada:
 
 ---
 
-## 💡 Por que utilizar classes externas?
+## Por que utilizar classes externas?
 
 Separar funcionalidades em classes externas pode trazer algumas vantagens:
 
@@ -157,13 +141,9 @@ Como o estudo da ferramenta é incremental, novos exemplos podem ser adicionados
 
 A ideia é manter os códigos como uma **referência rápida** para funcionalidades que podem ser reutilizadas em diferentes scripts de automação.
 
----
-
 ## 🤝 Contribuições
 
 Sugestões, melhorias e novos exemplos são bem-vindos! Caso você tenha alguma dúvida, sugestão ou queira contribuir com o projeto, fique à vontade para entrar em contato.
-
----
 
 ## 📌 Observação
 

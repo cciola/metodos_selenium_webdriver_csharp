@@ -8,50 +8,24 @@ Esse tipo de recurso é útil para gerar **dados de teste dinamicamente**, evita
 
 ---
 
-## 📋 Pré-requisitos
+## Quando utilizar?
 
-O exemplo original foi desenvolvido utilizando **Visual Studio, NUnit e Selenium WebDriver**.
+Um gerador de datas é especialmente útil quando o teste precisa trabalhar com **dados variáveis**.
 
-As dependências utilizadas na época incluíam:
+Dependendo da regra do sistema, o intervalo pode ser adaptado.
 
-```text
-NUnit
-NUnit 3 - NUnit Project Loader Extension
-NUnit 3 - NUnit V2 Framework Driver Extension
-NUnit 3 - NUnit V2 Result Writer Extension
-NUnit 3 - Team City Event Listener Extension
-NUnit 3 - Visual Studio Project Loader Extension
-NUnit Console Runner Version 3 (No Extensions)
-NUnit Console Runner Version 3 With Extensions
-NUnit Console Version 3
-NUnit Test Adapter for VS2012, VS2013 and VS2015
-Selenium WebDriver
-Selenium WebDriver Support Classes
-Selenium.Support
-```
+Por exemplo, para gerar apenas datas recentes: `int ano = rnd.Next(2020, 2027);`.
 
-Para executar o exemplo no Chrome, também era necessário:
 
-```text
-Selenium.WebDriver.ChromeDriver
-```
+Ou, para gerar datas anteriores a uma determinada data, pode-se trabalhar diretamente com objetos `DateTime` e intervalos de datas.
 
-Para outros navegadores, poderiam ser utilizados os respectivos drivers:
-
-```text
-Selenium.WebDriver.IEDriver
-Selenium.WebDriver.Firefox
-```
-
-> **Observação:** essas dependências refletem o ambiente original do exemplo. Em versões atuais do .NET, NUnit, Selenium e Visual Studio, a instalação e o gerenciamento dos pacotes podem ser diferentes.
+O importante é que o gerador seja ajustado à **regra de negócio que o teste pretende validar**.
 
 ---
 
-## 📅 Criando o gerador de data
+## Criando o gerador de data
 
-Depois de criar um **Unit Test Project**, o método `GerarData()` pode ser declarado dentro da classe marcada com `[TestFixture]`.
-
-> [GerarData.cs](./scripts/GerarData.cs)
+**[GerarData.cs](./scripts/GerarData.cs)**
 
 O método utiliza a classe `Random` para definir aleatoriamente **ano**, **mês** e **dia**.
 
@@ -59,7 +33,7 @@ O método retorna um objeto `DateTime`: `15/07/1998`.
 
 ---
 
-## 🔎 Como o método funciona?
+## Como o método funciona?
 
 ### 1. Geração do ano
 
@@ -119,42 +93,28 @@ Finalmente, os valores são utilizados para criar um `DateTime`: `return new Dat
 
 ---
 
-## 🧪 Veja o método funcionando
+## Veja o método funcionando
 
-No exemplo abaixo, a data gerada é exibida em um `alert` utilizando o `IJavaScriptExecutor`:
+**[gerar_data_aleatoria.cs](./scripts/gerar_data_aleatoria.cs)**
 
-> [gerar_data_aleatoria.cs](./scripts/gerar_data_aleatoria.cs)
+Durante a execução, o teste:
 
----
-
-## ▶️ O que acontece durante a execução?
-
-O fluxo do teste é:
+1. Inicializa o Chrome;
+2. Acessa a página definida no teste;
+3. Executa GerarData();
+4. Retorna um DateTime;
+5. Exibe a data em um alert.
+Exemplo:
 
 ```text
-Início
-  │
-  ├── Abre o Chrome
-  │
-  ├── Acessa a página definida no teste
-  │
-  ├── Executa GerarData()
-  │       │
-  │       ├── Gera um ano
-  │       ├── Gera um mês
-  │       ├── Identifica o último dia do mês
-  │       └── Gera um dia válido
-  │
-  ├── Retorna um DateTime
-  │
-  └── Exibe a data em um alert
+Data gerada: 15/07/1998
 ```
 
-O navegador exibirá uma mensagem semelhante a `Data gerada: 15/07/1998`. Na próxima execução, outra data poderá ser gerada.
+Na próxima execução, outra data poderá ser gerada.
 
 ---
 
-## 🔄 Utilizando a data em um campo
+## Utilizando a data em um campo
 
 Como `GerarData()` retorna um `DateTime`, quando a data precisar ser enviada para um campo do navegador, é necessário convertê-la para uma representação textual.
 
@@ -174,13 +134,11 @@ driver.FindElement(By.Id("MainContent_txtDataNascimento"))
     .SendKeys(dataGerada.ToString("dd/MM/yyyy"));
 ```
 
-### 💡 Por que utilizar `ToString("dd/MM/yyyy")`?
-
-O formato explícito evita depender da configuração regional do computador; em vez de `Convert.ToString(GerarData())`, é preferível definir explicitamente o formato esperado pelo campo `GerarData().ToString("dd/MM/yyyy")`. Isso é especialmente importante quando o sistema espera uma data no formato brasileiro.
+> 💡 **Por que utilizar `ToString("dd/MM/yyyy")`?** - o formato explícito evita depender da configuração regional do computador; em vez de `Convert.ToString(GerarData())`, é preferível definir explicitamente o formato esperado pelo campo `GerarData().ToString("dd/MM/yyyy")`. Isso é especialmente importante quando o sistema espera uma data no formato brasileiro.
 
 ---
 
-### 📌 Exemplo aplicado a um cadastro
+## Exemplo aplicado a um cadastro
 
 Supondo que o sistema possua um campo de data de nascimento:
 
@@ -199,7 +157,7 @@ Nesse caso, o teste gera a data e imediatamente a utiliza no formulário.
 
 ---
 
-## 💡 Por que gerar datas aleatórias?
+## Por que gerar datas aleatórias?
 
 A geração dinâmica de datas pode ser útil para testes que precisam:
 
@@ -223,22 +181,7 @@ A data pode ser gerada automaticamente pelo teste em vez de permanecer fixa.
 
 ---
 
-## ⚡ Quando utilizar?
-
-Um gerador de datas é especialmente útil quando o teste precisa trabalhar com **dados variáveis**.
-
-Dependendo da regra do sistema, o intervalo pode ser adaptado.
-
-Por exemplo, para gerar apenas datas recentes: `int ano = rnd.Next(2020, 2027);`.
-
-
-Ou, para gerar datas anteriores a uma determinada data, pode-se trabalhar diretamente com objetos `DateTime` e intervalos de datas.
-
-O importante é que o gerador seja ajustado à **regra de negócio que o teste pretende validar**.
-
----
-
-## 🚀 Evolução do exemplo
+## Evolução do exemplo
 
 Em um projeto maior, o método `GerarData()` pode ser movido para uma **classe externa de utilidades**, assim como o gerador de CPF.
 
@@ -268,13 +211,9 @@ Como o estudo da ferramenta é incremental, novos exemplos podem ser adicionados
 
 A ideia é manter os códigos como uma **referência rápida** para funcionalidades que podem ser reutilizadas em diferentes scripts de automação.
 
----
-
 ## 🤝 Contribuições
 
 Sugestões, melhorias e novos exemplos são bem-vindos! Caso você tenha alguma dúvida, sugestão ou queira contribuir com o projeto, fique à vontade para entrar em contato.
-
----
 
 ## 📌 Observação
 

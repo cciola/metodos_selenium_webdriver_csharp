@@ -182,13 +182,9 @@ Como o estudo da ferramenta é incremental, novos exemplos podem ser adicionados
 
 A ideia é manter os códigos como uma **referência rápida** para funcionalidades que podem ser reutilizadas em diferentes scripts de automação.
 
----
-
 ## 🤝 Contribuições
 
 Sugestões, melhorias e novos exemplos são bem-vindos! Caso você tenha alguma dúvida, sugestão ou queira contribuir com o projeto, fique à vontade para entrar em contato.
-
----
 
 ## 📌 Observação
 
