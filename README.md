@@ -45,17 +45,35 @@ Nos exemplos deste repositório, o JavascriptExecutor é utilizado para demonstr
 
 ## ⚙️ Pré-requisitos
 
-Os exemplos foram originalmente elaborados e executados em um ambiente contendo:
+Todos os exemplos foram originalmente desenvolvidos e executados em um ambiente  utilizando **Microsoft Visual Studio / TFS, C#, NUnit e Selenium WebDriver**.
 
-- **Selenium WebDriver**
-- **C#**
-- **Microsoft Visual Studio / TFS**
-- Um navegador compatível, como:
-  - Google Chrome
-  - Mozilla Firefox
-  - Internet Explorer
+Para executar os exemplos nos navegadores, era necessário:
 
-> **Observação:** os exemplos foram desenvolvidos originalmente em um ambiente que utilizava Internet Explorer, Chrome e Firefox. Algumas versões e configurações podem exigir adaptações para ambientes atuais.
+```text
+Selenium.WebDriver.ChromeDriver // Chrome
+Selenium.WebDriver.IEDriver     // Internet Explorer
+Selenium.WebDriver.Firefox      // Mozilla Firefox
+```
+
+Dependências utilizadas na época incluíam:
+
+```text
+NUnit
+NUnit 3 - NUnit Project Loader Extension
+NUnit 3 - NUnit V2 Framework Driver Extension
+NUnit 3 - NUnit V2 Result Writer Extension
+NUnit 3 - Team City Event Listener Extension
+NUnit 3 - Visual Studio Project Loader Extension
+NUnit Console Runner Version 3 (No Extensions)
+NUnit Console Runner Version 3 With Extensions
+NUnit Console Version 3
+NUnit Test Adapter for VS2012, VS2013 and VS2015
+Selenium WebDriver
+Selenium WebDriver Support Classes
+Selenium.Support
+```
+
+> **⚠️ Observação:** essas dependências refletem o ambiente original do exemplo. Em versões atuais do .NET, NUnit, Selenium e Visual Studio, a instalação e o gerenciamento dos pacotes podem ser diferentes. Algumas versões e configurações dos navegadores também podem exigir adaptações para ambientes atuais.
 
 ---
 
