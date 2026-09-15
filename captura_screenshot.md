@@ -14,6 +14,22 @@ Esse recurso pode ser especialmente útil para **evidências de testes**, **depu
 
 ---
 
+## ⚡ Quando utilizar screenshots
+
+A captura de screenshots pode ser útil para:
+
+* Evidências de execução;
+* Investigação de falhas;
+* Depuração de testes;
+* Documentação de cenários;
+* Demonstrações de automação;
+* Análise visual do estado da aplicação;
+* Registro do resultado de etapas específicas do teste.
+
+Em uma suíte de testes automatizados, uma estratégia bastante comum é capturar screenshots **automaticamente quando um teste falha**, evitando gerar evidências desnecessárias para todos os passos de todos os cenários.
+
+---
+
 ## 📋 Pré-requisitos
 
 Para executar o exemplo, é necessário criar um **Unit Test Project** e adicionar as bibliotecas necessárias para o NUnit e Selenium WebDriver.
@@ -64,28 +80,23 @@ Primeiro, declare as variáveis necessárias na classe de teste:
 [TestFixture]
 public class NomeDoProjeto
 {
+    // Representa o navegador controlado pelo Selenium
     public IWebDriver driver;
 
+    // Armazena a URL base da aplicação
     private string baseURL;
 
+    // Armazena o diretório onde os screenshots serão salvos
     public string screenshotsPasta;
 
+    // Controla a numeração dos arquivos gerados
     int contador = 1;
 }
 ```
 
-Cada variável possui uma finalidade:
-
-* `IWebDriver driver` — representa o navegador controlado pelo Selenium;
-* `baseURL` — armazena a URL base da aplicação;
-* `screenshotsPasta` — armazena o diretório onde os screenshots serão salvos;
-* `contador` — controla a numeração dos arquivos gerados.
-
 ---
 
 ## 🖼️ Criando o método de captura
-
-O método responsável pela captura pode ser implementado da seguinte forma:
 
 ```csharp
 public void Screenshot(
@@ -103,30 +114,11 @@ public void Screenshot(
 }
 ```
 
-### Entendendo o código
-
-#### `ITakesScreenshot`
-
-```csharp
-ITakesScreenshot camera = driver as ITakesScreenshot;
-```
-
-Aqui, o `driver` é convertido para `ITakesScreenshot`, permitindo utilizar os recursos de captura de tela disponibilizados pelo Selenium.
-
-#### `GetScreenshot()`
+Em `ITakesScreenshot`, o `driver` é convertido para `ITakesScreenshot`, permitindo utilizar os recursos de captura de tela disponibilizados pelo Selenium.
 
 A instrução `Screenshot foto = camera.GetScreenshot();` solicita ao WebDriver uma captura da tela atual e armazena o resultado na variável `foto`.
 
-#### `SaveAsFile()`
-
-```csharp
-foto.SaveAsFile(
-    screenshotsPasta,
-    ScreenshotImageFormat.Png
-);
-```
-
-Esse método salva a captura no caminho informado. O segundo parâmetro `ScreenshotImageFormat.Png` define o formato da imagem. Neste exemplo, os arquivos serão salvos no formato **PNG**.
+O método `SaveAsFile` salva a captura no caminho informado. O segundo parâmetro `ScreenshotImageFormat.Png` define o formato da imagem. Neste exemplo, os arquivos serão salvos no formato **PNG**.
 
 ---
 
@@ -138,27 +130,21 @@ O diretório onde os screenshots serão armazenados pode ser configurado no mét
 [SetUp]
 public void SetupTest()
 {
+    // Inicializa o navegador Chrome
     driver = new ChromeDriver();
 
+    // Maximiza a janela do navegador
     driver.Manage().Window.Maximize();
 
+    // Define a URL base utilizada pelo teste
     baseURL = "https://www.google.com.br";
 
-    screenshotsPasta =
-        @"C:\Users\cciola\Documents\Evidencias\";
+    // Define o diretório onde os screenshots
+    screenshotsPasta = @"C:\Users\cciola\Documents\Evidencias\";
 }
 ```
 
-Nesse exemplo:
-
-```csharp
-driver = new ChromeDriver();           // inicializa o navegador Chrome
-driver.Manage().Window.Maximize();     // maximiza a janela do navegador
-baseURL = "https://www.google.com.br"; // define a URL base utilizada pelo teste
-screenshotsPasta = @"C:\Users\...";    // define o diretório onde os screenshots serão armazenados
-```
-
-> **Importante:** a pasta informada deve existir antes da execução do teste. Em uma implementação mais robusta, o código pode verificar a existência do diretório e criá-lo automaticamente quando necessário.
+> **Importante:** a pasta informada deve existir **antes** da execução do teste. Em uma implementação mais robusta, o código pode verificar a existência do diretório e criá-lo automaticamente quando necessário.
 
 ---
 
@@ -184,7 +170,6 @@ O trecho `"Imagem_" + contador++ + ".png"` gera nomes sequenciais, por exemplo:
 Imagem_1.png
 Imagem_2.png
 Imagem_3.png
-Imagem_4.png
 ```
 
 O operador `++` incrementa o valor do contador após sua utilização. Assim, cada nova chamada do método `capturaImagem()` gera um nome diferente.
@@ -193,9 +178,7 @@ O operador `++` incrementa o valor do contador após sua utilização. Assim, ca
 
 ## 🧪 Utilizando a captura durante o teste
 
-Depois que os métodos forem implementados, basta chamar `capturaImagem();` no ponto em que deseja obter a evidência.
-
-Por exemplo:
+Depois que os métodos forem implementados, basta chamar `capturaImagem();` no ponto em que deseja obter a evidência, por exemplo:
 
 ```csharp
 driver.Navigate().GoToUrl(
@@ -213,9 +196,7 @@ Nesse caso, o screenshot será capturado após o carregamento da página.
 
 ## 🔎 Código completo
 
-Ajuste o diretório de evidências e execute o teste.
-
-> [captura_screenshot.md](./scripts/captura_screenshot.cs)
+> [captura_screenshot.cs](./scripts/captura_screenshot.cs)
 
 ---
 
@@ -237,8 +218,7 @@ C:\Selenium\Evidencias\
 │
 ├── Imagem_1.png
 ├── Imagem_2.png
-├── Imagem_3.png
-└── Imagem_4.png
+└── Imagem_3.png
 ```
 
 Cada chamada ao método `capturaImagem()` gera uma nova imagem numerada.
@@ -250,19 +230,19 @@ Cada chamada ao método `capturaImagem()` gera uma nova imagem numerada.
 Uma das vantagens dessa abordagem é poder realizar screenshots em diferentes momentos do teste. Por exemplo:
 
 ```csharp
-// Evidência após abrir a página.
+// Evidência após abrir a página
 capturaImagem();
 
-// Executa uma ação.
+// Executa uma ação
 driver.FindElement(By.Id("campo")).Click();
 
-// Evidência após a ação.
+// Evidência após a ação
 capturaImagem();
 
-// Executa outra ação.
+// Executa outra ação
 driver.FindElement(By.Id("botao")).Click();
 
-// Evidência do resultado.
+// Evidência do resultado
 capturaImagem();
 ```
 
@@ -307,22 +287,6 @@ Evidencias/
     ├── Pesquisa_01.png
     └── Pesquisa_02.png
 ```
-
----
-
-## ⚡ Quando utilizar screenshots
-
-A captura de screenshots pode ser útil para:
-
-* Evidências de execução;
-* Investigação de falhas;
-* Depuração de testes;
-* Documentação de cenários;
-* Demonstrações de automação;
-* Análise visual do estado da aplicação;
-* Registro do resultado de etapas específicas do teste.
-
-Em uma suíte de testes automatizados, uma estratégia bastante comum é capturar screenshots **automaticamente quando um teste falha**, evitando gerar evidências desnecessárias para todos os passos de todos os cenários.
 
 ---
 

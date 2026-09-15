@@ -6,11 +6,23 @@ Essa abordagem ajuda a organizar o projeto, facilita a manutenção e permite re
 
 ---
 
+## ⚡ Quando utilizar?
+
+A criação de classes externas é especialmente útil quando o projeto começa a acumular:
+
+* métodos auxiliares;
+* geração de dados de teste;
+* funções reutilizáveis;
+* regras de negócio utilizadas por vários testes;
+* funcionalidades que não pertencem diretamente ao cenário de teste.
+
+Em um projeto de automação maior, essa organização pode evoluir para uma estrutura com **classes utilitárias, Page Objects e componentes reutilizáveis**, evitando que os scripts de teste concentrem responsabilidades demais.
+
+---
+
 ## 📋 Criando uma classe externa
 
 No **Solution Explorer**, clique com o botão direito do mouse sobre o nome do projeto e selecione **Add → Class... → Class**, informe o nome da classe e confirme a criação, exemplo `GeraCPF.cs`.
-
-### Namespace
 
 No arquivo da classe, o `namespace` deve corresponder ao namespace utilizado pelo projeto: `namespace NomeDoProjeto`.
 
@@ -18,9 +30,7 @@ A classe deve ser declarada como `public` para que possa ser acessada por outros
 
 ---
 
-## 📁 Organizando a classe em uma pasta
-
-Após criar a classe, é possível organizá-la em uma pasta própria.
+## 📁 Organizando a classe em uma pasta própria
 
 No **Solution Explorer**:
 
@@ -50,8 +60,6 @@ A partir da instância criada, o método da classe pode ser chamado normalmente:
 
 ### Exemplo da estrutura
 
-A organização pode ficar semelhante a esta:
-
 ```text
 NomeDoProjeto
 │
@@ -68,70 +76,7 @@ NomeDoProjeto
 
 Neste exemplo, será criada uma classe externa chamada `GeraCPF`. Ela possui o método `GerarCpf()`, responsável por gerar um CPF válido de forma aleatória.
 
-## Classe `GeraCPF`
-
-```csharp
-using System;
-
-namespace AW_cadastroPaciente
-{
-    public class GeraCPF
-    {
-        public string GerarCpf()
-        {
-            int soma = 0;
-            int resto = 0;
-
-            int[] multiplicador1 =
-                new int[9] { 10, 9, 8, 7, 6, 5, 4, 3, 2 };
-
-            int[] multiplicador2 =
-                new int[10] { 11, 10, 9, 8, 7, 6, 5, 4, 3, 2 };
-
-            Random rnd = new Random();
-
-            string semente =
-                rnd.Next(100000000, 999999999).ToString();
-
-            for (int i = 0; i < 9; i++)
-            {
-                soma +=
-                    int.Parse(semente[i].ToString()) *
-                    multiplicador1[i];
-            }
-
-            resto = soma % 11;
-
-            if (resto < 2)
-                resto = 0;
-            else
-                resto = 11 - resto;
-
-            semente += resto;
-
-            soma = 0;
-
-            for (int i = 0; i < 10; i++)
-            {
-                soma +=
-                    int.Parse(semente[i].ToString()) *
-                    multiplicador2[i];
-            }
-
-            resto = soma % 11;
-
-            if (resto < 2)
-                resto = 0;
-            else
-                resto = 11 - resto;
-
-            semente += resto;
-
-            return semente;
-        }
-    }
-}
-```
+> [GeraCPF.cs](./scripts/GeraCPF.cs)
 
 O ponto principal desse exemplo é que a lógica para geração do CPF fica isolada na classe `GeraCPF`.
 
@@ -149,64 +94,7 @@ O método pode então ser utilizado no teste: `gerador.GerarCpf();`.
 
 ### Exemplo completo
 
-```csharp
-using System;
-using System.Threading;
-using NUnit.Framework;
-using OpenQA.Selenium;
-using OpenQA.Selenium.Chrome;
-using AW_cadastroPaciente;
-
-namespace SeleniumTests
-{
-    [TestFixture]
-    public class Testes
-    {
-        public IWebDriver driver;
-        private string baseURL;
-
-        [SetUp]
-        public void SetupTest()
-        {
-            driver = new ChromeDriver();
-            driver.Manage().Window.Maximize();
-
-            baseURL = "http://www.google.com.br";
-        }
-
-        [TearDown]
-        public void TeardownTest()
-        {
-            try
-            {
-                driver.Quit();
-            }
-            catch (Exception)
-            {
-                // Ignora erros ao fechar o navegador.
-            }
-        }
-
-        [Test]
-        public void NomeDoTeste()
-        {
-            GeraCPF gerador = new GeraCPF();
-
-            driver.Navigate().GoToUrl(baseURL);
-
-            Thread.Sleep(2000);
-
-            driver.FindElement(By.Id("lst-ib"))
-                .Click();
-
-            driver.FindElement(By.Id("lst-ib"))
-                .SendKeys(gerador.GerarCpf());
-
-            Thread.Sleep(2000);
-        }
-    }
-}
-```
+> [classe_externa.cs](./scripts/classe_externa.cs)
 
 ---
 
@@ -232,13 +120,9 @@ Teste
 
 Dessa forma, a responsabilidade fica separada:
 
-**Classe `GeraCPF`**
+**Classe `GeraCPF`** → responsável pela lógica de geração do CPF.
 
-→ responsável pela lógica de geração do CPF.
-
-**Classe de teste**
-
-→ responsável pela interação com o navegador e pela execução do cenário.
+**Classe de teste** → responsável pela interação com o navegador e pela execução do cenário.
 
 ---
 
@@ -262,20 +146,6 @@ Utils
 ```
 
 Os testes podem reutilizar essas funcionalidades sempre que necessário.
-
----
-
-## ⚡ Quando utilizar?
-
-A criação de classes externas é especialmente útil quando o projeto começa a acumular:
-
-* métodos auxiliares;
-* geração de dados de teste;
-* funções reutilizáveis;
-* regras de negócio utilizadas por vários testes;
-* funcionalidades que não pertencem diretamente ao cenário de teste.
-
-Em um projeto de automação maior, essa organização pode evoluir para uma estrutura com **classes utilitárias, Page Objects e componentes reutilizáveis**, evitando que os scripts de teste concentrem responsabilidades demais.
 
 ---
 

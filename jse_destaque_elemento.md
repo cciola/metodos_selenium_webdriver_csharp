@@ -6,6 +6,20 @@ O destaque pode ser útil principalmente durante a execução dos testes em modo
 
 ---
 
+## ⚡ Quando utilizar
+
+O destaque de elementos pode ser útil para:
+
+* Depuração de testes automatizados;
+* Demonstrações de automação;
+* Apresentações;
+* Identificação visual dos elementos durante a execução;
+* Investigação de problemas em scripts Selenium.
+
+Para uma suíte de testes automatizados em execução contínua, esse recurso normalmente não é necessário, pois seu principal objetivo é auxiliar na **visualização e depuração** da automação.
+
+---
+
 ## 📋 Pré-requisitos
 
 Para executar o exemplo, é necessário criar um **Unit Test Project** e adicionar as bibliotecas necessárias para o NUnit e Selenium WebDriver.
@@ -118,9 +132,11 @@ Nesse caso, o Selenium localiza o elemento pelo seu `id` e o método `destaque()
 
 ---
 
-## 🔎 Exemplo
+### 🔎 Código completo
 
-O exemplo abaixo:
+> [jse_destaque_elemento.cs](./scripts/jse_destaque_elemento.cs)
+
+Durante a execução, o teste:
 
 1. Abre o Google Chrome;
 2. Maximiza a janela;
@@ -131,102 +147,11 @@ O exemplo abaixo:
 7. Pressiona `Enter`;
 8. Realiza a pesquisa.
 
----
-
-### Código completo
-
-```csharp
-using System;
-using System.Threading;
-using NUnit.Framework;
-using OpenQA.Selenium;
-using OpenQA.Selenium.Chrome;
-
-namespace SeleniumTests
-{
-    [TestFixture]
-    public class TesteGit
-    {
-        public IWebDriver driver;
-        private string baseURL;
-
-        IJavaScriptExecutor js;
-
-        public string pesquisa = "teste de software";
-
-        public void destaque(IWebElement elemento)
-        {
-            IJavaScriptExecutor js;
-            js = (IJavaScriptExecutor)driver;
-
-            js.ExecuteScript(
-                "arguments[0].setAttribute('style', arguments[1]);",
-                elemento,
-                "color: yellow; border: 4px solid yellow;"
-            );
-
-            Thread.Sleep(500);
-        }
-
-        [SetUp]
-        public void SetupTest()
-        {
-            driver = new ChromeDriver();
-
-            driver.Manage().Window.Maximize();
-
-            baseURL = "https://www.google.com.br";
-        }
-
-        [TearDown]
-        public void TeardownTest()
-        {
-            try
-            {
-                driver.Quit();
-            }
-            catch (Exception)
-            {
-                // Ignora erros caso não seja possível fechar o navegador.
-            }
-        }
-
-        [Test]
-        public void GerarCPF()
-        {
-            js = (IJavaScriptExecutor)driver;
-
-            driver.Navigate().GoToUrl(baseURL);
-
-            Thread.Sleep(2000);
-
-            destaque(
-                driver.FindElement(
-                    By.Id("sb_ifc0")
-                )
-            );
-
-            driver.FindElement(By.Id("lst-ib")).Click();
-
-            driver.FindElement(By.Id("lst-ib"))
-                  .SendKeys(pesquisa);
-
-            Thread.Sleep(1000);
-
-            driver.FindElement(By.Id("lst-ib"))
-                  .SendKeys(Keys.Enter);
-
-            Thread.Sleep(2000);
-        }
-    }
-}
-```
-
 > **Atenção:** o exemplo acima foi desenvolvido originalmente utilizando os elementos e IDs disponíveis no Google na época em que o código foi criado. Como a estrutura HTML de sites pode mudar, os IDs `sb_ifc0` e `lst-ib` podem não estar disponíveis atualmente. Nesse caso, substitua-os pelo identificador correspondente ao elemento existente na página.
 
 ---
 
-## 📝 Resultado esperado
+## 🎯 Resultado esperado
 
 Durante a execução, o campo de pesquisa localizado pelo Selenium recebe o seguinte estilo:
 
@@ -236,20 +161,6 @@ border: 4px solid yellow;
 ```
 
 Visualmente, o elemento fica destacado na página, permitindo acompanhar com mais facilidade qual elemento está sendo manipulado pelo teste.
-
----
-
-## ⚡ Quando utilizar
-
-O destaque de elementos pode ser útil para:
-
-* Depuração de testes automatizados;
-* Demonstrações de automação;
-* Apresentações;
-* Identificação visual dos elementos durante a execução;
-* Investigação de problemas em scripts Selenium.
-
-Para uma suíte de testes automatizados em execução contínua, esse recurso normalmente não é necessário, pois seu principal objetivo é auxiliar na **visualização e depuração** da automação.
 
 ---
 

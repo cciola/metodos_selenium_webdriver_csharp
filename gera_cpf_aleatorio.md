@@ -8,6 +8,22 @@ A cada execução do método `GerarCpf()`, um novo CPF é calculado a partir de 
 
 ---
 
+## ⚡ Quando utilizar?
+
+Um gerador de CPF é especialmente útil em testes que precisam:
+
+* cadastrar novos usuários;
+* preencher formulários;
+* testar validações de CPF;
+* evitar dados fixos;
+* gerar diferentes massas de teste;
+* validar fluxos de cadastro;
+* testar cenários positivos e negativos relacionados ao CPF.
+
+Para projetos maiores, o método `GerarCpf()` pode ser movido para uma **classe utilitária externa**, permitindo que vários testes reutilizem o mesmo gerador.
+
+---
+
 ## 📋 Pré-requisitos
 
 O exemplo original foi desenvolvido utilizando **Visual Studio, NUnit e Selenium WebDriver**.
@@ -51,72 +67,9 @@ Selenium.WebDriver.Firefox
 
 Depois de criar um **Unit Test Project**, o método `GerarCpf()` pode ser declarado dentro da classe marcada com `[TestFixture]`.
 
-```csharp
-[TestFixture]
-public class NomeDoProjeto
-{
-    public string GerarCpf()
-    {
-        int soma = 0;
-        int resto = 0;
+> [GeraCPF.cs](./scripts/GeraCPF.cs)
 
-        int[] multiplicador1 =
-            new int[9] { 10, 9, 8, 7, 6, 5, 4, 3, 2 };
-
-        int[] multiplicador2 =
-            new int[10] { 11, 10, 9, 8, 7, 6, 5, 4, 3, 2 };
-
-        Random rnd = new Random();
-
-        string semente =
-            rnd.Next(100000000, 999999999).ToString();
-
-        for (int i = 0; i < 9; i++)
-        {
-            soma +=
-                int.Parse(semente[i].ToString()) *
-                multiplicador1[i];
-        }
-
-        resto = soma % 11;
-
-        if (resto < 2)
-            resto = 0;
-        else
-            resto = 11 - resto;
-
-        semente += resto;
-
-        soma = 0;
-
-        for (int i = 0; i < 10; i++)
-        {
-            soma +=
-                int.Parse(semente[i].ToString()) *
-                multiplicador2[i];
-        }
-
-        resto = soma % 11;
-
-        if (resto < 2)
-            resto = 0;
-        else
-            resto = 11 - resto;
-
-        semente += resto;
-
-        return semente;
-    }
-}
-```
-
-O método retorna uma `string` contendo **11 dígitos**, correspondentes ao CPF sem máscara.
-
-Por exemplo:
-
-```text
-12345678909
-```
+O método retorna uma `string` contendo **11 dígitos**, correspondentes ao CPF sem máscara, por exemplo: `12345678909`.
 
 ---
 
@@ -183,116 +136,7 @@ O resultado final possui 11 dígitos:
 
 No exemplo abaixo, o CPF gerado pelo método é exibido em um `alert` utilizando o `IJavaScriptExecutor` do Selenium.
 
-```csharp
-using System;
-using System.Threading;
-using NUnit.Framework;
-using OpenQA.Selenium;
-using OpenQA.Selenium.Chrome;
-
-namespace SeleniumTests
-{
-    [TestFixture]
-    public class NomeDoProjeto
-    {
-        public IWebDriver driver;
-        private string baseURL;
-        private IJavaScriptExecutor js;
-
-        // Método para gerar CPF válido de forma randômica
-        public string GerarCpf()
-        {
-            int soma = 0;
-            int resto = 0;
-
-            int[] multiplicador1 =
-                new int[9] { 10, 9, 8, 7, 6, 5, 4, 3, 2 };
-
-            int[] multiplicador2 =
-                new int[10] { 11, 10, 9, 8, 7, 6, 5, 4, 3, 2 };
-
-            Random rnd = new Random();
-
-            string semente =
-                rnd.Next(100000000, 999999999).ToString();
-
-            for (int i = 0; i < 9; i++)
-            {
-                soma +=
-                    int.Parse(semente[i].ToString()) *
-                    multiplicador1[i];
-            }
-
-            resto = soma % 11;
-
-            if (resto < 2)
-                resto = 0;
-            else
-                resto = 11 - resto;
-
-            semente += resto;
-
-            soma = 0;
-
-            for (int i = 0; i < 10; i++)
-            {
-                soma +=
-                    int.Parse(semente[i].ToString()) *
-                    multiplicador2[i];
-            }
-
-            resto = soma % 11;
-
-            if (resto < 2)
-                resto = 0;
-            else
-                resto = 11 - resto;
-
-            semente += resto;
-
-            return semente;
-        }
-
-        [SetUp]
-        public void SetupTest()
-        {
-            driver = new ChromeDriver();
-            driver.Manage().Window.Maximize();
-
-            baseURL = "https://www.google.com.br";
-        }
-
-        [TearDown]
-        public void TeardownTest()
-        {
-            try
-            {
-                driver.Quit();
-            }
-            catch (Exception)
-            {
-                // Ignora erros ao fechar o navegador.
-            }
-        }
-
-        [Test]
-        public void NomeDoTeste()
-        {
-            js = (IJavaScriptExecutor)driver;
-
-            driver.Navigate().GoToUrl(baseURL);
-
-            Thread.Sleep(1000);
-
-            js.ExecuteScript(
-                "alert('CPF gerado: " + GerarCpf() + "');"
-            );
-
-            Thread.Sleep(3000);
-        }
-    }
-}
-```
+> [gera_cpf_aleatorio.cs](./scripts/gera_cpf_aleatorio.cs)
 
 ---
 
@@ -388,22 +232,6 @@ Isso reduz a dependência de dados fixos e pode facilitar a execução de cenár
 - **CPF válido não significa CPF existente.** O algoritmo verifica apenas a **estrutura matemática dos dígitos verificadores do CPF**. Portanto, um CPF gerado pelo método pode ser matematicamente válido, mas não necessariamente corresponde a uma pessoa ou cadastro real. Para testes de sistemas que consultam bases externas ou validam existência do CPF, devem ser utilizados dados apropriados ao ambiente de teste.
 
 - O exemplo utiliza `Thread.Sleep()` para facilitar a visualização durante a demonstração. Em automações reais, o ideal é utilizar mecanismos de espera do Selenium, como **explicit waits**, quando for necessário aguardar uma condição específica da aplicação.
-
----
-
-## ⚡ Quando utilizar?
-
-Um gerador de CPF é especialmente útil em testes que precisam:
-
-* cadastrar novos usuários;
-* preencher formulários;
-* testar validações de CPF;
-* evitar dados fixos;
-* gerar diferentes massas de teste;
-* validar fluxos de cadastro;
-* testar cenários positivos e negativos relacionados ao CPF.
-
-Para projetos maiores, o método `GerarCpf()` pode ser movido para uma **classe utilitária externa**, permitindo que vários testes reutilizem o mesmo gerador.
 
 ---
 
