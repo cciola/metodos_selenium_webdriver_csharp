@@ -73,7 +73,7 @@ O método retorna uma `string` contendo **11 dígitos**, correspondentes ao CPF 
 
 O algoritmo pode ser dividido em algumas etapas:
 
-### 1. Geração da sequência inicial
+**1. Geração da sequência inicial**
 
 Primeiro é gerada aleatoriamente uma sequência de **9 dígitos**. Essa sequência é utilizada como base para o cálculo do CPF.
 
@@ -84,7 +84,7 @@ string semente =
     rnd.Next(100000000, 999999999).ToString();
 ```
 
-### 2. Cálculo do primeiro dígito verificador
+**2. Cálculo do primeiro dígito verificador**
 
 Os nove primeiros números são multiplicados pelos pesos:
 
@@ -95,7 +95,7 @@ Os nove primeiros números são multiplicados pelos pesos:
 A soma dos resultados é utilizada para calcular o primeiro dígito verificador.
 
 
-### 3. Cálculo do segundo dígito verificador
+**3. Cálculo do segundo dígito verificador**
 
 Depois que o primeiro dígito é adicionado, o algoritmo utiliza os pesos:
 
@@ -106,7 +106,7 @@ Depois que o primeiro dígito é adicionado, o algoritmo utiliza os pesos:
 Com isso, é calculado o segundo dígito verificador.
 
 
-### 4. Retorno do CPF
+**4. Retorno do CPF**
 
 Os dois dígitos calculados são adicionados à sequência inicial:
 
@@ -122,15 +122,12 @@ O resultado final possui 11 dígitos:
 
 ---
 
-# 🧪 Veja o método funcionando
+## 🧪 Veja o método funcionando
 
 No exemplo abaixo, o CPF gerado pelo método é exibido em um `alert` utilizando o `IJavaScriptExecutor` do Selenium.
 
 > [gera_cpf_aleatorio.cs](./scripts/gera_cpf_aleatorio.cs)
 
----
-
-## ▶️ O que acontece durante a execução?
 
 Durante a execução, o teste:
 
