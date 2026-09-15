@@ -63,7 +63,7 @@ Selenium.WebDriver.Firefox
 
 ---
 
-## 🧮 Criando o gerador de CPF
+## 🚀 Criando o gerador de CPF
 
 Depois de criar um **Unit Test Project**, o método `GerarCpf()` pode ser declarado dentro da classe marcada com `[TestFixture]`.
 
@@ -71,15 +71,11 @@ Depois de criar um **Unit Test Project**, o método `GerarCpf()` pode ser declar
 
 O método retorna uma `string` contendo **11 dígitos**, correspondentes ao CPF sem máscara, por exemplo: `12345678909`.
 
----
-
-## 🔎 Como o método funciona?
-
 O algoritmo pode ser dividido em algumas etapas:
 
 ### 1. Geração da sequência inicial
 
-Primeiro é gerada aleatoriamente uma sequência de **9 dígitos**:
+Primeiro é gerada aleatoriamente uma sequência de **9 dígitos**. Essa sequência é utilizada como base para o cálculo do CPF.
 
 ```csharp
 Random rnd = new Random();
@@ -87,10 +83,6 @@ Random rnd = new Random();
 string semente =
     rnd.Next(100000000, 999999999).ToString();
 ```
-
-Essa sequência é utilizada como base para o cálculo do CPF.
-
----
 
 ### 2. Cálculo do primeiro dígito verificador
 
@@ -102,7 +94,6 @@ Os nove primeiros números são multiplicados pelos pesos:
 
 A soma dos resultados é utilizada para calcular o primeiro dígito verificador.
 
----
 
 ### 3. Cálculo do segundo dígito verificador
 
@@ -114,7 +105,6 @@ Depois que o primeiro dígito é adicionado, o algoritmo utiliza os pesos:
 
 Com isso, é calculado o segundo dígito verificador.
 
----
 
 ### 4. Retorno do CPF
 
@@ -142,31 +132,13 @@ No exemplo abaixo, o CPF gerado pelo método é exibido em um `alert` utilizando
 
 ## ▶️ O que acontece durante a execução?
 
-Ao executar o teste, o fluxo será:
+Durante a execução, o teste:
 
-```text
-Início
-  │
-  ├── Abre o Chrome
-  │
-  ├── Acessa a página definida em baseURL
-  │
-  ├── Executa GerarCpf()
-  │       │
-  │       ├── Gera 9 dígitos aleatórios
-  │       ├── Calcula o primeiro dígito
-  │       └── Calcula o segundo dígito
-  │
-  ├── Retorna o CPF gerado
-  │
-  └── Exibe o CPF em um alert
-```
-
-O navegador exibirá uma mensagem semelhante a:
-
-```text
-CPF gerado: 12345678909
-```
+1. Inicializa o Chrome;
+2. Acessa a URL configurada;
+3. Executa GerarCpf();
+4. Retorna o CPF gerado;
+5. Exibe o CPF em um alert semelhante a: `CPF gerado: 12345678909`
 
 A cada nova execução, a sequência inicial é gerada aleatoriamente e, consequentemente, o CPF retornado tende a ser diferente.
 
@@ -198,7 +170,7 @@ driver.FindElement(By.Id("campoCpf"))
     .SendKeys("12345678909");
 ```
 
-e utilizar dados gerados dinamicamente:
+E utilizar dados gerados dinamicamente:
 
 ```csharp
 // Dado gerado dinamicamente
