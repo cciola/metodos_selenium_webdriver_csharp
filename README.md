@@ -63,7 +63,7 @@ Os exemplos foram originalmente elaborados e executados em um ambiente contendo:
 
 Até o momento, o repositório contém os seguintes exemplos:
 
-### 📸 Captura de screenshot
+### Captura de screenshot
 
 **[captura_screenshot](captura_screenshot.md)**
 
