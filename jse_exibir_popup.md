@@ -1,8 +1,6 @@
 # Exibir popup com JavascriptExecutor
 
-Este exemplo demonstra como utilizar o **JavascriptExecutor** do Selenium WebDriver para executar JavaScript no navegador e exibir um **popup (`alert`)** durante a execução de um teste automatizado.
-
-O exemplo apresenta duas possibilidades:
+Este exemplo demonstra como utilizar o **JavascriptExecutor** do Selenium WebDriver para executar JavaScript no navegador e exibir um **popup (`alert`)** durante a execução de um teste automatizado. O exemplo apresenta duas possibilidades:
 
 ### 1. Exibindo um popup com texto fixo
 
@@ -13,6 +11,16 @@ js.ExecuteScript(
     "alert('Script de teste finalizado com sucesso!');"
 );
 ```
+
+**[jse_texto_fixo.cs](./scripts/jse_texto_fixo.cs)**
+
+Durante a execução, o teste:
+
+1. Inicializa o Chrome;
+2. Cria uma instância do JavascriptExecutor;
+3. Executa um `alert()` com um texto fixo;
+4. Mantém o popup aberto por alguns segundos;
+5. Encerra o navegador.
 
 O navegador exibirá uma caixa de diálogo semelhante a:
 
@@ -40,7 +48,18 @@ js.ExecuteScript(
 );
 ```
 
-Nesse caso, o popup exibirá: `Valor da variavel: Carol`.
+**[jse_texto_e_variavel.cs](./scripts/jse_texto_e_variavel.cs)**
+
+O navegador exibirá uma caixa de diálogo semelhante a:
+
+```text
+┌──────────────────────────────────────┐
+│                                      │
+│  Valor da variavel: Carol            │
+│                                      │
+│                              [ OK ]  │
+└──────────────────────────────────────┘
+```
 
 ---
 
@@ -58,37 +77,7 @@ Nesse caso, o resultado da função `GerarCpf()` será concatenado à mensagem e
 
 ---
 
-## 🧪 Exemplo 1 — Texto fixo
-
-**[jse_texto_fixo.cs](./scripts/jse_texto_fixo.cs)**
-
-Durante a execução, o teste:
-
-1. Inicializa o Chrome;
-2. Cria uma instância do JavascriptExecutor;
-3. Executa um `alert()` com um texto fixo;
-4. Mantém o popup aberto por alguns segundos;
-5. Encerra o navegador.
-
----
-
-## 🧪 Exemplo 2 — Texto + variável
-
-**[jse_texto_e_variavel.cs](./scripts/jse_texto_e_variavel.cs)**
-
-Durante a execução, uma variável C# é utilizada para complementar o texto do popup.
-
----
-
-Nos dois exemplos, o navegador é iniciado e um popup JavaScript é exibido.
-
-* **Texto fixo**: `Script de teste finalizado com sucesso!`
-
-* **Texto + variável**: considerando `public string variavel = "Carol";`, o resultado será `Valor da variavel: Carol`.
-
----
-
-## ⚠️ Interagindo com o popup
+## Interagindo com o popup
 
 O `alert()` utilizado neste exemplo é um **JavaScript Alert** do navegador.
 
@@ -98,7 +87,6 @@ Por exemplo, para aceitar o popup:
 
 ```csharp
 IAlert alert = driver.SwitchTo().Alert();
-
 alert.Accept();
 ```
 
@@ -106,7 +94,6 @@ Para obter o texto exibido:
 
 ```csharp
 IAlert alert = driver.SwitchTo().Alert();
-
 string mensagem = alert.Text;
 ```
 

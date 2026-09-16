@@ -39,9 +39,7 @@ Por exemplo, `window.scrollBy(0, 300)` significa:
 * Não movimentar horizontalmente (`0`);
 * Descer **300 pixels** verticalmente (`300`).
 
----
-
-##  Rolando a página para baixo
+### Rolando a página para baixo
 
 No Selenium, podemos executar o JavaScript para deslocar a página **300 pixels para baixo**:
 
@@ -51,9 +49,7 @@ js.ExecuteScript(
 );
 ```
 
----
-
-## Rolando a página para cima
+### Rolando a página para cima
 
 Para retornar 300 pixels, como o valor vertical é **negativo**, a página será deslocada **300 pixels para cima**:
 
@@ -81,7 +77,7 @@ Assim, será possível visualizar a página sendo movimentada para baixo e, post
 
 ## Outras formas de utilizar o scroll
 
-Rolar até o final da página:
+### Rolar até o final da página:
 
 ```csharp
 js.ExecuteScript(
@@ -89,7 +85,7 @@ js.ExecuteScript(
 );
 ```
 
-Rolar até o início da página:
+### Rolar até o início da página:
 
 ```csharp
 js.ExecuteScript(
@@ -97,7 +93,7 @@ js.ExecuteScript(
 );
 ```
 
-Rolar até um elemento específico:
+### Rolar até um elemento específico:
 
 ```csharp
 IWebElement elemento = driver.FindElement(
