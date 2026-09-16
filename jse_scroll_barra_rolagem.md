@@ -43,7 +43,7 @@ Por exemplo, `window.scrollBy(0, 300)` significa:
 
 ##  Rolando a página para baixo
 
-No Selenium, podemos executar o JavaScript da seguinte forma:
+No Selenium, podemos executar o JavaScript para deslocar a página **300 pixels para baixo**:
 
 ```csharp
 js.ExecuteScript(
@@ -51,21 +51,17 @@ js.ExecuteScript(
 );
 ```
 
-Nesse caso, a página será deslocada **300 pixels para baixo**.
-
 ---
 
 ## Rolando a página para cima
 
-Para retornar 300 pixels:
+Para retornar 300 pixels, como o valor vertical é **negativo**, a página será deslocada **300 pixels para cima**:
 
 ```csharp
 js.ExecuteScript(
     "window.scrollBy(0, -300);"
 );
 ```
-
-Como o valor vertical é negativo, a página será deslocada **300 pixels para cima**.
 
 ---
 
