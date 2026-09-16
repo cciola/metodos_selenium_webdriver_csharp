@@ -9,47 +9,7 @@ O exemplo apresenta duas possibilidades:
 
 ---
 
-## 📋 Pré-requisitos
-
-Para executar o exemplo, é necessário criar um **Unit Test Project** e adicionar as bibliotecas necessárias para o NUnit e Selenium WebDriver.
-
-As referências utilizadas originalmente neste exemplo incluem:
-
-```text
-NUnit
-
-NUnit 3 - NUnit Project Loader Extension
-NUnit 3 - NUnit V2 Framework Driver Extension
-NUnit 3 - NUnit V2 Result Writer Extension
-NUnit 3 - Team City Event Listener Extension
-NUnit 3 - Visual Studio Project Loader Extension
-
-NUnit Console Runner Version 3 (No Extensions)
-NUnit Console Runner Version 3 With Extensions
-NUnit Console Version 3
-
-NUnit Test Adapter for VS2012, VS2013 and VS2015
-
-Selenium WebDriver
-Selenium WebDriver Support Classes
-Selenium.Support
-
-Selenium.WebDriver.ChromeDriver
-Selenium.WebDriver.IEDriver
-Selenium.WebDriver.Firefox
-```
-
-Os drivers específicos de navegador são necessários de acordo com o navegador utilizado:
-
-* `Selenium.WebDriver.ChromeDriver` — Google Chrome
-* `Selenium.WebDriver.IEDriver` — Internet Explorer
-* `Selenium.WebDriver.Firefox` — Mozilla Firefox
-
-> **Observação:** as referências acima correspondem ao ambiente em que o exemplo foi originalmente desenvolvido. Em versões atuais do Selenium, NUnit e Visual Studio, a instalação e configuração dos pacotes pode ser diferente.
-
----
-
-## 💡 O que é o JavascriptExecutor?
+## O que é o JavascriptExecutor?
 
 O Selenium WebDriver disponibiliza a interface `IJavaScriptExecutor`, que permite executar comandos JavaScript diretamente no navegador controlado pelo WebDriver.
 
@@ -64,6 +24,23 @@ public class NomeDoProjeto
     IJavaScriptExecutor js;
 }
 ```
+
+---
+
+## Quando utilizar
+
+O JavascriptExecutor pode ser útil para:
+
+* Executar JavaScript durante a automação;
+* Exibir informações durante a execução;
+* Auxiliar na depuração de testes;
+* Demonstrar valores gerados durante o teste;
+* Interagir com funcionalidades legadas que dependem de JavaScript;
+* Apoiar investigações de comportamento da aplicação.
+
+Para testes automatizados, entretanto, um `alert()` normalmente deve ser utilizado com uma finalidade específica, como **validação ou depuração**, e não apenas como mecanismo de espera.
+
+---
 
 Antes de utilizar o JavascriptExecutor, faça a conversão do `driver`: `js = (IJavaScriptExecutor)driver;`. A partir desse momento, o objeto `js` poderá ser utilizado para executar JavaScript na página.
 
@@ -124,7 +101,9 @@ Nesse caso, o resultado da função `GerarCpf()` será concatenado à mensagem e
 
 ## 🧪 Exemplo 1 — Texto fixo
 
-O código abaixo:
+**[jse_texto_fixo.cs](./scripts/jse_texto_fixo.cs)**
+
+Durante a execução, o teste:
 
 1. Inicializa o Chrome;
 2. Cria uma instância do JavascriptExecutor;
@@ -132,119 +111,15 @@ O código abaixo:
 4. Mantém o popup aberto por alguns segundos;
 5. Encerra o navegador.
 
-```csharp
-using System;
-using System.Threading;
-using NUnit.Framework;
-using OpenQA.Selenium;
-using OpenQA.Selenium.Chrome;
-
-namespace SeleniumTests
-{
-    [TestFixture]
-    public class NomeDoProjeto
-    {
-        public IWebDriver driver;
-
-        IJavaScriptExecutor js;
-
-        [SetUp]
-        public void SetupTest()
-        {
-            driver = new ChromeDriver();
-
-            driver.Manage().Window.Maximize();
-        }
-
-        [TearDown]
-        public void TeardownTest()
-        {
-            try
-            {
-                driver.Quit();
-            }
-            catch (Exception)
-            {
-                // Ignora erros caso não seja possível fechar o navegador.
-            }
-        }
-
-        [Test]
-        public void NomeDoTeste()
-        {
-            js = (IJavaScriptExecutor)driver;
-
-            js.ExecuteScript(
-                "alert('Script de teste finalizado com sucesso!');"
-            );
-
-            Thread.Sleep(3000);
-        }
-    }
-}
-```
-
 ---
 
 ## 🧪 Exemplo 2 — Texto + variável
 
-Neste exemplo, uma variável C# é utilizada para complementar o texto do popup.
+**[jse_texto_e_variavel.cs](./scripts/jse_texto_e_variavel.cs)**
 
-```csharp
-using System;
-using System.Threading;
-using NUnit.Framework;
-using OpenQA.Selenium;
-using OpenQA.Selenium.Chrome;
+Durante a execução, uma variável C# é utilizada para complementar o texto do popup.
 
-namespace SeleniumTests
-{
-    [TestFixture]
-    public class NomeDoProjeto
-    {
-        public IWebDriver driver;
-
-        IJavaScriptExecutor js;
-
-        public string variavel = "Carol";
-
-        [SetUp]
-        public void SetupTest()
-        {
-            driver = new ChromeDriver();
-
-            driver.Manage().Window.Maximize();
-        }
-
-        [TearDown]
-        public void TeardownTest()
-        {
-            try
-            {
-                driver.Quit();
-            }
-            catch (Exception)
-            {
-                // Ignora erros caso não seja possível fechar o navegador.
-            }
-        }
-
-        [Test]
-        public void NomeDoTeste()
-        {
-            js = (IJavaScriptExecutor)driver;
-
-            js.ExecuteScript(
-                "alert('Valor da variavel: " + variavel + "');"
-            );
-
-            Thread.Sleep(3000);
-        }
-    }
-}
-```
-
-## 🎯 Resultado esperado
+---
 
 Nos dois exemplos, o navegador é iniciado e um popup JavaScript é exibido.
 
@@ -280,36 +155,13 @@ Isso permite transformar o popup em parte de uma validação automatizada, em ve
 
 ---
 
-## ⚡ Quando utilizar
-
-O JavascriptExecutor pode ser útil para:
-
-* Executar JavaScript durante a automação;
-* Exibir informações durante a execução;
-* Auxiliar na depuração de testes;
-* Demonstrar valores gerados durante o teste;
-* Interagir com funcionalidades legadas que dependem de JavaScript;
-* Apoiar investigações de comportamento da aplicação.
-
-Para testes automatizados, entretanto, um `alert()` normalmente deve ser utilizado com uma finalidade específica, como **validação ou depuração**, e não apenas como mecanismo de espera.
-
----
-
 ## 🎯 Objetivo do repositório
 
-Este exemplo faz parte da série de exemplos de **Selenium WebDriver com C#** deste repositório.
-
-Como o estudo da ferramenta é incremental, novos exemplos podem ser adicionados conforme novos recursos forem explorados.
-
-A ideia é manter os códigos como uma **referência rápida** para funcionalidades que podem ser reutilizadas em diferentes scripts de automação.
-
----
+Este exemplo faz parte da série de exemplos de **Selenium WebDriver com C#** deste repositório. Como o estudo da ferramenta é incremental, novos exemplos podem ser adicionados conforme novos recursos forem explorados. A ideia é manter os códigos como uma **referência rápida** para funcionalidades que podem ser reutilizadas em diferentes scripts de automação.
 
 ## 🤝 Contribuições
 
 Sugestões, melhorias e novos exemplos são bem-vindos! Caso você tenha alguma dúvida, sugestão ou queira contribuir com o projeto, fique à vontade para entrar em contato.
-
----
 
 ## 📌 Observação
 

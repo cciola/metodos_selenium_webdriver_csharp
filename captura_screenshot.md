@@ -78,7 +78,7 @@ Em `ITakesScreenshot`, o `driver` é convertido para `ITakesScreenshot`, permiti
 
 A instrução `Screenshot foto = camera.GetScreenshot();` solicita ao WebDriver uma captura da tela atual e armazena o resultado na variável `foto`.
 
-O método `SaveAsFile` salva a captura no caminho informado. O segundo parâmetro `ScreenshotImageFormat.Png` define o formato da imagem. Neste exemplo, os arquivos serão salvos no formato **PNG**.
+O método `SaveAsFile` salva a captura no caminho informado. O segundo parâmetro `ScreenshotImageFormat.Png` define o formato da imagem. Neste exemplo, os arquivos serão salvos no formato `.png`.
 
 ---
 
@@ -250,11 +250,7 @@ Evidencias/
 
 ## 🎯 Objetivo do repositório
 
-Este exemplo faz parte da série de exemplos de **Selenium WebDriver com C#** deste repositório.
-
-Como o estudo da ferramenta é incremental, novos exemplos podem ser adicionados conforme novos recursos forem explorados.
-
-A ideia é manter os códigos como uma **referência rápida** para funcionalidades que podem ser reutilizadas em diferentes scripts de automação.
+Este exemplo faz parte da série de exemplos de **Selenium WebDriver com C#** deste repositório. Como o estudo da ferramenta é incremental, novos exemplos podem ser adicionados conforme novos recursos forem explorados. A ideia é manter os códigos como uma **referência rápida** para funcionalidades que podem ser reutilizadas em diferentes scripts de automação.
 
 ## 🤝 Contribuições
 

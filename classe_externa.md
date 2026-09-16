@@ -135,11 +135,7 @@ Os testes podem reutilizar essas funcionalidades sempre que necessário.
 
 ## 🎯 Objetivo do repositório
 
-Este exemplo faz parte da série de exemplos de **Selenium WebDriver com C#** deste repositório.
-
-Como o estudo da ferramenta é incremental, novos exemplos podem ser adicionados conforme novos recursos forem explorados.
-
-A ideia é manter os códigos como uma **referência rápida** para funcionalidades que podem ser reutilizadas em diferentes scripts de automação.
+Este exemplo faz parte da série de exemplos de **Selenium WebDriver com C#** deste repositório. Como o estudo da ferramenta é incremental, novos exemplos podem ser adicionados conforme novos recursos forem explorados. A ideia é manter os códigos como uma **referência rápida** para funcionalidades que podem ser reutilizadas em diferentes scripts de automação.
 
 ## 🤝 Contribuições
 

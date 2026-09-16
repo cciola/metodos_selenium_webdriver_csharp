@@ -4,6 +4,23 @@ Este exemplo apresenta um método responsável por verificar se um determinado a
 
 A implementação utiliza **C#**, **Selenium WebDriver** e o conceito de **Programação Orientada a Objetos (POO)**, separando a implementação do método da classe principal que executa o teste.
 
+---
+
+## Quando utilizar
+
+Este método pode ser utilizado em testes automatizados que precisem validar funcionalidades de:
+
+- Download de arquivos.
+- Exportação de relatórios.
+- Geração de documentos.
+- Exportação de dados em diferentes formatos.
+- Impressão ou geração de arquivos a partir da aplicação.
+- Funcionalidades em que o resultado esperado seja a criação de um arquivo no computador.
+
+A abordagem é especialmente útil quando o teste precisa confirmar não apenas que o botão foi clicado, mas que o arquivo esperado foi efetivamente gerado e disponibilizado na pasta de downloads.
+
+---
+
 ## Estrutura
 
 A implementação é dividida em duas classes:
@@ -15,53 +32,12 @@ A implementação é dividida em duas classes:
 
 ## exportacao.cs
 
+**[exportacao.cs](./scripts/exportacao.cs)**
+
 O método `VerificaArquivoBaixado` recebe o nome do arquivo que deverá ser gerado e retorna um valor booleano indicando se o download foi realizado com sucesso.
 
-```csharp
-public bool VerificaArquivoBaixado(string nomeArquivo)
-{
-    bool existe = false;
 
-    string pathUser = Environment.GetFolderPath(
-        Environment.SpecialFolder.UserProfile
-    );
-
-    string pathDownload = Path.Combine(pathUser, @"Downloads\");
-
-    File.Delete(pathDownload + nomeArquivo + ".pdf");
-
-    IWebElement btnDownload = driver.FindElement(By.Id("idBotao"));
-    btnDownload.Click();
-
-    Thread.Sleep(1000);
-
-    string[] filePaths = Directory.GetFiles(pathDownload);
-
-    foreach (string p in filePaths)
-    {
-        if (p.Contains(nomeArquivo + ".pdf"))
-        {
-            existe = true;
-
-            // Deleta o arquivo gerado
-            File.Delete(pathDownload + nomeArquivo + ".pdf");
-
-            break;
-        }
-    }
-
-    if (existe == false)
-    {
-        driver.Quit();
-    }
-
-    return existe;
-}
-```
-
-### Retorno do método
-
-O método é público e retorna um `bool`, portanto seu resultado será:
+* **Retorno do método** - o método é público e retorna um `bool`, portanto seu resultado será:
 
 * `true` — quando o arquivo esperado for encontrado.
 * `false` — quando o arquivo não for encontrado.
@@ -76,11 +52,9 @@ public bool VerificaArquivoBaixado(string nomeArquivo)
     bool existe = false;
 ```
 
----
+* **Localização da pasta Downloads** - o trecho abaixo obtém o caminho do perfil do usuário da máquina e, a partir dele, monta o caminho da pasta `Downloads`.
 
-## Localização da pasta Downloads
-
-O trecho abaixo obtém o caminho do perfil do usuário da máquina e, a partir dele, monta o caminho da pasta `Downloads`.
+A variável `pathDownload` passa a representar o caminho utilizado para localizar os arquivos baixados durante a execução do teste.
 
 ```csharp
 string pathUser = Environment.GetFolderPath(
@@ -90,48 +64,30 @@ string pathUser = Environment.GetFolderPath(
 string pathDownload = Path.Combine(pathUser, @"Downloads\");
 ```
 
-A variável `pathDownload` passa a representar o caminho utilizado para localizar os arquivos baixados durante a execução do teste.
+* **Remoção de arquivo existente** - antes de realizar o download, o arquivo que possui o mesmo nome esperado é **removido**. Essa etapa é importante para evitar que o teste encontre um arquivo de uma execução anterior e interprete incorretamente que o download atual foi realizado com sucesso.
 
----
-
-## Remoção de arquivo existente
-
-Antes de realizar o download, o arquivo que possui o mesmo nome esperado é removido:
+**Observação:** não é necessário limpar todo o conteúdo da pasta `Downloads`. Apenas o arquivo que será utilizado pelo teste é removido.
 
 ```csharp
 File.Delete(pathDownload + nomeArquivo + ".pdf");
 ```
 
-Essa etapa é importante para evitar que o teste encontre um arquivo de uma execução anterior e interprete incorretamente que o download atual foi realizado com sucesso.
-
-Não é necessário limpar todo o conteúdo da pasta `Downloads`. Apenas o arquivo que será utilizado pelo teste é removido.
-
----
-
-## Execução do download
-
-Em seguida, o Selenium localiza o botão responsável pelo download e realiza o clique:
+* **Execução do download** - em seguida, o Selenium localiza o botão responsável pelo download e realiza o clique; nesse ponto, o sistema deve iniciar a geração e o download do arquivo.
 
 ```csharp
 IWebElement btnDownload = driver.FindElement(By.Id("idBotao"));
 btnDownload.Click();
 ```
 
-Nesse ponto, o sistema deve iniciar a geração e o download do arquivo.
-
----
-
-## Verificação do arquivo
-
-Após o clique, o método obtém os arquivos existentes na pasta `Downloads`:
-
-```csharp
-string[] filePaths = Directory.GetFiles(pathDownload);
-```
+* **Verificação do arquivo** - após o clique, o método obtém os arquivos existentes na pasta `Downloads`.
 
 A variável `filePaths` recebe os caminhos dos arquivos encontrados no diretório.
 
 Em seguida, o `foreach` percorre esses arquivos:
+
+```csharp
+string[] filePaths = Directory.GetFiles(pathDownload);
+```
 
 ```csharp
 foreach (string p in filePaths)
@@ -149,9 +105,7 @@ foreach (string p in filePaths)
 
 Para cada arquivo encontrado, o `if` verifica se o caminho contém o nome esperado juntamente com a extensão `.pdf`.
 
-### Arquivo encontrado
-
-Quando o arquivo é encontrado:
+* **Arquivo encontrado** - quando o arquivo é encontrado:
 
 1. A variável `existe` recebe `true`.
 2. O arquivo gerado pelo teste é excluído.
@@ -160,11 +114,7 @@ Quando o arquivo é encontrado:
 
 A exclusão do arquivo evita que ele permaneça na pasta `Downloads` e interfira em execuções futuras.
 
-### Arquivo não encontrado
-
-Caso nenhum arquivo correspondente seja encontrado, a variável `existe` permanece `false`.
-
-Nesse caso, o trecho abaixo identifica a falha:
+* **Arquivo não encontrado** - caso nenhum arquivo correspondente seja encontrado, a variável `existe` permanece `false`. Nesse caso, o trecho abaixo identifica a falha:
 
 ```csharp
 if (existe == false)
@@ -173,7 +123,7 @@ if (existe == false)
 }
 ```
 
-O navegador é encerrado e o método retorna `false`.
+O navegador é encerrado, e o método retorna `false`.
 
 ```csharp
 return existe;
@@ -233,20 +183,7 @@ Início
   └── Fim
 ```
 
-**Observação**: O exemplo utiliza `Thread.Sleep(1000)` para aguardar a geração do arquivo. Em aplicações reais, essa abordagem pode ser substituída por uma estratégia de espera mais robusta, especialmente quando o tempo de geração do arquivo pode variar. O objetivo deste exemplo é demonstrar a lógica de validação da exportação e a separação do método em uma classe própria, seguindo o conceito de POO.
-
-## ⚡ Quando utilizar
-
-Este método pode ser utilizado em testes automatizados que precisem validar funcionalidades de:
-
-- Download de arquivos.
-- Exportação de relatórios.
-- Geração de documentos.
-- Exportação de dados em diferentes formatos.
-- Impressão ou geração de arquivos a partir da aplicação.
-- Funcionalidades em que o resultado esperado seja a criação de um arquivo no computador.
-
-A abordagem é especialmente útil quando o teste precisa confirmar não apenas que o botão foi clicado, mas que o arquivo esperado foi efetivamente gerado e disponibilizado na pasta de downloads.
+> **💡 Observação**: O exemplo utiliza `Thread.Sleep(1000)` para aguardar a geração do arquivo. Em aplicações reais, essa abordagem pode ser substituída por uma estratégia de espera mais robusta, especialmente quando o tempo de geração do arquivo pode variar. O objetivo deste exemplo é demonstrar a lógica de validação da exportação e a separação do método em uma classe própria, seguindo o conceito de POO.
 
 ---
 

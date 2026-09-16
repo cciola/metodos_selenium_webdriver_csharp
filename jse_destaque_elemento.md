@@ -6,7 +6,7 @@ O destaque pode ser útil principalmente durante a execução dos testes em modo
 
 ---
 
-## ⚡ Quando utilizar
+## Quando utilizar
 
 O destaque de elementos pode ser útil para:
 
@@ -20,47 +20,7 @@ Para uma suíte de testes automatizados em execução contínua, esse recurso no
 
 ---
 
-## 📋 Pré-requisitos
-
-Para executar o exemplo, é necessário criar um **Unit Test Project** e adicionar as bibliotecas necessárias para o NUnit e Selenium WebDriver.
-
-As referências utilizadas originalmente neste exemplo incluem:
-
-```text
-NUnit
-
-NUnit 3 - NUnit Project Loader Extension
-NUnit 3 - NUnit V2 Framework Driver Extension
-NUnit 3 - NUnit V2 Result Writer Extension
-NUnit 3 - Team City Event Listener Extension
-NUnit 3 - Visual Studio Project Loader Extension
-
-NUnit Console Runner Version 3 (No Extensions)
-NUnit Console Runner Version 3 With Extensions
-NUnit Console Version 3
-
-NUnit Test Adapter for VS2012, VS2013 and VS2015
-
-Selenium WebDriver
-Selenium WebDriver Support Classes
-Selenium.Support
-
-Selenium.WebDriver.ChromeDriver
-Selenium.WebDriver.IEDriver
-Selenium.WebDriver.Firefox
-```
-
-Os drivers específicos de navegador são necessários de acordo com o navegador que será utilizado:
-
-* `Selenium.WebDriver.ChromeDriver` — Google Chrome
-* `Selenium.WebDriver.IEDriver` — Internet Explorer
-* `Selenium.WebDriver.Firefox` — Mozilla Firefox
-
-> **Observação:** as referências acima correspondem ao ambiente em que o exemplo foi originalmente desenvolvido. Em versões atuais do Selenium, NUnit e Visual Studio, a instalação e configuração dos pacotes pode ser diferente.
-
----
-
-## 💡 Como funciona
+## Como funciona
 
 O Selenium disponibiliza a interface `IJavaScriptExecutor`, que permite executar comandos JavaScript diretamente no navegador controlado pelo WebDriver.
 
@@ -110,13 +70,9 @@ Nesse método:
 
 ---
 
-## ▶️ Inicializando o JavascriptExecutor
+## Utilizando o método no teste
 
 Antes de utilizar o JavascriptExecutor no teste, faça a conversão do `driver`: `js = (IJavaScriptExecutor)driver;`. Essa conversão permite que o WebDriver seja utilizado para executar comandos JavaScript.
-
----
-
-## 🧪 Utilizando o método no teste
 
 Depois que o método `destaque()` estiver implementado, basta localizar o elemento desejado e enviá-lo como parâmetro:
 
@@ -132,9 +88,9 @@ Nesse caso, o Selenium localiza o elemento pelo seu `id` e o método `destaque()
 
 ---
 
-### 🔎 Código completo
+### Veja o método funcionando
 
-> [jse_destaque_elemento.cs](./scripts/jse_destaque_elemento.cs)
+**[jse_destaque_elemento.cs](./scripts/jse_destaque_elemento.cs)**
 
 Durante a execução, o teste:
 
@@ -147,12 +103,6 @@ Durante a execução, o teste:
 7. Pressiona `Enter`;
 8. Realiza a pesquisa.
 
-> **Atenção:** o exemplo acima foi desenvolvido originalmente utilizando os elementos e IDs disponíveis no Google na época em que o código foi criado. Como a estrutura HTML de sites pode mudar, os IDs `sb_ifc0` e `lst-ib` podem não estar disponíveis atualmente. Nesse caso, substitua-os pelo identificador correspondente ao elemento existente na página.
-
----
-
-## 🎯 Resultado esperado
-
 Durante a execução, o campo de pesquisa localizado pelo Selenium recebe o seguinte estilo:
 
 ```css
@@ -162,23 +112,17 @@ border: 4px solid yellow;
 
 Visualmente, o elemento fica destacado na página, permitindo acompanhar com mais facilidade qual elemento está sendo manipulado pelo teste.
 
+> 💡 **Atenção:** o exemplo acima foi desenvolvido originalmente utilizando os elementos e IDs disponíveis no Google na época em que o código foi criado. Como a estrutura HTML de sites pode mudar, os IDs `sb_ifc0` e `lst-ib` podem não estar disponíveis atualmente. Nesse caso, substitua-os pelo identificador correspondente ao elemento existente na página.
+
 ---
 
 ## 🎯 Objetivo do repositório
 
-Este exemplo faz parte da série de exemplos de **Selenium WebDriver com C#** deste repositório.
-
-Como o estudo da ferramenta é incremental, novos exemplos podem ser adicionados conforme novos recursos forem explorados.
-
-A ideia é manter os códigos como uma **referência rápida** para funcionalidades que podem ser reutilizadas em diferentes scripts de automação.
-
----
+Este exemplo faz parte da série de exemplos de **Selenium WebDriver com C#** deste repositório. Como o estudo da ferramenta é incremental, novos exemplos podem ser adicionados conforme novos recursos forem explorados. A ideia é manter os códigos como uma **referência rápida** para funcionalidades que podem ser reutilizadas em diferentes scripts de automação.
 
 ## 🤝 Contribuições
 
 Sugestões, melhorias e novos exemplos são bem-vindos! Caso você tenha alguma dúvida, sugestão ou queira contribuir com o projeto, fique à vontade para entrar em contato.
-
----
 
 ## 📌 Observação
 

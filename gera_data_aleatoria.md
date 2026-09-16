@@ -134,7 +134,8 @@ driver.FindElement(By.Id("MainContent_txtDataNascimento"))
     .SendKeys(dataGerada.ToString("dd/MM/yyyy"));
 ```
 
-> 💡 **Por que utilizar `ToString("dd/MM/yyyy")`?** - o formato explícito evita depender da configuração regional do computador; em vez de `Convert.ToString(GerarData())`, é preferível definir explicitamente o formato esperado pelo campo `GerarData().ToString("dd/MM/yyyy")`. Isso é especialmente importante quando o sistema espera uma data no formato brasileiro.
+> 💡 Por que utilizar `ToString("dd/MM/yyyy")`? </p>
+O formato explícito evita depender da configuração regional do computador; em vez de `Convert.ToString(GerarData())`, é preferível definir explicitamente o formato esperado pelo campo `GerarData().ToString("dd/MM/yyyy")`. Isso é especialmente importante quando o sistema espera uma data no formato brasileiro.
 
 ---
 
@@ -205,11 +206,7 @@ Essa abordagem evita duplicar o mesmo código em vários testes e facilita a man
 
 ## 🎯 Objetivo do repositório
 
-Este exemplo faz parte da série de exemplos de **Selenium WebDriver com C#** deste repositório.
-
-Como o estudo da ferramenta é incremental, novos exemplos podem ser adicionados conforme novos recursos forem explorados.
-
-A ideia é manter os códigos como uma **referência rápida** para funcionalidades que podem ser reutilizadas em diferentes scripts de automação.
+Este exemplo faz parte da série de exemplos de **Selenium WebDriver com C#** deste repositório. Como o estudo da ferramenta é incremental, novos exemplos podem ser adicionados conforme novos recursos forem explorados. A ideia é manter os códigos como uma **referência rápida** para funcionalidades que podem ser reutilizadas em diferentes scripts de automação.
 
 ## 🤝 Contribuições
 
