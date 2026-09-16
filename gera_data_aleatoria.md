@@ -134,7 +134,9 @@ driver.FindElement(By.Id("MainContent_txtDataNascimento"))
     .SendKeys(dataGerada.ToString("dd/MM/yyyy"));
 ```
 
-> 💡 Por que utilizar `ToString("dd/MM/yyyy")`? </p>
+---
+
+## Por que utilizar `ToString("dd/MM/yyyy")`?
 O formato explícito evita depender da configuração regional do computador; em vez de `Convert.ToString(GerarData())`, é preferível definir explicitamente o formato esperado pelo campo `GerarData().ToString("dd/MM/yyyy")`. Isso é especialmente importante quando o sistema espera uma data no formato brasileiro.
 
 ---

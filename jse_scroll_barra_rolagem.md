@@ -12,30 +12,9 @@ Neste exemplo, a página é:
 
 ---
 
-## O que é o JavascriptExecutor?
-
-O Selenium WebDriver disponibiliza a interface `IJavaScriptExecutor`, que permite executar comandos JavaScript diretamente no navegador controlado pelo WebDriver.
-
-Primeiro, declare o objeto na classe de teste:
-
-```csharp
-[TestFixture]
-public class NomeDoProjeto
-{
-    public IWebDriver driver;
-
-    IJavaScriptExecutor js;
-}
-```
-
-Antes de utilizar o JavascriptExecutor, faça a conversão do `driver`: `js = (IJavaScriptExecutor)driver;`. A partir desse momento, o objeto `js` poderá ser utilizado para executar comandos JavaScript no navegador.
-
----
-
-
 ## Quando utilizar
 
-O JavascriptExecutor pode ser útil para:
+O scroll pode ser útil para:
 
 * Controlar a posição da página;
 * Rolar páginas longas;
@@ -62,7 +41,7 @@ Por exemplo, `window.scrollBy(0, 300)` significa:
 
 ---
 
-## ⬇️ Rolando a página para baixo
+##  Rolando a página para baixo
 
 No Selenium, podemos executar o JavaScript da seguinte forma:
 
@@ -76,7 +55,7 @@ Nesse caso, a página será deslocada **300 pixels para baixo**.
 
 ---
 
-## ⬆️ Rolando a página para cima
+## Rolando a página para cima
 
 Para retornar 300 pixels:
 

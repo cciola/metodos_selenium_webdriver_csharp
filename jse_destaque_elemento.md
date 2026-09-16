@@ -22,9 +22,7 @@ Para uma suíte de testes automatizados em execução contínua, esse recurso no
 
 ## Como funciona
 
-O Selenium disponibiliza a interface `IJavaScriptExecutor`, que permite executar comandos JavaScript diretamente no navegador controlado pelo WebDriver.
-
-Primeiro, declare o objeto `IJavaScriptExecutor` na classe de teste:
+Declare o objeto `IJavaScriptExecutor` na classe de teste:
 
 ```csharp
 [TestFixture]
@@ -67,12 +65,6 @@ Nesse método:
 * `color: yellow` altera a cor do texto;
 * `border: 4px solid yellow` adiciona uma borda amarela ao elemento;
 * `Thread.Sleep(500)` mantém o destaque visível por alguns instantes.
-
----
-
-## Utilizando o método no teste
-
-Antes de utilizar o JavascriptExecutor no teste, faça a conversão do `driver`: `js = (IJavaScriptExecutor)driver;`. Essa conversão permite que o WebDriver seja utilizado para executar comandos JavaScript.
 
 Depois que o método `destaque()` estiver implementado, basta localizar o elemento desejado e enviá-lo como parâmetro:
 

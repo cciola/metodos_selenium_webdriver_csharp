@@ -4,49 +4,7 @@ Este exemplo demonstra como utilizar o **JavascriptExecutor** do Selenium WebDri
 
 O exemplo apresenta duas possibilidades:
 
-* Exibir um popup contendo um **texto fixo**;
-* Exibir um popup contendo um **texto concatenado com o valor de uma variável**.
-
----
-
-## O que é o JavascriptExecutor?
-
-O Selenium WebDriver disponibiliza a interface `IJavaScriptExecutor`, que permite executar comandos JavaScript diretamente no navegador controlado pelo WebDriver.
-
-Primeiro, declare o objeto na classe de teste:
-
-```csharp
-[TestFixture]
-public class NomeDoProjeto
-{
-    public IWebDriver driver;
-
-    IJavaScriptExecutor js;
-}
-```
-
----
-
-## Quando utilizar
-
-O JavascriptExecutor pode ser útil para:
-
-* Executar JavaScript durante a automação;
-* Exibir informações durante a execução;
-* Auxiliar na depuração de testes;
-* Demonstrar valores gerados durante o teste;
-* Interagir com funcionalidades legadas que dependem de JavaScript;
-* Apoiar investigações de comportamento da aplicação.
-
-Para testes automatizados, entretanto, um `alert()` normalmente deve ser utilizado com uma finalidade específica, como **validação ou depuração**, e não apenas como mecanismo de espera.
-
----
-
-Antes de utilizar o JavascriptExecutor, faça a conversão do `driver`: `js = (IJavaScriptExecutor)driver;`. A partir desse momento, o objeto `js` poderá ser utilizado para executar JavaScript na página.
-
----
-
-### 💬 Exibindo um popup com texto fixo
+### 1. Exibindo um popup com texto fixo
 
 Para exibir um popup utilizando JavaScript, podemos utilizar a função `alert()`:
 
@@ -68,10 +26,9 @@ O navegador exibirá uma caixa de diálogo semelhante a:
 └──────────────────────────────────────┘
 ```
 
-Esse comando executa o JavaScript: `alert('Script de teste finalizado com sucesso!');`.
+---
 
-
-### 🔤 Exibindo um popup com uma variável
+### 2. Exibindo um popup com uma variável
 
 Também é possível utilizar uma variável C# para montar o texto que será exibido no popup, exemplo: `public string variavel = "Carol";`.
 
@@ -84,6 +41,8 @@ js.ExecuteScript(
 ```
 
 Nesse caso, o popup exibirá: `Valor da variavel: Carol`.
+
+---
 
 ### Exemplo utilizando um dado gerado pelo teste
 

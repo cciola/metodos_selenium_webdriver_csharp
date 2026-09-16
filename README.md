@@ -26,9 +26,11 @@ Essa integração direta com o navegador possibilita a criação de testes mais 
 
 ---
 
-## 🟨 JavascriptExecutor
+## 🟨 Sobre o JavascriptExecutor
 
 Além dos recursos disponibilizados pelo próprio Selenium WebDriver, também é possível executar comandos JavaScript diretamente no navegador utilizando o **JavascriptExecutor**.
+
+Ele utiliza a interface `IJavaScriptExecutor`, que permite executar comandos JavaScript diretamente no navegador controlado pelo WebDriver.
 
 O JavascriptExecutor permite, por exemplo:
 
@@ -40,6 +42,27 @@ O JavascriptExecutor permite, por exemplo:
 * Executar scripts específicos para apoiar a automação.
 
 Nos exemplos deste repositório, o JavascriptExecutor é utilizado para demonstrar algumas dessas possibilidades.
+
+### Conversão
+Antes de utilizá-lo, declare o objeto na classe de teste:
+
+```csharp
+[TestFixture]
+public class NomeDoProjeto
+{
+    public IWebDriver driver;
+
+    IJavaScriptExecutor js;
+}
+```
+
+Depois, faça a conversão do `driver`:
+
+```csharp
+`js = (IJavaScriptExecutor)driver;`
+```
+
+A partir desse momento, o objeto `js` poderá ser utilizado para executar comandos JavaScript no navegador.
 
 ---
 
@@ -153,10 +176,4 @@ Este repositório foi criado inicialmente como um espaço de **estudo e comparti
 
 Os exemplos representam funcionalidades que podem ser reutilizadas ou adaptadas em projetos de automação de testes.
 
-> O conteúdo deste repositório pode ser atualizado conforme novos exemplos e funcionalidades forem incorporados.
-
----
-
-## 👩‍💻 Sobre
-
-Repositório criado por **Carol Ciola**, como material de estudo e referência sobre automação de testes com Selenium WebDriver e C#.
+> ℹ O conteúdo deste repositório pode ser atualizado conforme novos exemplos e funcionalidades forem incorporados.
