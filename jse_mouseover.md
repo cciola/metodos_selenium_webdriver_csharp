@@ -40,26 +40,6 @@ Para aplicações modernas, recomenda-se avaliar primeiro se a interação pode 
 
 ---
 
-## Utilizando JavascriptExecutor
-
-O Selenium WebDriver disponibiliza a interface `IJavaScriptExecutor`, que permite executar comandos JavaScript diretamente no navegador.
-
-Primeiro, declare o objeto na classe de teste:
-
-```csharp
-[TestFixture]
-public class NomeDoProjeto
-{
-    public IWebDriver driver;
-
-    IJavaScriptExecutor js;
-}
-```
-
-Antes de executar o JavaScript, faça a conversão do `driver`: `js = (IJavaScriptExecutor)driver;`. Essa conversão permite utilizar o objeto `js` para executar scripts no navegador.
-
----
-
 ## Executando o mouseover
 
 O elemento que receberá o mouseover pode ser localizado normalmente utilizando os recursos do Selenium:

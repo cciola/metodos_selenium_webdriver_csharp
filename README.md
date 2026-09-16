@@ -176,4 +176,4 @@ Este repositório foi criado inicialmente como um espaço de **estudo e comparti
 
 Os exemplos representam funcionalidades que podem ser reutilizadas ou adaptadas em projetos de automação de testes.
 
-> ℹ O conteúdo deste repositório pode ser atualizado conforme novos exemplos e funcionalidades forem incorporados.
+O conteúdo deste repositório pode ser atualizado conforme novos exemplos e funcionalidades forem incorporados.

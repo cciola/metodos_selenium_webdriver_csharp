@@ -73,25 +73,11 @@ Como o valor vertical é negativo, a página será deslocada **300 pixels para c
 
 **[jse_scroll_barra_rolagem.cs](./scripts/jse_scroll_barra_rolagem.cs)**
 
-Durante a execução, o navegador acessará a página configurada em `baseURL`. Em seguida:
+Durante a execução, o teste:
 
-```text
-Página inicial
-     │
-     ▼
-  Scroll ↓
-  300 pixels
-     │
-     ▼
-Página deslocada
-     │
-     ▲
-  Scroll ↑
-  300 pixels
-     │
-     ▼
-Retorno à posição anterior
-```
+1. Acessa a página configurada em `baseURL`;
+2. Executa o evento `window.scrollBy()` para baixo (página deslocada);
+3. Executa o evento `window.scrollBy()` para cima (retorna à posição anterior).
 
 Assim, será possível visualizar a página sendo movimentada para baixo e, posteriormente, retornando para cima.
 
@@ -99,7 +85,7 @@ Assim, será possível visualizar a página sendo movimentada para baixo e, post
 
 ## Outras formas de utilizar o scroll
 
-### Rolar até o final da página
+Rolar até o final da página:
 
 ```csharp
 js.ExecuteScript(
@@ -107,7 +93,7 @@ js.ExecuteScript(
 );
 ```
 
-### Rolar até o início da página
+Rolar até o início da página:
 
 ```csharp
 js.ExecuteScript(
@@ -115,9 +101,7 @@ js.ExecuteScript(
 );
 ```
 
-### Rolar até um elemento específico
-
-Uma alternativa bastante útil em automação é fazer o scroll até determinado elemento:
+Rolar até um elemento específico:
 
 ```csharp
 IWebElement elemento = driver.FindElement(
@@ -129,8 +113,6 @@ js.ExecuteScript(
     elemento
 );
 ```
-
-Nesse caso, o JavaScript recebe o elemento encontrado pelo Selenium e utiliza `scrollIntoView()` para posicioná-lo na área visível do navegador.
 
 ---
 
