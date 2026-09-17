@@ -37,10 +37,12 @@ A implementação é dividida em duas classes:
 O método `VerificaArquivoBaixado` recebe o nome do arquivo que deverá ser gerado e retorna um valor booleano indicando se o download foi realizado com sucesso.
 
 
-* **Retorno do método** - o método é público e retorna um `bool`, portanto seu resultado será:
+### Retorno do método
 
-* `true` — quando o arquivo esperado for encontrado.
-* `false` — quando o arquivo não for encontrado.
+O método é público e retorna um `bool`, portanto seu resultado será:
+
+- `true` quando o arquivo esperado for encontrado
+- `false` quando o arquivo não for encontrado
 
 O parâmetro `nomeArquivo` recebe o nome do arquivo que deverá ser gerado, **sem a extensão**.
 
@@ -52,7 +54,9 @@ public bool VerificaArquivoBaixado(string nomeArquivo)
     bool existe = false;
 ```
 
-* **Localização da pasta Downloads** - o trecho abaixo obtém o caminho do perfil do usuário da máquina e, a partir dele, monta o caminho da pasta `Downloads`.
+### Localização da pasta Downloads
+
+O trecho abaixo obtém o caminho do perfil do usuário da máquina e, a partir dele, monta o caminho da pasta `Downloads`.
 
 A variável `pathDownload` passa a representar o caminho utilizado para localizar os arquivos baixados durante a execução do teste.
 
