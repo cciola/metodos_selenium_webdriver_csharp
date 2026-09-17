@@ -30,7 +30,7 @@ A implementação é dividida em duas classes:
 
 ---
 
-## exportacao.cs
+## 📜 exportacao.cs
 
 **[exportacao.cs](./scripts/exportacao.cs)**
 
@@ -68,7 +68,9 @@ string pathUser = Environment.GetFolderPath(
 string pathDownload = Path.Combine(pathUser, @"Downloads\");
 ```
 
-* **Remoção de arquivo existente** - antes de realizar o download, o arquivo que possui o mesmo nome esperado é **removido**. Essa etapa é importante para evitar que o teste encontre um arquivo de uma execução anterior e interprete incorretamente que o download atual foi realizado com sucesso.
+### Remoção de arquivo existente
+
+Antes de realizar o download, o arquivo que possui o mesmo nome esperado é **removido**. Essa etapa é importante para evitar que o teste encontre um arquivo de uma execução anterior e interprete incorretamente que o download atual foi realizado com sucesso.
 
 **Observação:** não é necessário limpar todo o conteúdo da pasta `Downloads`. Apenas o arquivo que será utilizado pelo teste é removido.
 
@@ -76,7 +78,9 @@ string pathDownload = Path.Combine(pathUser, @"Downloads\");
 File.Delete(pathDownload + nomeArquivo + ".pdf");
 ```
 
-* **Execução do download** - em seguida, o Selenium localiza o botão responsável pelo download e realiza o clique; nesse ponto, o sistema deve iniciar a geração e o download do arquivo.
+### Execução do download
+
+Em seguida, o Selenium localiza o botão responsável pelo download e realiza o clique; nesse ponto, o sistema deve iniciar a geração e o download do arquivo.
 
 ```csharp
 IWebElement btnDownload = driver.FindElement(By.Id("idBotao"));
@@ -87,7 +91,7 @@ btnDownload.Click();
 
 A variável `filePaths` recebe os caminhos dos arquivos encontrados no diretório.
 
-Em seguida, o `foreach` percorre esses arquivos:
+Depois, o `foreach` percorre esses arquivos:
 
 ```csharp
 string[] filePaths = Directory.GetFiles(pathDownload);
@@ -109,7 +113,9 @@ foreach (string p in filePaths)
 
 Para cada arquivo encontrado, o `if` verifica se o caminho contém o nome esperado juntamente com a extensão `.pdf`.
 
-* **Arquivo encontrado** - quando o arquivo é encontrado:
+### Arquivo encontrado
+
+Quando o arquivo é encontrado:
 
 1. A variável `existe` recebe `true`.
 2. O arquivo gerado pelo teste é excluído.
@@ -118,7 +124,9 @@ Para cada arquivo encontrado, o `if` verifica se o caminho contém o nome espera
 
 A exclusão do arquivo evita que ele permaneça na pasta `Downloads` e interfira em execuções futuras.
 
-* **Arquivo não encontrado** - caso nenhum arquivo correspondente seja encontrado, a variável `existe` permanece `false`. Nesse caso, o trecho abaixo identifica a falha:
+### Arquivo não encontrado
+
+Caso nenhum arquivo correspondente seja encontrado, a variável `existe` permanece `false`. Nesse caso, o trecho abaixo identifica a falha:
 
 ```csharp
 if (existe == false)
@@ -135,7 +143,7 @@ return existe;
 
 ---
 
-## principal.cs
+## 📜 principal.cs
 
 Na classe principal, basta informar o nome esperado do arquivo e chamar o método:
 
@@ -193,20 +201,11 @@ Início
 
 ## 🎯 Objetivo do repositório
 
-Este exemplo faz parte da série de exemplos de **Selenium WebDriver com C#** deste repositório.
-
-Como o estudo da ferramenta é incremental, novos exemplos podem ser adicionados conforme novos recursos forem explorados.
-
-A ideia é manter os códigos como uma **referência rápida** para funcionalidades que podem ser reutilizadas em diferentes scripts de automação.
-
----
-
+Este exemplo faz parte da série de exemplos de **Selenium WebDriver com C#** deste repositório. Como o estudo da ferramenta é incremental, novos exemplos podem ser adicionados conforme novos recursos forem explorados. A ideia é manter os códigos como uma **referência rápida** para funcionalidades que podem ser reutilizadas em diferentes scripts de automação.
 
 ## 🤝 Contribuições
 
 Sugestões, melhorias e novos exemplos são bem-vindos! Caso você tenha alguma dúvida, sugestão ou queira contribuir com o projeto, fique à vontade para entrar em contato.
-
----
 
 ## 📌 Observação
 
