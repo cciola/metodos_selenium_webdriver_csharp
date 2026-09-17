@@ -87,7 +87,9 @@ IWebElement btnDownload = driver.FindElement(By.Id("idBotao"));
 btnDownload.Click();
 ```
 
-* **Verificação do arquivo** - após o clique, o método obtém os arquivos existentes na pasta `Downloads`.
+## Verificação do arquivo
+
+Após o clique, o método obtém os arquivos existentes na pasta `Downloads`.
 
 A variável `filePaths` recebe os caminhos dos arquivos encontrados no diretório.
 
@@ -173,15 +175,10 @@ De forma resumida, o processo executado pelo método é:
 Início
   │
   ├── Obtém a pasta Downloads
-  │
   ├── Remove arquivo anterior com o mesmo nome
-  │
   ├── Clica no botão de Download
-  │
   ├── Lista os arquivos da pasta Downloads
-  │
   ├── Procura pelo arquivo esperado
-  │
   ├── Arquivo encontrado?
   │       │
   │       ├── Sim → define existe = true
