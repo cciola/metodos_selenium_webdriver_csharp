@@ -12,24 +12,13 @@ Esse tipo de recurso é útil para gerar **dados de teste dinamicamente**, evita
 
 Um gerador de datas é especialmente útil quando o teste precisa trabalhar com **dados variáveis**.
 
-Dependendo da regra do sistema, o intervalo pode ser adaptado.
-
-Por exemplo, para gerar apenas datas recentes: `int ano = rnd.Next(2020, 2027);`.
-
-
-Ou, para gerar datas anteriores a uma determinada data, pode-se trabalhar diretamente com objetos `DateTime` e intervalos de datas.
-
-O importante é que o gerador seja ajustado à **regra de negócio que o teste pretende validar**.
-
 ---
 
 ## Criando o gerador de data
 
 **[GerarData.cs](./scripts/GerarData.cs)**
 
-O método utiliza a classe `Random` para definir aleatoriamente **ano**, **mês** e **dia**.
-
-O método retorna um objeto `DateTime`: `15/07/1998`.
+O método utiliza a classe `Random` para definir aleatoriamente (**ano**, **mês** e **dia**), e retorna um objeto `DateTime`: `15/07/1998`.
 
 ---
 
@@ -64,9 +53,7 @@ int ultimoDia =
     DateTime.DaysInMonth(ano, mes);
 ```
 
-Esse método retorna a quantidade correta de dias para o mês informado.
-
-Por exemplo:
+Esse método retorna a quantidade correta de dias para o mês informado, exemplo:
 
 ```text
 Fevereiro → 28 ou 29
@@ -74,7 +61,7 @@ Abril     → 30
 Maio      → 31
 ```
 
-Isso também considera automaticamente anos bissextos.
+Isso também considera automaticamente **anos bissextos**.
 
 ---
 
@@ -157,52 +144,6 @@ driver.FindElement(
 ```
 
 Nesse caso, o teste gera a data e imediatamente a utiliza no formulário.
-
----
-
-## Por que gerar datas aleatórias?
-
-A geração dinâmica de datas pode ser útil para testes que precisam:
-
-* preencher campos de data;
-* testar cadastros;
-* gerar datas de nascimento;
-* testar diferentes valores;
-* evitar dados fixos;
-* criar massas de teste dinamicamente;
-* validar regras relacionadas a datas.
-
-Por exemplo, em um cadastro:
-
-```text
-Nome:             João da Silva
-CPF:              12345678909
-Data nascimento:  15/07/1998
-```
-
-A data pode ser gerada automaticamente pelo teste em vez de permanecer fixa.
-
----
-
-## Evolução do exemplo
-
-Em um projeto maior, o método `GerarData()` pode ser movido para uma **classe externa de utilidades**, assim como o gerador de CPF.
-
-```text
-Utils
-├── GeraCPF.cs
-└── GeraData.cs
-```
-
-A classe de teste passa então a consumir o método:
-
-```csharp
-GeraData gerador = new GeraData();
-
-DateTime data = gerador.GerarData();
-```
-
-Essa abordagem evita duplicar o mesmo código em vários testes e facilita a manutenção dos geradores de dados.
 
 ---
 

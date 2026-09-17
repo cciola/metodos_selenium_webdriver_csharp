@@ -4,12 +4,6 @@ Este exemplo demonstra como utilizar o **JavascriptExecutor** do Selenium WebDri
 
 A técnica permite movimentar a página vertical ou horizontalmente durante a execução de um teste automatizado.
 
-Neste exemplo, a página é:
-
-1. Acessada pelo Selenium WebDriver;
-2. Rolada para baixo;
-3. Rolada novamente para cima.
-
 ---
 
 ## Quando utilizar
@@ -23,21 +17,18 @@ O scroll pode ser útil para:
 * Auxiliar na automação de páginas com comportamentos específicos de JavaScript;
 * Investigar problemas relacionados à posição dos elementos durante a execução dos testes.
 
-Sempre que possível, porém, é interessante avaliar se o próprio Selenium já oferece uma forma adequada de realizar a interação necessária.
+> 💡 Sempre que possível, porém, é interessante avaliar se o próprio Selenium já oferece uma forma adequada de realizar a interação necessária.
 
 ---
 
-## Utilizando window.scrollBy()
+## Utilizando `window.scrollBy()`
 
 Para movimentar a página, podemos utilizar o método JavaScript `window.scrollBy(x, y)`. Os parâmetros representam o deslocamento em pixels:
 
-* `x` — deslocamento horizontal;
-* `y` — deslocamento vertical.
+* `x` - deslocamento horizontal;
+* `y` - deslocamento vertical.
 
-Por exemplo, `window.scrollBy(0, 300)` significa:
-
-* Não movimentar horizontalmente (`0`);
-* Descer **300 pixels** verticalmente (`300`).
+Por exemplo, `window.scrollBy(0, 300)` significa: **não** movimentar horizontalmente (`0`), e descer **300 pixels** verticalmente (`300`).
 
 ### Rolando a página para baixo
 

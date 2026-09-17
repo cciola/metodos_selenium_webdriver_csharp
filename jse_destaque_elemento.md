@@ -8,7 +8,7 @@ O destaque pode ser útil principalmente durante a execução dos testes em modo
 
 ## Quando utilizar
 
-O destaque de elementos pode ser útil para:
+O destaque de elementos é aplicado para:
 
 * Depuração de testes automatizados;
 * Demonstrações de automação;
@@ -16,7 +16,7 @@ O destaque de elementos pode ser útil para:
 * Identificação visual dos elementos durante a execução;
 * Investigação de problemas em scripts Selenium.
 
-Para uma suíte de testes automatizados em execução contínua, esse recurso normalmente não é necessário, pois seu principal objetivo é auxiliar na **visualização e depuração** da automação.
+> 💡 Para uma suíte de testes automatizados em execução contínua, esse recurso normalmente não é necessário, pois seu principal objetivo é auxiliar na **visualização e depuração** da automação.
 
 ---
 
@@ -95,7 +95,7 @@ Durante a execução, o teste:
 7. Pressiona `Enter`;
 8. Realiza a pesquisa.
 
-Durante a execução, o campo de pesquisa localizado pelo Selenium recebe o seguinte estilo:
+O campo de pesquisa localizado pelo Selenium recebe o seguinte estilo:
 
 ```css
 color: yellow;

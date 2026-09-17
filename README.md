@@ -32,18 +32,8 @@ Além dos recursos disponibilizados pelo próprio Selenium WebDriver, também é
 
 Ele utiliza a interface `IJavaScriptExecutor`, que permite executar comandos JavaScript diretamente no navegador controlado pelo WebDriver.
 
-O JavascriptExecutor permite, por exemplo:
-
-* Executar comandos JavaScript;
-* Realizar scroll na página;
-* Simular eventos como `mouseover`;
-* Exibir mensagens ou popups;
-* Destacar elementos durante a execução dos testes;
-* Executar scripts específicos para apoiar a automação.
-
 Nos exemplos deste repositório, o JavascriptExecutor é utilizado para demonstrar algumas dessas possibilidades.
 
-### Conversão
 Antes de utilizá-lo, declare o objeto na classe de teste:
 
 ```csharp
@@ -110,21 +100,13 @@ Até o momento, o repositório contém os seguintes exemplos:
 
 Exemplo de implementação de captura de screenshot durante a execução da automação.
 
-O exemplo demonstra como:
-
-* Capturar a tela;
-* Salvar a imagem em um diretório definido;
-* Utilizar um nome personalizado;
-* Gerar numeração automática;
-* Evitar que novas imagens sobrescrevam screenshots anteriores.
-
 ---
 
 ### Geração de CPF aleatório
 
 **[gera_cpf_aleatorio](gera_cpf_aleatorio.md)**
 
-Exemplo de implementação para geração randômica de **CPF válido**, útil para cenários de teste que necessitam de dados dinâmicos.
+Exemplo de implementação para geração randômica de CPF válido, útil para cenários de teste que necessitam de dados dinâmicos.
 
 ---
 
@@ -133,6 +115,14 @@ Exemplo de implementação para geração randômica de **CPF válido**, útil p
 **[gera_data_aleatoria](gera_data_aleatoria.md)**
 
 Exemplo de implementação para geração randômica de **datas válidas**, permitindo criar dados variados durante a execução dos testes.
+
+---
+
+### Verificador de exportação de arquivo
+
+**[verifica_arq_exportado](verifica_arq_exportado.md)**
+
+Exemplo de implementação para verificar se um determinado arquivo foi gerado após uma operação no sistema, como por exemplo downloads e geração de documentos no computador.
 
 ---
 

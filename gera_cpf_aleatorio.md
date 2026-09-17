@@ -147,25 +147,6 @@ driver.FindElement(By.Id("campoCpf"))
 
 ---
 
-## Por que gerar dados aleatórios?
-
-Geradores de dados são úteis em automação porque permitem criar dados diferentes durante as execuções.
-
-Alguns exemplos:
-
-* CPF;
-* datas;
-* nomes;
-* e-mails;
-* telefones;
-* endereços;
-* números de documentos;
-* outros dados necessários para os cenários de teste.
-
-Isso reduz a dependência de dados fixos e pode facilitar a execução de cenários que exigem valores únicos.
-
----
-
 ## Observações
 
 - **CPF válido não significa CPF existente.** O algoritmo verifica apenas a **estrutura matemática dos dígitos verificadores do CPF**. Portanto, um CPF gerado pelo método pode ser matematicamente válido, mas não necessariamente corresponde a uma pessoa ou cadastro real. Para testes de sistemas que consultam bases externas ou validam existência do CPF, devem ser utilizados dados apropriados ao ambiente de teste.

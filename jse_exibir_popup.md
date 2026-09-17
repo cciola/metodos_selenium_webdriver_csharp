@@ -1,8 +1,15 @@
 # Exibir popup com JavascriptExecutor
 
-Este exemplo demonstra como utilizar o **JavascriptExecutor** do Selenium WebDriver para executar JavaScript no navegador e exibir um **popup (`alert`)** durante a execução de um teste automatizado. O exemplo apresenta duas possibilidades:
+Este exemplo demonstra como utilizar o **JavascriptExecutor** do Selenium WebDriver para executar JavaScript no navegador e exibir um **popup (`alert`)** durante a execução de um teste automatizado.
 
-### 1. Exibindo um popup com texto fixo
+O exemplo apresenta duas possibilidades:
+
+* Exibindo um popup com texto fixo
+* Exibindo um popup com uma variável
+
+---
+
+## 1. Exibindo um popup com texto fixo
 
 Para exibir um popup utilizando JavaScript, podemos utilizar a função `alert()`:
 
@@ -36,7 +43,7 @@ O navegador exibirá uma caixa de diálogo semelhante a:
 
 ---
 
-### 2. Exibindo um popup com uma variável
+## 2. Exibindo um popup com uma variável
 
 Também é possível utilizar uma variável C# para montar o texto que será exibido no popup, exemplo: `public string variavel = "Carol";`.
 
@@ -79,9 +86,7 @@ Nesse caso, o resultado da função `GerarCpf()` será concatenado à mensagem e
 
 ## Interagindo com o popup
 
-O `alert()` utilizado neste exemplo é um **JavaScript Alert** do navegador.
-
-Quando um alert está aberto, o navegador fica aguardando uma ação do usuário. Em uma automação real, normalmente será necessário tratá-lo utilizando os recursos de `IAlert` do Selenium.
+O `alert()` utilizado neste exemplo é um **JavaScript Alert** do navegador. Quando um alert está aberto, o navegador fica aguardando uma ação do usuário. Em uma automação real, normalmente será necessário tratá-lo utilizando os recursos de `IAlert` do Selenium.
 
 Por exemplo, para aceitar o popup:
 

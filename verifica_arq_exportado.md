@@ -17,7 +17,7 @@ Este método pode ser utilizado em testes automatizados que precisem validar fun
 - Impressão ou geração de arquivos a partir da aplicação.
 - Funcionalidades em que o resultado esperado seja a criação de um arquivo no computador.
 
-A abordagem é especialmente útil quando o teste precisa confirmar não apenas que o botão foi clicado, mas que o arquivo esperado foi efetivamente gerado e disponibilizado na pasta de downloads.
+> 💡 A abordagem é especialmente útil quando o teste precisa confirmar não apenas que o botão foi clicado, mas que o arquivo esperado foi efetivamente gerado e disponibilizado na pasta de downloads.
 
 ---
 
