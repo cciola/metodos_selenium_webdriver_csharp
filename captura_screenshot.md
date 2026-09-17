@@ -1,40 +1,10 @@
 # Captura de screenshot
 
-Este exemplo demonstra como utilizar o **Selenium WebDriver** para capturar screenshots durante a execução de testes automatizados.
+Este exemplo demonstra como utilizar o **Selenium WebDriver** para capturar screenshots durante a execução de testes automatizados. Esse recurso pode ser especialmente útil para **evidências de testes**, **depuração** e investigação de falhas durante a execução da automação. Em uma suíte de testes automatizados, uma estratégia bastante comum é capturar screenshots **automaticamente quando um teste falha**, evitando gerar evidências desnecessárias para todos os passos de todos os cenários.
 
-A implementação permite:
+## Explicação detalhada
 
-* Capturar a tela atual do navegador;
-* Definir a pasta onde os screenshots serão armazenados;
-* Definir um nome para os arquivos;
-* Numerar automaticamente os screenshots;
-* Evitar que capturas sucessivas utilizem o mesmo nome de arquivo.
-
-Esse recurso pode ser especialmente útil para **evidências de testes**, **depuração** e investigação de falhas durante a execução da automação.
-
----
-
-## Quando utilizar screenshots
-
-A captura de screenshots pode ser útil para:
-
-* Evidências de execução;
-* Investigação de falhas;
-* Depuração de testes;
-* Documentação de cenários;
-* Demonstrações de automação;
-* Análise visual do estado da aplicação;
-* Registro do resultado de etapas específicas do teste.
-
-Em uma suíte de testes automatizados, uma estratégia bastante comum é capturar screenshots **automaticamente quando um teste falha**, evitando gerar evidências desnecessárias para todos os passos de todos os cenários.
-
----
-
-## Como funciona a captura de screenshot
-
-O Selenium disponibiliza a interface `ITakesScreenshot`, que permite solicitar ao navegador uma captura da tela atual.
-
-Primeiro, declare as variáveis necessárias na classe de teste:
+O Selenium disponibiliza a interface `ITakesScreenshot`, que permite solicitar ao navegador uma captura da tela atual. Primeiro, declare as variáveis necessárias na classe de teste:
 
 ```csharp
 [TestFixture]
@@ -54,9 +24,7 @@ public class NomeDoProjeto
 }
 ```
 
----
-
-## Criando o método de captura
+Criando o método de captura:
 
 ```csharp
 public void Screenshot(
@@ -74,15 +42,7 @@ public void Screenshot(
 }
 ```
 
-Em `ITakesScreenshot`, o `driver` é convertido para `ITakesScreenshot`, permitindo utilizar os recursos de captura de tela disponibilizados pelo Selenium.
-
-A instrução `Screenshot foto = camera.GetScreenshot();` solicita ao WebDriver uma captura da tela atual e armazena o resultado na variável `foto`.
-
-O método `SaveAsFile` salva a captura no caminho informado. O segundo parâmetro `ScreenshotImageFormat.Png` define o formato da imagem. Neste exemplo, os arquivos serão salvos no formato `.png`.
-
----
-
-## Definindo a pasta de evidências
+Em `ITakesScreenshot`, o `driver` é convertido para `ITakesScreenshot`, permitindo utilizar os recursos de captura de tela disponibilizados pelo Selenium. A instrução `Screenshot foto = camera.GetScreenshot();` solicita ao WebDriver uma captura da tela atual e armazena o resultado na variável `foto`. O método `SaveAsFile` salva a captura no caminho informado. O segundo parâmetro `ScreenshotImageFormat.Png` define o formato da imagem. Neste exemplo, os arquivos serão salvos no formato `.png`.
 
 O diretório onde os screenshots serão armazenados pode ser configurado no método `[SetUp]`:
 
@@ -105,10 +65,6 @@ public void SetupTest()
 ```
 
 > **💡 Importante:** a pasta informada deve existir **antes** da execução do teste. Em uma implementação mais robusta, o código pode verificar a existência do diretório e criá-lo automaticamente quando necessário.
-
----
-
-## Gerando nomes numerados
 
 Para gerar automaticamente o nome dos arquivos, podemos criar um método específico:
 
@@ -135,10 +91,6 @@ Imagem_4.png
 
 O operador `++` incrementa o valor do contador após sua utilização. Assim, cada nova chamada do método `capturaImagem()` gera um nome diferente.
 
----
-
-## Utilizando a captura durante o teste
-
 Depois que os métodos forem implementados, basta chamar `capturaImagem();` no ponto em que deseja obter a evidência, por exemplo:
 
 ```csharp
@@ -147,7 +99,6 @@ driver.Navigate().GoToUrl(
 );
 
 Thread.Sleep(1000);
-
 capturaImagem();
 ```
 
@@ -157,7 +108,7 @@ Nesse caso, o screenshot será capturado após o carregamento da página.
 
 ## Veja o método funcionando
 
-**[captura_screenshot.cs](./scripts/captura_screenshot.cs)**
+📜 **[captura_screenshot.cs](./scripts/captura_screenshot.cs)**
 
 Durante a execução, o teste:
 
@@ -180,10 +131,6 @@ C:\Selenium\Evidencias\
 ```
 
 Cada chamada ao método `capturaImagem()` gera uma nova imagem numerada.
-
----
-
-## Capturando evidências em diferentes etapas
 
 Uma das vantagens dessa abordagem é poder realizar screenshots em diferentes momentos do teste. Por exemplo:
 
@@ -212,50 +159,3 @@ Imagem_2.png → Após preenchimento
 Imagem_3.png → Após interação
 Imagem_4.png → Resultado final
 ```
-
-Esse recurso pode ser bastante útil para documentar a execução de cenários automatizados.
-
----
-
-## Melhorias possíveis
-
-A implementação pode ser evoluída para:
-
-* Criar automaticamente a pasta de evidências;
-* Utilizar data e hora no nome do arquivo;
-* Associar o screenshot ao nome do cenário;
-* Capturar automaticamente screenshots quando um teste falhar;
-* Criar subpastas por execução;
-* Armazenar evidências em uma estrutura organizada por suíte ou cenário.
-
-Por exemplo, uma estrutura de evidências poderia ser:
-
-```text
-Evidencias/
-│
-├── Login/
-│   ├── Login_01.png
-│   └── Login_02.png
-│
-├── Cadastro/
-│   ├── Cadastro_01.png
-│   └── Cadastro_02.png
-│
-└── Pesquisa/
-    ├── Pesquisa_01.png
-    └── Pesquisa_02.png
-```
-
----
-
-## 🎯 Objetivo do repositório
-
-Este exemplo faz parte da série de exemplos de **Selenium WebDriver com C#** deste repositório. Como o estudo da ferramenta é incremental, novos exemplos podem ser adicionados conforme novos recursos forem explorados. A ideia é manter os códigos como uma **referência rápida** para funcionalidades que podem ser reutilizadas em diferentes scripts de automação.
-
-## 🤝 Contribuições
-
-Sugestões, melhorias e novos exemplos são bem-vindos! Caso você tenha alguma dúvida, sugestão ou queira contribuir com o projeto, fique à vontade para entrar em contato.
-
-## 📌 Observação
-
-Este repositório foi criado inicialmente como material de estudo e referência pessoal durante o aprendizado do Selenium WebDriver com C#. Os exemplos aqui apresentados representam funcionalidades que foram exploradas e utilizadas em automações, podendo ser adaptados conforme a necessidade de cada projeto.
