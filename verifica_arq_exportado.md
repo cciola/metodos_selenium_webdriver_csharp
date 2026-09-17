@@ -87,7 +87,7 @@ IWebElement btnDownload = driver.FindElement(By.Id("idBotao"));
 btnDownload.Click();
 ```
 
-## Verificação do arquivo
+### Verificação do arquivo
 
 Após o clique, o método obtém os arquivos existentes na pasta `Downloads`.
 
