@@ -2,13 +2,9 @@
 
 Este repositório reúne exemplos de funcionalidades comumente utilizadas em **Selenium WebDriver**, desenvolvidos na linguagem **C#**. Os exemplos têm como objetivo servir como material de consulta e estudo para quem está iniciando na utilização do Selenium WebDriver para automação de testes.
 
----
-
 ## 📚 Sobre o Selenium WebDriver
 
 O **Selenium WebDriver** é uma ferramenta utilizada para automação de navegadores, permitindo controlar o browser diretamente por meio de recursos e APIs disponibilizados pelo próprio navegador. O WebDriver possui implementações específicas para diferentes navegadores, permitindo que os testes sejam executados em ambientes como **Chrome, Firefox, Internet Explorer e Opera**. Essa integração direta com o navegador possibilita a criação de testes mais completos e reduz algumas das limitações existentes quando a automação é realizada exclusivamente por JavaScript dentro da aplicação.
-
----
 
 ## 🟨 Sobre o JavascriptExecutor
 
