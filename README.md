@@ -48,15 +48,14 @@ Selenium.Support
 
 ## 🧪 Exemplos disponíveis
 
-* Captura de screenshots - **[captura_screenshot](captura_screenshot.md)**
-* Geração de CPF aleatório - **[gera_cpf_aleatorio](gera_cpf_aleatorio.md)**
-* Geração de data aleatória - **[gera_data_aleatoria](gera_data_aleatoria.md)**
-* Verificador de exportação de arquivo - **[verifica_arq_exportado](verifica_arq_exportado.md)**
-* JavascriptExecutor
-  * Mouseover - **[jse_mouseover](jse_mouseover.md)**
-  * Scroll/barra de rolagem - **[jse_scroll_barra_rolagem](jse_scroll_barra_rolagem.md)**
-  * Exibição de pop-up - **[jse_exibir_popup](jse_exibir_popup.md)**
-  * Destaque de elemento - **[jse_destaque_elemento](jse_destaque_elemento.md)**
+* **[Captura de screenshots](captura_screenshot.md)**
+* **[Geração de CPF aleatório](gera_cpf_aleatorio.md)**
+* **[Geração de data aleatória](gera_data_aleatoria.md)**
+* **[Verificador de exportação de arquivo](verifica_arq_exportado.md)**
+* **[JavascriptExecutor - mouseover](jse_mouseover.md)**
+* **[JavascriptExecutor - scroll/barra de rolagem](jse_scroll_barra_rolagem.md)**
+* **[JavascriptExecutor - exibição de pop-up](jse_exibir_popup.md)**
+* **[JavascriptExecutor - destaque de elemento](jse_destaque_elemento.md)**
 
 ## 🎯 Observações
 Este repositório foi criado inicialmente como um espaço de estudo e compartilhamento de exemplos práticos durante o aprendizado do Selenium WebDriver com C#. Os exemplos aqui apresentados representam funcionalidades que foram exploradas e utilizadas em automações, podendo ser reutilizados e adaptados conforme a necessidade de cada projeto.
