@@ -1,27 +1,12 @@
 # Executar scroll da barra de rolagem com JavascriptExecutor
 
-Este exemplo demonstra como utilizar o **JavascriptExecutor** do Selenium WebDriver para controlar a barra de rolagem de uma página por meio de JavaScript.
+Este exemplo demonstra como utilizar o **JavascriptExecutor** do Selenium WebDriver para controlar a barra de rolagem de uma página por meio de JavaScript. A técnica permite movimentar a página vertical ou horizontalmente durante a execução de um teste automatizado.
 
-A técnica permite movimentar a página vertical ou horizontalmente durante a execução de um teste automatizado.
-
----
-
-## Quando utilizar
-
-O scroll pode ser útil para:
-
-* Controlar a posição da página;
-* Rolar páginas longas;
-* Acessar elementos que estão fora da área visível;
-* Rolar até um elemento específico;
-* Auxiliar na automação de páginas com comportamentos específicos de JavaScript;
-* Investigar problemas relacionados à posição dos elementos durante a execução dos testes.
-
-> 💡 Sempre que possível, porém, é interessante avaliar se o próprio Selenium já oferece uma forma adequada de realizar a interação necessária.
+> 💡 É interessante avaliar se o próprio Selenium já oferece uma forma adequada de realizar a interação necessária.
 
 ---
 
-## Utilizando `window.scrollBy()`
+## Explicação detalhada
 
 Para movimentar a página, podemos utilizar o método JavaScript `window.scrollBy(x, y)`. Os parâmetros representam o deslocamento em pixels:
 
@@ -29,8 +14,6 @@ Para movimentar a página, podemos utilizar o método JavaScript `window.scrollB
 * `y` - deslocamento vertical.
 
 Por exemplo, `window.scrollBy(0, 300)` significa: **não** movimentar horizontalmente (`0`), e descer **300 pixels** verticalmente (`300`).
-
-### Rolando a página para baixo
 
 No Selenium, podemos executar o JavaScript para deslocar a página **300 pixels para baixo**:
 
@@ -40,8 +23,6 @@ js.ExecuteScript(
 );
 ```
 
-### Rolando a página para cima
-
 Para retornar 300 pixels, como o valor vertical é **negativo**, a página será deslocada **300 pixels para cima**:
 
 ```csharp
@@ -50,11 +31,9 @@ js.ExecuteScript(
 );
 ```
 
----
-
 ## Veja o método funcionando
 
-**[jse_scroll_barra_rolagem.cs](./scripts/jse_scroll_barra_rolagem.cs)**
+📜 **[jse_scroll_barra_rolagem.cs](./scripts/jse_scroll_barra_rolagem.cs)**
 
 Durante a execução, o teste:
 
@@ -64,11 +43,9 @@ Durante a execução, o teste:
 
 Assim, será possível visualizar a página sendo movimentada para baixo e, posteriormente, retornando para cima.
 
----
-
 ## Outras formas de utilizar o scroll
 
-### Rolar até o final da página:
+Rolar até o final da página:
 
 ```csharp
 js.ExecuteScript(
@@ -76,7 +53,7 @@ js.ExecuteScript(
 );
 ```
 
-### Rolar até o início da página:
+Rolar até o início da página:
 
 ```csharp
 js.ExecuteScript(
@@ -84,7 +61,7 @@ js.ExecuteScript(
 );
 ```
 
-### Rolar até um elemento específico:
+Rolar até um elemento específico:
 
 ```csharp
 IWebElement elemento = driver.FindElement(
@@ -96,17 +73,3 @@ js.ExecuteScript(
     elemento
 );
 ```
-
----
-
-## 🎯 Objetivo do repositório
-
-Este exemplo faz parte da série de exemplos de **Selenium WebDriver com C#** deste repositório. Como o estudo da ferramenta é incremental, novos exemplos podem ser adicionados conforme novos recursos forem explorados. A ideia é manter os códigos como uma **referência rápida** para funcionalidades que podem ser reutilizadas em diferentes scripts de automação.
-
-## 🤝 Contribuições
-
-Sugestões, melhorias e novos exemplos são bem-vindos! Caso você tenha alguma dúvida, sugestão ou queira contribuir com o projeto, fique à vontade para entrar em contato.
-
-## 📌 Observação
-
-Este repositório foi criado inicialmente como material de estudo e referência pessoal durante o aprendizado do Selenium WebDriver com C#. Os exemplos aqui apresentados representam funcionalidades que foram exploradas e utilizadas em automações, podendo ser adaptados conforme a necessidade de cada projeto.

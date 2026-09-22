@@ -1,26 +1,8 @@
 # Exibir destaque de elemento com JavascriptExecutor
 
-Este exemplo demonstra como utilizar o **JavascriptExecutor** do Selenium WebDriver para destacar visualmente um elemento da página durante a execução de um teste automatizado.
+Este exemplo demonstra como utilizar o **JavascriptExecutor** do Selenium WebDriver para destacar visualmente um elemento da página durante a execução de um teste automatizado. O destaque pode ser útil principalmente durante a execução dos testes em modo visual, facilitando a identificação do elemento que está sendo manipulado pela automação.
 
-O destaque pode ser útil principalmente durante a execução dos testes em modo visual, facilitando a identificação do elemento que está sendo manipulado pela automação.
-
----
-
-## Quando utilizar
-
-O destaque de elementos é aplicado para:
-
-* Depuração de testes automatizados;
-* Demonstrações de automação;
-* Apresentações;
-* Identificação visual dos elementos durante a execução;
-* Investigação de problemas em scripts Selenium.
-
-> 💡 Para uma suíte de testes automatizados em execução contínua, esse recurso normalmente não é necessário, pois seu principal objetivo é auxiliar na **visualização e depuração** da automação.
-
----
-
-## Como funciona
+## Explicação detalhada
 
 Declare o objeto `IJavaScriptExecutor` na classe de teste:
 
@@ -78,11 +60,9 @@ destaque(
 
 Nesse caso, o Selenium localiza o elemento pelo seu `id` e o método `destaque()` aplica o estilo definido.
 
----
-
 ### Veja o método funcionando
 
-**[jse_destaque_elemento.cs](./scripts/jse_destaque_elemento.cs)**
+📜 **[jse_destaque_elemento.cs](./scripts/jse_destaque_elemento.cs)**
 
 Durante a execução, o teste:
 
@@ -105,17 +85,3 @@ border: 4px solid yellow;
 Visualmente, o elemento fica destacado na página, permitindo acompanhar com mais facilidade qual elemento está sendo manipulado pelo teste.
 
 > 💡 **Atenção:** o exemplo acima foi desenvolvido originalmente utilizando os elementos e IDs disponíveis no Google na época em que o código foi criado. Como a estrutura HTML de sites pode mudar, os IDs `sb_ifc0` e `lst-ib` podem não estar disponíveis atualmente. Nesse caso, substitua-os pelo identificador correspondente ao elemento existente na página.
-
----
-
-## 🎯 Objetivo do repositório
-
-Este exemplo faz parte da série de exemplos de **Selenium WebDriver com C#** deste repositório. Como o estudo da ferramenta é incremental, novos exemplos podem ser adicionados conforme novos recursos forem explorados. A ideia é manter os códigos como uma **referência rápida** para funcionalidades que podem ser reutilizadas em diferentes scripts de automação.
-
-## 🤝 Contribuições
-
-Sugestões, melhorias e novos exemplos são bem-vindos! Caso você tenha alguma dúvida, sugestão ou queira contribuir com o projeto, fique à vontade para entrar em contato.
-
-## 📌 Observação
-
-Este repositório foi criado inicialmente como material de estudo e referência pessoal durante o aprendizado do Selenium WebDriver com C#. Os exemplos aqui apresentados representam funcionalidades que foram exploradas e utilizadas em automações, podendo ser adaptados conforme a necessidade de cada projeto.

@@ -4,6 +4,8 @@ Este exemplo apresenta um método responsável por verificar se um determinado a
 
 > 💡 A abordagem é especialmente útil quando o teste precisa confirmar não apenas que o botão foi clicado, mas que o arquivo esperado foi efetivamente gerado e disponibilizado na pasta de downloads.
 
+## Explicação detalhada
+
 A implementação é dividida em duas classes:
 
 * `principal.cs` — classe responsável pela execução do teste e chamada do método.
@@ -84,51 +86,12 @@ O valor informado em `nomeArquivo` deve corresponder ao nome do arquivo que o si
 
 ```csharp
 string nomeArquivo = "RelatorioClientes";
-
 exporta.VerificaArquivoBaixado(nomeArquivo);
 ```
 
 Nesse caso, o método procurará pelo arquivo `RelatorioClientes.pdf` na pasta `Downloads` do usuário.
 
----
-
-## Fluxo da validação
-
-De forma resumida, o processo executado pelo método é:
-
-```text
-Início
-  │
-  ├── Obtém a pasta Downloads
-  ├── Remove arquivo anterior com o mesmo nome
-  ├── Clica no botão de Download
-  ├── Lista os arquivos da pasta Downloads
-  ├── Procura pelo arquivo esperado
-  ├── Arquivo encontrado?
-  │       │
-  │       ├── Sim → define existe = true
-  │       │          → exclui o arquivo
-  │       │          → retorna true
-  │       │
-  │       └── Não → mantém existe = false
-  │                  → encerra o navegador
-  │                  → retorna false
-  │
-  └── Fim
-```
-
 > **💡 Observação**: O exemplo utiliza `Thread.Sleep(1000)` para aguardar a geração do arquivo. Em aplicações reais, essa abordagem pode ser substituída por uma estratégia de espera mais robusta, especialmente quando o tempo de geração do arquivo pode variar. O objetivo deste exemplo é demonstrar a lógica de validação da exportação e a separação do método em uma classe própria, seguindo o conceito de POO.
 
----
+## Veja o método funcionando
 
-## 🎯 Objetivo do repositório
-
-Este exemplo faz parte da série de exemplos de **Selenium WebDriver com C#** deste repositório. Como o estudo da ferramenta é incremental, novos exemplos podem ser adicionados conforme novos recursos forem explorados. A ideia é manter os códigos como uma **referência rápida** para funcionalidades que podem ser reutilizadas em diferentes scripts de automação.
-
-## 🤝 Contribuições
-
-Sugestões, melhorias e novos exemplos são bem-vindos! Caso você tenha alguma dúvida, sugestão ou queira contribuir com o projeto, fique à vontade para entrar em contato.
-
-## 📌 Observação
-
-Este repositório foi criado inicialmente como material de estudo e referência pessoal durante o aprendizado do Selenium WebDriver com C#. Os exemplos aqui apresentados representam funcionalidades que foram exploradas e utilizadas em automações, podendo ser adaptados conforme a necessidade de cada projeto.

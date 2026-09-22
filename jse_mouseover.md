@@ -1,14 +1,8 @@
 # Executar mouseover (hover) com JavascriptExecutor
 
-Este exemplo demonstra como utilizar o **JavascriptExecutor** do Selenium WebDriver para executar a ação de **mouseover (hover)** sobre um elemento da página.
+Este exemplo demonstra como utilizar o **JavascriptExecutor** do Selenium WebDriver para executar a ação de **mouseover (hover)** sobre um elemento da página. O **mouseover**, também conhecido como **hover**, ocorre quando o cursor do mouse é posicionado sobre determinado elemento da página.
 
 A técnica pode ser utilizada em situações nas quais um menu ou outro elemento da interface apresenta informações adicionais, como **submenus, opções ou menus dropdown**, quando o cursor do mouse é posicionado sobre ele.
-
----
-
-## O que é mouseover (hover)?
-
-O **mouseover**, também conhecido como **hover**, ocorre quando o cursor do mouse é posicionado sobre determinado elemento da página.
 
 Um exemplo comum é um menu de navegação que exibe opções adicionais quando o usuário posiciona o mouse sobre ele:
 
@@ -24,23 +18,11 @@ MENU PRINCIPAL
 
 Durante uma automação, podemos precisar reproduzir esse comportamento para verificar se o submenu ou outra informação é exibida corretamente.
 
----
-
-## Quando utilizar
-
-Essa técnica pode ser útil para:
-
-* Interagir com menus dropdown;
-* Acionar eventos JavaScript específicos;
-* Investigar comportamentos da interface;
-* Auxiliar na depuração de testes;
-* Automatizar aplicações legadas que dependem de eventos JavaScript.
-
 > 💡 Para aplicações modernas, recomenda-se avaliar primeiro se a interação pode ser realizada diretamente pelas APIs de interação do Selenium, utilizando `Actions` e outros recursos nativos do WebDriver.
 
 ---
 
-## Executando o mouseover
+## Explicação detalhada
 
 O elemento que receberá o mouseover pode ser localizado normalmente utilizando os recursos do Selenium:
 
@@ -73,7 +55,7 @@ Após executar o evento, o teste pode aguardar alguns instantes para permitir a 
 
 ## Veja o método funcionando
 
-**[jse_mouseover.cs](./scripts/jse_mouseover.cs)**
+📜 **[jse_mouseover.cs](./scripts/jse_mouseover.cs)**
 
 Durante a execução, o teste:
 
@@ -112,17 +94,3 @@ actions.MoveToElement(menu).Perform();
 ```
 
 Portanto, o JavascriptExecutor é uma alternativa útil quando é necessário executar diretamente um comportamento JavaScript específico.
-
----
-
-## 🎯 Objetivo do repositório
-
-Este exemplo faz parte da série de exemplos de **Selenium WebDriver com C#** deste repositório. Como o estudo da ferramenta é incremental, novos exemplos podem ser adicionados conforme novos recursos forem explorados. A ideia é manter os códigos como uma **referência rápida** para funcionalidades que podem ser reutilizadas em diferentes scripts de automação.
-
-## 🤝 Contribuições
-
-Sugestões, melhorias e novos exemplos são bem-vindos! Caso você tenha alguma dúvida, sugestão ou queira contribuir com o projeto, fique à vontade para entrar em contato.
-
-### 📌 Observação
-
-Este repositório foi criado inicialmente como material de estudo e referência pessoal durante o aprendizado do Selenium WebDriver com C#. Os exemplos aqui apresentados representam funcionalidades que foram exploradas e utilizadas em automações, podendo ser adaptados conforme a necessidade de cada projeto.
