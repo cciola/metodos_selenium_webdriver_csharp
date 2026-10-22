@@ -46,7 +46,8 @@ GeraCPF
 └── GeraCPF.cs
 ```
 
-> ** 💡 Observação:** a criação da pasta é apenas uma forma de organização. O que permite utilizar a classe em outro arquivo é principalmente o `namespace`, a visibilidade `public` e a referência correta à classe.
+> [!IMPORTANT]
+> A criação da pasta é apenas uma forma de organização. O que permite utilizar a classe em outro arquivo é principalmente o `namespace`, a visibilidade `public` e a referência correta à classe.
 
 ---
 
