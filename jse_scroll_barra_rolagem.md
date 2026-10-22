@@ -2,7 +2,8 @@
 
 Este exemplo demonstra como utilizar o **JavascriptExecutor** do Selenium WebDriver para controlar a barra de rolagem de uma página por meio de JavaScript. A técnica permite movimentar a página vertical ou horizontalmente durante a execução de um teste automatizado.
 
-> 💡 É interessante avaliar se o próprio Selenium já oferece uma forma adequada de realizar a interação necessária.
+> [!IMPORTANT]
+> É interessante avaliar se o próprio Selenium já oferece uma forma adequada de realizar a interação necessária.
 
 ---
 
