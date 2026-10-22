@@ -2,7 +2,8 @@
 
 Este exemplo apresenta um método responsável por verificar se um determinado arquivo foi baixado após uma operação no sistema, como o clique em um botão de download ou exportar. A implementação utiliza o conceito de Programação Orientada a Objetos, separando a implementação do método da classe principal que executa o teste.
 
-> 💡 A abordagem é especialmente útil quando o teste precisa confirmar não apenas que o botão foi clicado, mas que o arquivo esperado foi efetivamente gerado e disponibilizado na pasta de downloads.
+> [!IMPORTANT]
+> A abordagem é especialmente útil quando o teste precisa confirmar não apenas que o botão foi clicado, mas que o arquivo esperado foi efetivamente gerado e disponibilizado na pasta de downloads.
 
 ## Explicação detalhada
 
@@ -93,4 +94,5 @@ exporta.VerificaArquivoBaixado(nomeArquivo);
 
 Nesse caso, o método procurará pelo arquivo `RelatorioClientes.pdf` na pasta `Downloads` do usuário.
 
-> **💡 Observação**: O exemplo utiliza `Thread.Sleep(1000)` para aguardar a geração do arquivo. Em aplicações reais, essa abordagem pode ser substituída por uma estratégia de espera mais robusta, especialmente quando o tempo de geração do arquivo pode variar. O objetivo deste exemplo é demonstrar a lógica de validação da exportação e a separação do método em uma classe própria, seguindo o conceito de POO.
+> [!WARNING]
+> O exemplo utiliza `Thread.Sleep(1000)` para aguardar a geração do arquivo. Em aplicações reais, essa abordagem pode ser substituída por uma estratégia de espera mais robusta, especialmente quando o tempo de geração do arquivo pode variar. O objetivo deste exemplo é demonstrar a lógica de validação da exportação e a separação do método em uma classe própria, seguindo o conceito de POO.
