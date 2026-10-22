@@ -39,8 +39,8 @@ Selenium WebDriver
 Selenium WebDriver Support Classes
 Selenium.Support
 ```
-
-> **⚠️ Observação:** essas dependências refletem o ambiente original do exemplo. Em versões atuais do .NET, NUnit, Selenium e Visual Studio, a instalação e o gerenciamento dos pacotes podem ser diferentes. Algumas versões e configurações dos navegadores também podem exigir adaptações para ambientes atuais.
+> [!WARNING]
+> Essas dependências refletem o ambiente original do exemplo. Em versões atuais do .NET, NUnit, Selenium e Visual Studio, a instalação e o gerenciamento dos pacotes podem ser diferentes. Algumas versões e configurações dos navegadores também podem exigir adaptações para ambientes atuais.
 
 ## 🧪 Exemplos disponíveis
 
