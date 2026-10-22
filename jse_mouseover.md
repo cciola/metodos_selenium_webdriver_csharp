@@ -85,7 +85,7 @@ Depois do mouseover:
 └─────────────────────┘
 ```
 
-[!WARNING]
+> [!WARNING]
 > Este exemplo utiliza diretamente o evento JavaScript `arguments[0].onmouseover()`. Isso **não é exatamente a mesma coisa que mover fisicamente o cursor do mouse até o elemento**. O código dispara o evento `onmouseover` associado ao elemento.
 
 Em aplicações modernas, o comportamento de menus pode ser implementado por outros mecanismos, como listeners JavaScript, CSS `:hover` ou frameworks de frontend. Nesses casos, a abordagem mais adequada pode ser utilizar os recursos de interação do próprio Selenium, como `Actions`, por exemplo:
