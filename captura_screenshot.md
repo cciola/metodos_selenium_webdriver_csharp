@@ -63,8 +63,8 @@ public void SetupTest()
     screenshotsPasta = @"C:\Users\cciola\Documents\Evidencias\";
 }
 ```
-
-> **💡 Importante:** a pasta informada deve existir **antes** da execução do teste. Em uma implementação mais robusta, o código pode verificar a existência do diretório e criá-lo automaticamente quando necessário.
+> [!IMPORTANT]
+> A pasta informada deve existir **antes** da execução do teste. Em uma implementação mais robusta, o código pode verificar a existência do diretório e criá-lo automaticamente quando necessário.
 
 Para gerar automaticamente o nome dos arquivos, podemos criar um método específico:
 
