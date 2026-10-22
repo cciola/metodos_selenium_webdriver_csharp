@@ -2,7 +2,8 @@
 
 Este exemplo demonstra como criar um método para **gerar CPFs válidos de forma aleatória** e utilizá-los como dados de teste em uma automação com Selenium WebDriver. A cada execução do método `GerarCpf()`, um novo CPF é calculado a partir de uma sequência numérica aleatória e dos respectivos dígitos verificadores.
 
-> **💡 Importante:** o objetivo deste gerador é criar **dados para testes**. Os CPFs gerados não devem ser utilizados para identificação de pessoas reais ou em situações fora do contexto de testes.
+> [!IMPORTANT]
+> O objetivo deste gerador é criar **dados para testes**. Os CPFs gerados não devem ser utilizados para identificação de pessoas reais ou em situações fora do contexto de testes.
 
 ## Explicação detalhada
 
